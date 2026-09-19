@@ -1,0 +1,8 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\nLanguage: en\n"
+msgid "Hello"
+msgstr "Hello"
+msgid "One item"
+msgid_plural "%d items"
+msgstr[0] "One item"
+msgstr[1] "%d items"

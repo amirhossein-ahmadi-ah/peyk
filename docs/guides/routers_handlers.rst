@@ -1,0 +1,19 @@
+Routers and handlers
+====================
+
+Use :class:`peyk.Router` to group handlers and filters. Router dispatch is ordered and first-match: once a handler handles an event, later handlers and child routers are not selected for that event.
+
+.. code-block:: python
+
+   from peyk import Bot, Router, F
+
+   bot = Bot("TOKEN", platform="telegram")
+   router = Router(name="messages")
+
+   @router.message(F.text)
+   async def echo(message):
+       await message.answer(message.text or "")
+
+   bot.include_router(router)
+
+The simple ``@bot.message`` and ``@bot.command`` forms register on the bot's built-in router.

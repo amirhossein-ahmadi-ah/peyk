@@ -1,0 +1,8 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\nLanguage: fa\n"
+msgid "Hello"
+msgstr "سلام"
+msgid "One item"
+msgid_plural "%d items"
+msgstr[0] "یک مورد"
+msgstr[1] "%d مورد"

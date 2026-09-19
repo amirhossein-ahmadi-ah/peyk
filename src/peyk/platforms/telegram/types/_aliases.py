@@ -1,0 +1,203 @@
+"""Telegram model aliases and finite tagged-union declarations."""
+
+from __future__ import annotations
+
+from typing import Any, Mapping, Union
+
+from .background_fill_freeform_gradient import BackgroundFillFreeformGradient
+from .background_fill_gradient import BackgroundFillGradient
+from .background_fill_solid import BackgroundFillSolid
+from .background_type_chat_theme import BackgroundTypeChatTheme
+from .background_type_fill import BackgroundTypeFill
+from .background_type_pattern import BackgroundTypePattern
+from .background_type_wallpaper import BackgroundTypeWallpaper
+from .bot_command_scope_all_chat_administrators import BotCommandScopeAllChatAdministrators
+from .bot_command_scope_all_group_chats import BotCommandScopeAllGroupChats
+from .bot_command_scope_all_private_chats import BotCommandScopeAllPrivateChats
+from .bot_command_scope_chat import BotCommandScopeChat
+from .bot_command_scope_chat_administrators import BotCommandScopeChatAdministrators
+from .bot_command_scope_chat_member import BotCommandScopeChatMember
+from .bot_command_scope_default import BotCommandScopeDefault
+from .force_reply import ForceReply
+from .inaccessible_message import InaccessibleMessage
+from .inline_keyboard_markup import InlineKeyboardMarkup
+from .inline_query_result_article import InlineQueryResultArticle
+from .inline_query_result_audio import InlineQueryResultAudio
+from .inline_query_result_cached_audio import InlineQueryResultCachedAudio
+from .inline_query_result_cached_document import InlineQueryResultCachedDocument
+from .inline_query_result_cached_gif import InlineQueryResultCachedGif
+from .inline_query_result_cached_mpeg4_gif import InlineQueryResultCachedMpeg4Gif
+from .inline_query_result_cached_photo import InlineQueryResultCachedPhoto
+from .inline_query_result_cached_sticker import InlineQueryResultCachedSticker
+from .inline_query_result_cached_video import InlineQueryResultCachedVideo
+from .inline_query_result_cached_voice import InlineQueryResultCachedVoice
+from .inline_query_result_contact import InlineQueryResultContact
+from .inline_query_result_document import InlineQueryResultDocument
+from .inline_query_result_game import InlineQueryResultGame
+from .inline_query_result_gif import InlineQueryResultGif
+from .inline_query_result_location import InlineQueryResultLocation
+from .inline_query_result_mpeg4_gif import InlineQueryResultMpeg4Gif
+from .inline_query_result_photo import InlineQueryResultPhoto
+from .inline_query_result_venue import InlineQueryResultVenue
+from .inline_query_result_video import InlineQueryResultVideo
+from .inline_query_result_voice import InlineQueryResultVoice
+from .input_contact_message_content import InputContactMessageContent
+from .input_invoice_message_content import InputInvoiceMessageContent
+from .input_location_message_content import InputLocationMessageContent
+from .input_media_animation import InputMediaAnimation
+from .input_media_audio import InputMediaAudio
+from .input_media_document import InputMediaDocument
+from .input_media_live_photo import InputMediaLivePhoto
+from .input_media_photo import InputMediaPhoto
+from .input_media_video import InputMediaVideo
+from .input_paid_media_live_photo import InputPaidMediaLivePhoto
+from .input_paid_media_photo import InputPaidMediaPhoto
+from .input_paid_media_video import InputPaidMediaVideo
+from .input_profile_photo_animated import InputProfilePhotoAnimated
+from .input_profile_photo_static import InputProfilePhotoStatic
+from .input_rich_block_anchor import InputRichBlockAnchor
+from .input_rich_block_animation import InputRichBlockAnimation
+from .input_rich_block_audio import InputRichBlockAudio
+from .input_rich_block_block_quotation import InputRichBlockBlockQuotation
+from .input_rich_block_buttons import InputRichBlockButtons
+from .input_rich_block_collage import InputRichBlockCollage
+from .input_rich_block_details import InputRichBlockDetails
+from .input_rich_block_divider import InputRichBlockDivider
+from .input_rich_block_document import InputRichBlockDocument
+from .input_rich_block_expandable_block_quotation import InputRichBlockExpandableBlockQuotation
+from .input_rich_block_footer import InputRichBlockFooter
+from .input_rich_block_list import InputRichBlockList
+from .input_rich_block_list_item import InputRichBlockListItem
+from .input_rich_block_map import InputRichBlockMap
+from .input_rich_block_mathematical_expression import InputRichBlockMathematicalExpression
+from .input_rich_block_paragraph import InputRichBlockParagraph
+from .input_rich_block_photo import InputRichBlockPhoto
+from .input_rich_block_preformatted import InputRichBlockPreformatted
+from .input_rich_block_pull_quotation import InputRichBlockPullQuotation
+from .input_rich_block_section_heading import InputRichBlockSectionHeading
+from .input_rich_block_slideshow import InputRichBlockSlideshow
+from .input_rich_block_table import InputRichBlockTable
+from .input_rich_block_thinking import InputRichBlockThinking
+from .input_rich_block_video import InputRichBlockVideo
+from .input_rich_block_voice_note import InputRichBlockVoiceNote
+from .input_rich_message_media import InputRichMessageMedia
+from .input_story_content_photo import InputStoryContentPhoto
+from .input_story_content_video import InputStoryContentVideo
+from .input_text_message_content import InputTextMessageContent
+from .input_venue_message_content import InputVenueMessageContent
+from .menu_button_commands import MenuButtonCommands
+from .menu_button_default import MenuButtonDefault
+from .menu_button_web_app import MenuButtonWebApp
+from .message import Message
+from .message_origin_channel import MessageOriginChannel
+from .message_origin_chat import MessageOriginChat
+from .message_origin_hidden_user import MessageOriginHiddenUser
+from .message_origin_user import MessageOriginUser
+from .owned_gift_regular import OwnedGiftRegular
+from .owned_gift_unique import OwnedGiftUnique
+from .paid_media_live_photo import PaidMediaLivePhoto
+from .paid_media_photo import PaidMediaPhoto
+from .paid_media_preview import PaidMediaPreview
+from .paid_media_video import PaidMediaVideo
+from .passport_element_error_data_field import PassportElementErrorDataField
+from .passport_element_error_file import PassportElementErrorFile
+from .passport_element_error_files import PassportElementErrorFiles
+from .passport_element_error_front_side import PassportElementErrorFrontSide
+from .passport_element_error_reverse_side import PassportElementErrorReverseSide
+from .passport_element_error_selfie import PassportElementErrorSelfie
+from .passport_element_error_translation_file import PassportElementErrorTranslationFile
+from .passport_element_error_translation_files import PassportElementErrorTranslationFiles
+from .passport_element_error_unspecified import PassportElementErrorUnspecified
+from .reaction_type_custom_emoji import ReactionTypeCustomEmoji
+from .reaction_type_emoji import ReactionTypeEmoji
+from .reaction_type_paid import ReactionTypePaid
+from .reply_keyboard_markup import ReplyKeyboardMarkup
+from .reply_keyboard_remove import ReplyKeyboardRemove
+from .revenue_withdrawal_state_failed import RevenueWithdrawalStateFailed
+from .revenue_withdrawal_state_pending import RevenueWithdrawalStatePending
+from .revenue_withdrawal_state_succeeded import RevenueWithdrawalStateSucceeded
+from .rich_block_anchor import RichBlockAnchor
+from .rich_block_animation import RichBlockAnimation
+from .rich_block_audio import RichBlockAudio
+from .rich_block_block_quotation import RichBlockBlockQuotation
+from .rich_block_buttons import RichBlockButtons
+from .rich_block_collage import RichBlockCollage
+from .rich_block_details import RichBlockDetails
+from .rich_block_divider import RichBlockDivider
+from .rich_block_document import RichBlockDocument
+from .rich_block_expandable_block_quotation import RichBlockExpandableBlockQuotation
+from .rich_block_footer import RichBlockFooter
+from .rich_block_list import RichBlockList
+from .rich_block_map import RichBlockMap
+from .rich_block_mathematical_expression import RichBlockMathematicalExpression
+from .rich_block_paragraph import RichBlockParagraph
+from .rich_block_photo import RichBlockPhoto
+from .rich_block_preformatted import RichBlockPreformatted
+from .rich_block_pull_quotation import RichBlockPullQuotation
+from .rich_block_section_heading import RichBlockSectionHeading
+from .rich_block_slideshow import RichBlockSlideshow
+from .rich_block_table import RichBlockTable
+from .rich_block_thinking import RichBlockThinking
+from .rich_block_video import RichBlockVideo
+from .rich_block_voice_note import RichBlockVoiceNote
+from .rich_text_anchor import RichTextAnchor
+from .rich_text_anchor_link import RichTextAnchorLink
+from .rich_text_bank_card_number import RichTextBankCardNumber
+from .rich_text_bold import RichTextBold
+from .rich_text_bot_command import RichTextBotCommand
+from .rich_text_cashtag import RichTextCashtag
+from .rich_text_code import RichTextCode
+from .rich_text_custom_emoji import RichTextCustomEmoji
+from .rich_text_date_time import RichTextDateTime
+from .rich_text_email_address import RichTextEmailAddress
+from .rich_text_hashtag import RichTextHashtag
+from .rich_text_italic import RichTextItalic
+from .rich_text_marked import RichTextMarked
+from .rich_text_mathematical_expression import RichTextMathematicalExpression
+from .rich_text_mention import RichTextMention
+from .rich_text_phone_number import RichTextPhoneNumber
+from .rich_text_reference import RichTextReference
+from .rich_text_reference_link import RichTextReferenceLink
+from .rich_text_spoiler import RichTextSpoiler
+from .rich_text_strikethrough import RichTextStrikethrough
+from .rich_text_subscript import RichTextSubscript
+from .rich_text_superscript import RichTextSuperscript
+from .rich_text_text_mention import RichTextTextMention
+from .rich_text_underline import RichTextUnderline
+from .rich_text_url import RichTextUrl
+from .story_area_type_link import StoryAreaTypeLink
+from .story_area_type_location import StoryAreaTypeLocation
+from .story_area_type_suggested_reaction import StoryAreaTypeSuggestedReaction
+from .story_area_type_unique_gift import StoryAreaTypeUniqueGift
+from .story_area_type_weather import StoryAreaTypeWeather
+from .transaction_partner_affiliate_program import TransactionPartnerAffiliateProgram
+from .transaction_partner_chat import TransactionPartnerChat
+from .transaction_partner_fragment import TransactionPartnerFragment
+from .transaction_partner_other import TransactionPartnerOther
+from .transaction_partner_telegram_ads import TransactionPartnerTelegramAds
+from .transaction_partner_telegram_api import TransactionPartnerTelegramApi
+from .transaction_partner_user import TransactionPartnerUser
+MaybeInaccessibleMessage = Union[Message, InaccessibleMessage]
+MAX_CALLBACK_DATA_BYTES = 64
+ReplyMarkup = Union[InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply, Mapping[str, object]]
+BotCommandScope = Union[BotCommandScopeDefault, BotCommandScopeAllPrivateChats, BotCommandScopeAllGroupChats, BotCommandScopeAllChatAdministrators, BotCommandScopeChat, BotCommandScopeChatAdministrators, BotCommandScopeChatMember]
+MenuButton = Union[MenuButtonCommands, MenuButtonWebApp, MenuButtonDefault]
+InputMessageContent = Union[InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent]
+InlineQueryResult = Union[InlineQueryResultArticle, InlineQueryResultPhoto, InlineQueryResultGif, InlineQueryResultMpeg4Gif, InlineQueryResultVideo, InlineQueryResultAudio, InlineQueryResultVoice, InlineQueryResultDocument, InlineQueryResultLocation, InlineQueryResultVenue, InlineQueryResultContact, InlineQueryResultGame, InlineQueryResultCachedPhoto, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedSticker, InlineQueryResultCachedDocument, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultCachedAudio]
+ReactionType = Union[ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid]
+MessageOrigin = Union[MessageOriginUser, MessageOriginHiddenUser, MessageOriginChat, MessageOriginChannel]
+BackgroundFill = Union[BackgroundFillSolid, BackgroundFillGradient, BackgroundFillFreeformGradient]
+BackgroundType = Union[BackgroundTypeFill, BackgroundTypeWallpaper, BackgroundTypePattern, BackgroundTypeChatTheme]
+StoryAreaType = Union[StoryAreaTypeLocation, StoryAreaTypeSuggestedReaction, StoryAreaTypeLink, StoryAreaTypeWeather, StoryAreaTypeUniqueGift]
+RevenueWithdrawalState = Union[RevenueWithdrawalStatePending, RevenueWithdrawalStateSucceeded, RevenueWithdrawalStateFailed]
+TransactionPartner = Union[TransactionPartnerUser, TransactionPartnerFragment, TransactionPartnerTelegramAds, TransactionPartnerOther, TransactionPartnerAffiliateProgram, TransactionPartnerChat, TransactionPartnerTelegramApi]
+InputProfilePhoto = Union[InputProfilePhotoStatic, InputProfilePhotoAnimated]
+RichText = Union[RichTextBold, RichTextItalic, RichTextUnderline, RichTextStrikethrough, RichTextSpoiler, RichTextCode, RichTextUrl, RichTextEmailAddress, RichTextPhoneNumber, RichTextBankCardNumber, RichTextMention, RichTextTextMention, RichTextHashtag, RichTextCashtag, RichTextBotCommand, RichTextAnchor, RichTextAnchorLink, RichTextReference, RichTextReferenceLink, RichTextDateTime, RichTextSubscript, RichTextSuperscript, RichTextMarked, RichTextCustomEmoji, RichTextMathematicalExpression]
+RichBlock = Union[RichBlockParagraph, RichBlockSectionHeading, RichBlockPreformatted, RichBlockFooter, RichBlockDivider, RichBlockMathematicalExpression, RichBlockAnchor, RichBlockList, RichBlockBlockQuotation, RichBlockPullQuotation, RichBlockCollage, RichBlockSlideshow, RichBlockTable, RichBlockDetails, RichBlockMap, RichBlockAnimation, RichBlockAudio, RichBlockPhoto, RichBlockVideo, RichBlockVoiceNote, RichBlockThinking, RichBlockDocument, RichBlockExpandableBlockQuotation, RichBlockButtons]
+PaidMedia = Union[PaidMediaLivePhoto, PaidMediaPhoto, PaidMediaPreview, PaidMediaVideo]
+OwnedGift = Union[OwnedGiftRegular, OwnedGiftUnique]
+InputMedia = Union[InputMediaAnimation, InputMediaAudio, InputMediaDocument, InputMediaLivePhoto, InputMediaPhoto, InputMediaVideo]
+InputPaidMedia = Union[InputPaidMediaLivePhoto, InputPaidMediaPhoto, InputPaidMediaVideo]
+InputStoryContent = Union[InputStoryContentPhoto, InputStoryContentVideo]
+PassportElementError = Union[PassportElementErrorDataField, PassportElementErrorFrontSide, PassportElementErrorReverseSide, PassportElementErrorSelfie, PassportElementErrorFile, PassportElementErrorFiles, PassportElementErrorTranslationFile, PassportElementErrorTranslationFiles, PassportElementErrorUnspecified]
+InputRichBlock = Union[InputRichBlockParagraph, InputRichBlockSectionHeading, InputRichBlockPreformatted, InputRichBlockFooter, InputRichBlockDivider, InputRichBlockMathematicalExpression, InputRichBlockAnchor, InputRichBlockList, InputRichBlockBlockQuotation, InputRichBlockExpandableBlockQuotation, InputRichBlockPullQuotation, InputRichBlockCollage, InputRichBlockSlideshow, InputRichBlockTable, InputRichBlockDetails, InputRichBlockMap, InputRichBlockButtons, InputRichBlockAnimation, InputRichBlockAudio, InputRichBlockDocument, InputRichBlockPhoto, InputRichBlockVideo, InputRichBlockVoiceNote, InputRichBlockThinking, InputRichBlockListItem, InputRichMessageMedia]

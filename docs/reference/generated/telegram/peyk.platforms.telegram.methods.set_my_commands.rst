@@ -1,0 +1,6 @@
+peyk.platforms.telegram.methods.set\_my\_commands
+=================================================
+
+.. currentmodule:: peyk.platforms.telegram.methods
+
+.. autofunction:: set_my_commands

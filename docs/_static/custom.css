@@ -1,0 +1,9 @@
+
+.sidebar-brand {
+  border-radius: 14px;
+  padding: 0.35rem;
+}
+
+.dark .sidebar-brand {
+  background: #141820;
+}

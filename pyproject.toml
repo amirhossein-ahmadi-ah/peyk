@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "peyk"
+version = "1.0.0"
+description = "An aiogram-style async bot library for Telegram, Bale, and Rubika."
+keywords = ["telegram", "bale", "rubika", "bot", "asyncio", "aiogram"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+]
+
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+    "aiohttp>=3.9",
+    "orjson>=3.9",
+    "magic-filter>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/amirhossein-ahmadi-ah/peyk"
+Documentation = "https://amirhossein-ahmadi-ah.github.io/peyk/"
+Repository = "https://github.com/amirhossein-ahmadi-ah/peyk"
+Issues = "https://github.com/amirhossein-ahmadi-ah/peyk/issues"
+Changelog = "https://github.com/amirhossein-ahmadi-ah/peyk/blob/main/CHANGES.md"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=8,<9",
+    "furo>=2024.8.6",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "fakeredis>=2.20",
+    "mypy>=1.11",
+]
+bale = []
+telegram = []
+rubika = []
+fsm-redis = [
+    "redis>=5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = ["peyk.platform_core", "peyk.platform_core.*"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["tests.typing.*"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["peyk.bot", "peyk.bot.*", "peyk.types", "peyk.types.*"]
+strict = true
+
+[tool.setuptools.package-data]
+peyk = ["py.typed"]

@@ -1,0 +1,5348 @@
+{
+  "peyk.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot._neutral": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.base": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.policy": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.strategies.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.strategies.bale": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.strategies.rubika": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.strategies.send_media_group": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.bot.strategies.telegram": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.dispatcher": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.event.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.event.bases": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.event.handler": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.event.telegram": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.base": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.callback_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.chat_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.command": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.state": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.filters.text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.middlewares.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.middlewares.base": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.middlewares.fsm": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.middlewares.logging_middleware": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.middlewares.utils": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.polling.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.dispatcher.router": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.enums.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.base": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.callback_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.chat_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.command": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.exception": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.logic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.magic_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.platform": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.state": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.filters.text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.flags": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.formatting": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.context": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.middleware": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.state": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.storage.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.storage.base": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.storage.isolation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.storage.memory": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.fsm.storage.redis": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.builder": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.ir": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.render.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.render.bale": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.render.common": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.render.rubika": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.render.telegram": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.keyboard.rubika": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.adapters.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.adapters.bale": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.adapters.rubika": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.adapters.telegram": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities._common": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities.bale": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities.legacy": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities.rubika": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.capabilities.telegram": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.contracts.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.contracts.callback": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.contracts.capabilities": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.contracts.chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.contracts.message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.enums.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.enums.chat_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.enums.parse_mode": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.enums.platform": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.enums.update_delivery": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platform_core.errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms._telegram_like.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms._telegram_like.base_client": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.bale.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.client": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.enums.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods._send_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.add_sticker_to_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.answer_callback_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.answer_pre_checkout_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.ask_review": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.ban_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.close_bot": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.copy_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.create_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.create_invoice_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.create_new_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.delete_webhook": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.edit_message_caption": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.edit_message_reply_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.edit_message_text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.export_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.forward_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.get_chat_administrators": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.get_chat_members_count": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.get_updates": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.inquire_transaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.logout": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.pin_chat_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.promote_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.revoke_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_chat_action": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_invoice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_media_group": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.send_voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.set_chat_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.set_chat_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.set_webhook": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.unpin_chat_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.methods.upload_sticker_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.models": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.callback_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_member_administrator": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_member_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_member_owner": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_member_restricted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.chat_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.copy_text_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.inline_keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.inline_keyboard_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.input_media_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.invoice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.labeled_price": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.media_input": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.message_entity": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.message_id": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.photo_size": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.pre_checkout_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.reply_keyboard_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.reply_keyboard_remove": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.response_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.successful_payment": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.transaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.update": {
+    "any": 0,
+    "bare_dict": 1,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.web_app_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.web_app_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.bale.types.webhook_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.client": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.rubika.enums.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_calendar_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_location_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_selection_get_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_selection_search_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_selection_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_textbox_type_keypad_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_textbox_type_line_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.button_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.chat_keypad_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.chat_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.enum_chat_access": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.event_join_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.event_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.file_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.forwarded_from_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.message_sender_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.metadata_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.poll_status_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.update_endpoint_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.enums.update_type_enum": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.errors": {
+    "any": 0,
+    "bare_dict": 1,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods._call": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.rubika.methods._commands_to_list": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods._keypad_to_dict": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods._parse_message_id_response": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.ban_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.close": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.delete_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.edit_chat_keypad": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.edit_message_keypad": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.edit_message_text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.forward_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.get_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.get_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.get_me": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.get_updates": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.remove_chat_keypad": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.request_send_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.send_contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.send_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.send_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.send_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.send_poll": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.set_commands": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.unban_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.update_bot_endpoints": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.upload_and_send_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.methods.upload_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.rubika.models": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types._helpers": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.aux_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.bot": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.bot_command": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_calendar": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_number_picker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_selection": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_selection_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_string_picker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.button_textbox": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.contact_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.event": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.forwarded_from": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.get_updates_result": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.inline_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.keypad": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.keypad_row": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.metadata": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.metadata_part": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.poll": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.poll_status": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.types.update": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.rubika.webhook_security": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.client": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.background_fill_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.background_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.chat_boost_source_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.chat_member_status": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.chat_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.input_paid_media_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.input_profile_photo_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.input_story_content_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.message_entity_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.message_origin_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.owned_gift_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.paid_media_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.parse_mode": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.passport_element_error_source": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.phase10a": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.poll_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.reaction_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.revenue_withdrawal_state_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.sticker_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.story_area_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.enums.transaction_partner_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._apply_caption_form": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._apply_caption_json": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._apply_send_options_form": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._apply_send_options_json": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._edit_target": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._extract_retry_hint": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._parse_chat_member_result": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._parse_error_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._resolve_album_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._resolve_sticker_ref": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._send_file_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._serialization": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._serialize_permissions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods._serialize_poll_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.add_sticker_to_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_callback_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_chat_join_request_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_guest_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_inline_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_pre_checkout_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_shipping_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.answer_web_app_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.approve_chat_join_request": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.approve_suggested_post": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.ban_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.ban_chat_sender_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.build_inline_keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.close_bot": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.close_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.close_general_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.convert_gift_to_stars": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.copy_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.copy_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.create_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.create_chat_subscription_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.create_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.create_invoice_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.create_new_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.decline_chat_join_request": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.decline_suggested_post": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_all_message_reactions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_business_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_chat_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_ephemeral_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_message_reaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_my_commands": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_sticker_from_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_story": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.delete_webhook": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_chat_subscription_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_ephemeral_message_caption": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_ephemeral_message_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_ephemeral_message_reply_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_ephemeral_message_text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_general_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_caption": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_checklist": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_live_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_reply_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_message_text": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_story": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.edit_user_star_subscription": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.export_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.forward_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.forward_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_available_gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_business_account_gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_business_account_star_balance": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_business_connection": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_chat_administrators": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_chat_gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_chat_member_count": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_chat_menu_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_custom_emoji_stickers": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_forum_topic_icon_stickers": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_game_high_scores": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_managed_bot_access_settings": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_managed_bot_token": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_commands": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_default_administrator_rights": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_name": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_short_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_my_star_balance": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_star_transactions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_updates": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_user_chat_boosts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_user_gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_user_personal_chat_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_user_profile_audios": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.get_user_profile_photos": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.gift_premium_subscription": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.hide_general_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.log_out": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.pin_chat_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.post_story": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.promote_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.read_business_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.refund_star_payment": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.remove_business_account_profile_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.remove_chat_verification": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.remove_my_profile_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.remove_user_verification": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.reopen_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.reopen_general_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.replace_managed_bot_token": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.replace_sticker_in_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.repost_story": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.restrict_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.revoke_chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.save_prepared_inline_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.save_prepared_keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_chat_action": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_chat_join_request_web_app": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_checklist": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_dice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_game": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_invoice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_live_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_media_group": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_message_draft": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_paid_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_poll": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_rich_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_rich_message_draft": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_venue": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_video_note": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.send_voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_business_account_bio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_business_account_gift_settings": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_business_account_name": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_business_account_profile_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_business_account_username": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_administrator_custom_title": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_member_tag": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_menu_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_permissions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_chat_sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_custom_emoji_sticker_set_thumbnail": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_game_score": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_managed_bot_access_settings": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_message_reaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_commands": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_default_administrator_rights": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_name": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_profile_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_my_short_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_passport_data_errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_emoji_list": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_keywords": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_mask_position": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_position_in_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_set_thumbnail": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_sticker_set_title": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_user_emoji_status": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.set_webhook": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.stop_message_live_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.stop_poll": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.transfer_business_account_stars": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.transfer_gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.unban_chat_sender_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.unhide_general_forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.unpin_all_forum_topic_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.unpin_all_general_forum_topic_messages": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.unpin_chat_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.upgrade_gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.upload_sticker_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.verify_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.methods.verify_user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.models": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types._aliases": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types._helpers": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 2,
+    "unannotated_returns": 3
+  },
+  "peyk.platforms.telegram.types._passport_factory": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 2,
+    "unannotated_returns": 4
+  },
+  "peyk.platforms.telegram.types.accepted_gift_types": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.affiliate_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_fill_freeform_gradient": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_fill_gradient": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_fill_solid": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_type_chat_theme": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_type_fill": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_type_pattern": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.background_type_wallpaper": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.birthdate": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_access_settings": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_all_chat_administrators": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_all_group_chats": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_all_private_chats": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_chat_administrators": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_command_scope_default": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_name": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_short_description": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.bot_subscription_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_bot_rights": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_connection": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_intro": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_messages_deleted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_opening_hours": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.business_opening_hours_interval": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.callback_game": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.callback_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_administrator_rights": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_background": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_added": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_removed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_source": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_source_gift_code": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_source_giveaway": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_source_premium": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_boost_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_full_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_invite_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_join_request": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_administrator": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_banned": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_left": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_member": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_owner": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_restricted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_member_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_owner_changed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_owner_left": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_permissions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chat_shared": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.checklist": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.checklist_task": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.checklist_tasks_added": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.checklist_tasks_done": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.chosen_inline_result": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.community": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.community_chat_added": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.community_chat_joined": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.community_chat_removed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.copy_text_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.dice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.direct_message_price_changed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.direct_messages_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.disabled_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.encrypted_credentials": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.encrypted_passport_element": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.ephemeral_message_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.external_reply_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.force_reply": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.forum_topic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.forum_topic_closed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.forum_topic_created": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.forum_topic_edited": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.forum_topic_reopened": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.game": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.game_high_score": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.general_forum_topic_hidden": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.general_forum_topic_unhidden": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.gift_background": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.gift_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.giveaway": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.giveaway_completed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.giveaway_created": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.giveaway_winners": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inaccessible_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.inline_keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_keyboard_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_article": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_gif": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_mpeg4_gif": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_cached_voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_contact": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_game": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_gif": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_mpeg4_gif": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_venue": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_result_voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.inline_query_results_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_checklist": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_checklist_task": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_contact_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_invoice_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_location_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_live_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_venue": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_media_voice_note": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_paid_media_live_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_paid_media_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_paid_media_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_poll_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_poll_option": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_poll_option_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_profile_photo_animated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_profile_photo_static": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_anchor": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_block_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_buttons": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_collage": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_details": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_divider": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_expandable_block_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_footer": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_list": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_list_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_map": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_mathematical_expression": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_paragraph": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_preformatted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_pull_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_section_heading": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_slideshow": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_table": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_thinking": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_block_voice_note": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_rich_message_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_story_content_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_story_content_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_text_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.input_venue_message_content": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.invoice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.keyboard_button_poll_type": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.keyboard_button_request_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.keyboard_button_request_managed_bot": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.keyboard_button_request_users": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.labeled_price": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.link_preview_options": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.live_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.location_address": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.login_url": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.managed_bot_created": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.managed_bot_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.mask_position": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.menu_button_commands": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.menu_button_default": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.menu_button_web_app": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_auto_delete_timer_changed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_entity": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_generation_stopped": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_id": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_origin_channel": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_origin_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_origin_hidden_user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_origin_user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_reaction_count_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.message_reaction_updated": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.order_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.owned_gift_regular": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.owned_gift_unique": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.owned_gifts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_live_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_preview": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_purchased": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_media_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.paid_message_price_changed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_data_field": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_files": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_front_side": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_reverse_side": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_selfie": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_translation_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_translation_files": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_element_error_unspecified": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.passport_file": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.photo_size": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll_answer": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll_media": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll_option": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll_option_added": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.poll_option_deleted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.pre_checkout_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.prepared_inline_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.prepared_keyboard_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.proximity_alert_triggered": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reaction_count": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reaction_type_custom_emoji": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reaction_type_emoji": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reaction_type_paid": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.refunded_payment": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reply_keyboard_markup": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reply_keyboard_remove": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.reply_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.response_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.revenue_withdrawal_state_failed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.revenue_withdrawal_state_pending": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.revenue_withdrawal_state_succeeded": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.rich_block_anchor": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_animation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_audio": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_block_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_buttons": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_caption": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_collage": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_details": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_divider": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_document": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_expandable_block_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_footer": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_list": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_list_item": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_map": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_mathematical_expression": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_paragraph": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_photo": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_preformatted": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_pull_quotation": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_section_heading": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_slideshow": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_table": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_table_cell": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_thinking": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_block_voice_note": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.rich_message_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_anchor": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_anchor_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_bank_card_number": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_bold": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_bot_command": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_button": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_cashtag": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_code": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_custom_emoji": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_date_time": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_email_address": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_hashtag": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_italic": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_marked": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_mathematical_expression": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_mention": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_phone_number": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_reference": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_reference_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_spoiler": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_strikethrough": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_subscript": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_superscript": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_text_mention": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_underline": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.rich_text_url": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 1,
+    "unannotated_returns": 1
+  },
+  "peyk.platforms.telegram.types.sent_guest_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.sent_web_app_message": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.shared_user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.shipping_address": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.shipping_option": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.shipping_query": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.star_amount": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.star_transaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.star_transactions": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.sticker": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.sticker_set": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_position": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_type_link": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_type_location": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_type_suggested_reaction": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_type_unique_gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.story_area_type_weather": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.successful_payment": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_approval_failed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_approved": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_declined": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_paid": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_parameters": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_price": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.suggested_post_refunded": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.switch_inline_query_chosen_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.text_quote": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_affiliate_program": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_chat": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_fragment": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_other": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_telegram_ads": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_telegram_api": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.transaction_partner_user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_backdrop": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_backdrop_colors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_colors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_model": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.unique_gift_symbol": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.update": {
+    "any": 0,
+    "bare_dict": 1,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.user": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.user_chat_boosts": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.user_profile_audios": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.user_profile_photos": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.user_rating": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.users_shared": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.venue": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_chat_ended": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_chat_participants_invited": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_chat_scheduled": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_chat_started": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_note": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.video_quality": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.voice": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.web_app_data": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.web_app_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.webhook_info": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.platforms.telegram.types.write_access_allowed": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.errors": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.logging_hook": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.multipart": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.retry": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.transport.session": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.types.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.types._convert": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.types.core": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.callback_answer": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.chat_action": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.deep_linking": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.html": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.i18n": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.keyboard_builder": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.markdown": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.media_group": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.text_formatting": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.utils.web_app": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.webhook.__init__": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.webhook.aiohttp_server": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.webhook.processor": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.webhook.registrars": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  },
+  "peyk.webhook.security": {
+    "any": 0,
+    "bare_dict": 0,
+    "unannotated_parameters": 0,
+    "unannotated_returns": 0
+  }
+}
