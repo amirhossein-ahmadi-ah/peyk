@@ -201,3 +201,5 @@ def test_filter_algebra() -> None:
 @pytest.mark.asyncio
 async def test_magic_data_reads_dependency_mapping() -> None:
     assert await MagicData(F.value == 3)(event(), value=3)
+    assert not await MagicData(F.value == 3)(event(), value=4)
+    assert await MagicData(F["value"] == 3)(event(), value=3)

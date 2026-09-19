@@ -1,14 +1,8 @@
 name: Publish to PyPI
 
-# Runs when you publish a GitHub Release (tag it v1.0.0 to match the version
-# in pyproject.toml). Uses PyPI's Trusted Publisher (OIDC) mechanism, so no
-# PyPI API token has to be stored as a GitHub secret.
-#
-# One-time manual step required before this works: on pypi.org, add a
-# "pending trusted publisher" for the project name "peyk" pointing at this
-# repository (see the publishing guide in the repo root for exact steps).
-
 on:
+  push:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
@@ -30,6 +24,32 @@ jobs:
       - name: Install build tool
         run: python -m pip install --upgrade build
 
+      - name: Version normal commits as post releases
+        if: github.event_name == 'push'
+        env:
+          RUN_NUMBER: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          path = Path("pyproject.toml")
+          text = path.read_text()
+          match = re.search(r'(?m)^version\s*=\s*"([^"]+)"$', text)
+          if not match:
+              raise SystemExit("project version not found in pyproject.toml")
+          base = match.group(1)
+          version = f"{base}.post{os.environ['RUN_NUMBER']}"
+          path.write_text(text[:match.start(1)] + version + text[match.end(1):])
+
+          init = Path("src/peyk/__init__.py")
+          init_text = init.read_text()
+          init_text = re.sub(r'(?m)^__version__\s*=\s*"[^"]+"$', f'__version__ = "{version}"', init_text)
+          init.write_text(init_text)
+          print(f"Publishing commit build as {version}")
+          PY
+
       - name: Build sdist and wheel
         run: python -m build
 
@@ -46,7 +66,7 @@ jobs:
       name: pypi
       url: https://pypi.org/project/peyk/
     permissions:
-      id-token: write  # required for PyPI Trusted Publishing
+      id-token: write
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4

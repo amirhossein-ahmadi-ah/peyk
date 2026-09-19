@@ -50,6 +50,54 @@ class Text:
         """Return a new composition containing ``other``."""
         return Text(*self.body, other)
 
+    def line(self) -> 'Text':
+        """Append a newline and return a new composition."""
+        return Text(*self.body, "\n")
+
+    def bold(self, *body: Content) -> 'Text':
+        """Append a bold fragment and return a new composition."""
+        return Text(*self.body, Bold(*body))
+
+    def italic(self, *body: Content) -> 'Text':
+        """Append an italic fragment and return a new composition."""
+        return Text(*self.body, Italic(*body))
+
+    def underline(self, *body: Content) -> 'Text':
+        """Append an underlined fragment and return a new composition."""
+        return Text(*self.body, Underline(*body))
+
+    def strikethrough(self, *body: Content) -> 'Text':
+        """Append a strikethrough fragment and return a new composition."""
+        return Text(*self.body, Strikethrough(*body))
+
+    def spoiler(self, *body: Content) -> 'Text':
+        """Append a spoiler fragment and return a new composition."""
+        return Text(*self.body, Spoiler(*body))
+
+    def code(self, *body: Content) -> 'Text':
+        """Append an inline-code fragment and return a new composition."""
+        return Text(*self.body, Code(*body))
+
+    def pre(self, *body: Content, language: str | None = None) -> 'Text':
+        """Append a preformatted fragment and return a new composition."""
+        return Text(*self.body, Pre(*body, language=language))
+
+    def link(self, text: Content, url: str) -> 'Text':
+        """Append a URL link and return a new composition."""
+        return Text(*self.body, TextLink(text, url=url))
+
+    def mention(self, text: Content, user_id: int | str) -> 'Text':
+        """Append a Telegram user mention and return a new composition."""
+        return Text(*self.body, TextMention(text, user_id=user_id))
+
+    def blockquote(self, *body: Content) -> 'Text':
+        """Append a block quote and return a new composition."""
+        return Text(*self.body, BlockQuote(*body))
+
+    def expandable_blockquote(self, *body: Content) -> 'Text':
+        """Append an expandable block quote and return a new composition."""
+        return Text(*self.body, ExpandableBlockQuote(*body))
+
     def render(self, target: PlatformCapabilities | str) -> str:
         """Render this composition for a platform or audited capability object."""
         return render_for(self.to_rich_text(), _target_capabilities(target))

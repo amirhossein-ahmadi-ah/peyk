@@ -13,6 +13,7 @@ peyk documentation
    :caption: Getting started
 
    quickstart
+   guides/examples
 
 .. toctree::
    :maxdepth: 2
@@ -55,6 +56,7 @@ peyk documentation
    reference/transport
    reference/platform_core
    reference/enums
+   utils
 
 Indices and tables
 ==================

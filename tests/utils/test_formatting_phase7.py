@@ -96,3 +96,8 @@ def test_text_separator_and_aiogram_like_list_calls():
     assert Text("a", "b", sep=" ").render("telegram") == "a b"
     assert as_list("a", "b").render("telegram") == "a\nb"
     assert as_marked_list(["a", "b"]).render("telegram") == "▫️ a\n▫️ b"
+
+def test_fluent_text_builder_matches_documented_api():
+    value = Text("Hello ").bold("world").line().link("docs", "https://example.com")
+    assert value.render("telegram") == 'Hello <b>world</b>\n<a href="https://example.com">docs</a>'
+

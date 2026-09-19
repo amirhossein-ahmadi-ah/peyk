@@ -24,15 +24,24 @@ extensions = [
 
 autosummary_generate = True
 autosummary_imported_members = False
+# Recursive autosummary creates many leaf pages that are linked from the
+# generated index pages rather than appearing as explicit hand-written
+# toctree entries.  Treat those links as intentional.  Duplicate objects are
+# also expected from the compatibility facades (models/helpers) and the
+# canonical one-file API pages.
+suppress_warnings = [
+    "toc.not_included",
+    "duplicate",
+    "autosummary.import_cycle",
+]
 
 autodoc_default_options = {
     "members": True,
     "undoc-members": False,
-    "inherited-members": False,
     "show-inheritance": True,
     "member-order": "bysource",
 }
-autodoc_typehints = "none"
+autodoc_typehints = "signature"
 autodoc_class_signature = "mixed"
 autodoc_preserve_defaults = True
 

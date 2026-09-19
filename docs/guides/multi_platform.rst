@@ -27,3 +27,12 @@ Fallbacks
 ---------
 
 Neutral keyboards and formatting are resolved at send time. Platform-specific features should be guarded with a capability check or kept behind a platform-specific branch at the application boundary.
+
+Bale authentication errors
+---------------------------
+
+A ``403 Forbidden`` from ``https://tapi.bale.ai/bot<TOKEN>/...`` is returned by
+Bale before Peyk can parse a successful API response.  Check that the bot token
+is current and that the bot is allowed to send to the target chat.  Do not
+commit bot tokens to logs, examples, or source control; rotate a token if it
+has been exposed.
