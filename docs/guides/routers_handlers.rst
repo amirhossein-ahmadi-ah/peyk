@@ -17,3 +17,19 @@ Use :class:`peyk.Router` to group handlers and filters. Router dispatch is order
    bot.include_router(router)
 
 The simple ``@bot.message`` and ``@bot.command`` forms register on the bot's built-in router.
+
+``Router`` and ``Dispatcher`` have the same ``command`` shorthand, so a command handler
+does not need to be attached to a bot:
+
+.. code-block:: python
+
+   admin = Router(name="admin")
+
+   @admin.command("admin")
+   async def admin_command(message):
+       await message.answer("Admin router handled /admin")
+
+   # Routers are tried in the order they are included and the first match wins.
+   # Include specific routers before catch-all ones (such as ``F.text`` echo).
+   dispatcher.include_router(admin)
+   dispatcher.include_router(router)

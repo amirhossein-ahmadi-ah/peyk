@@ -19,8 +19,11 @@ async def admin_command(message):
 
 
 # Child routers are registered on the dispatcher, not only defined locally.
-dispatcher.include_router(messages)
+# Routers are tried in the order they are included and the FIRST match wins.
+# ``messages`` matches every text message (including "/admin"), so the more
+# specific ``admin`` router must come first or it would never be reached.
 dispatcher.include_router(admin)
+dispatcher.include_router(messages)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,10 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: fa\n"
+
+msgid "Hello"
+msgstr "سلام"
+
+msgid "Your language is: %s"
+msgstr "زبان شما: %s"

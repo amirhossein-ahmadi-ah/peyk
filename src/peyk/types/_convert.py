@@ -27,7 +27,7 @@ Args:
 
 Returns:
     Result produced by the operation."""
-    return User(id=getattr(raw, 'id', ''), is_bot=bool(getattr(raw, 'is_bot', False)), first_name=getattr(raw, 'first_name', '') or '', last_name=getattr(raw, 'last_name', None), username=getattr(raw, 'username', None), raw=raw)
+    return User(id=getattr(raw, 'id', ''), is_bot=bool(getattr(raw, 'is_bot', False)), first_name=getattr(raw, 'first_name', '') or '', last_name=getattr(raw, 'last_name', None), username=getattr(raw, 'username', None), language_code=getattr(raw, 'language_code', None), raw=raw)
 
 def chat(raw: object) -> Chat:
     """Provides the chat operation for the peyk integration.

@@ -64,6 +64,44 @@ class Dispatcher(Router):
     async def _emit_recursive(self, kind: str) -> None:
         await self._emit_lifecycle(kind)
 
+    def resolve_used_update_types(self) -> list[str]:
+        """Return the Telegram update types this dispatcher should receive.
+
+        Telegram *remembers* the ``allowed_updates`` last sent for a bot token,
+        whether it came from ``getUpdates``, from ``setWebhook`` or from a
+        completely different program that used the same token earlier. If a
+        new run does not send the parameter, the old filter silently stays in
+        effect, so e.g. ``callback_query`` and ``inline_query`` updates never
+        arrive even though the handlers are registered. Peyk therefore always
+        sends an explicit list.
+
+        The list contains every update type Peyk can parse, except the three
+        opt-in types Telegram does not deliver by default (``chat_member``,
+        ``message_reaction`` and ``message_reaction_count``); those are added
+        only when a router in the tree has a handler that needs them.
+
+        Returns:
+            Update type names in Telegram's ``allowed_updates`` spelling.
+        """
+        opt_in = {'chat_member', 'message_reaction', 'message_reaction_count'}
+        routers: list[Router] = []
+        stack: list[Router] = [self]
+        while stack:
+            router = stack.pop()
+            routers.append(router)
+            stack.extend(router._children)
+        wanted: set[str] = set()
+        for router in routers:
+            if router.platform_event.handlers:
+                wanted |= opt_in
+            if router.chat_member_status_update.handlers:
+                wanted.add('chat_member')
+            for name in opt_in:
+                observer = router._telegram_observers.get(name)
+                if observer is not None and observer.handlers:
+                    wanted.add(name)
+        return [name for name in TelegramUpdate.__dataclass_fields__ if name != 'update_id' and (name not in opt_in or name in wanted)]
+
     async def feed_raw_update(self, bot: Bot[object], raw_update: object) -> object:
         """Normalize one raw update, inject dispatcher context, and propagate it."""
         await bot.me()
@@ -125,7 +163,11 @@ class Dispatcher(Router):
                 self._warn_unsupported_observers(bot)
                 await bot.me()
                 await prepare_polling(bot, skip_updates=skip_updates)
-                runs.append(_BotRun(bot, make_poller(bot, polling_timeout, allowed_updates)))
+                bot_allowed_updates = allowed_updates
+                if bot_allowed_updates is None and bot.platform == 'telegram':
+                    bot_allowed_updates = self.resolve_used_update_types()
+                    logger.info('telegram polling with allowed_updates=%s', bot_allowed_updates)
+                runs.append(_BotRun(bot, make_poller(bot, polling_timeout, bot_allowed_updates)))
 
             async def run_one(run: _BotRun) -> None:
                 """Performs the run one operation for the dispatcher client.
@@ -201,7 +243,13 @@ Args:
             entries[key] = _RouteEntry(handler, inline_handler)
             if manage_registration:
                 registrar = registrar_for(bot)
-                options = WebhookOptions(allowed_updates=list(allowed_updates) if allowed_updates is not None else None, drop_pending_updates=drop_pending_updates, max_connections=max_connections)
+                if allowed_updates is not None:
+                    bot_allowed_updates = list(allowed_updates)
+                elif bot.platform == 'telegram':
+                    bot_allowed_updates = self.resolve_used_update_types()
+                else:
+                    bot_allowed_updates = None
+                options = WebhookOptions(allowed_updates=bot_allowed_updates, drop_pending_updates=drop_pending_updates, max_connections=max_connections)
                 await registrar.install(bot, f'{origin}{normal_path}', secret, options)
                 if bot.platform == 'rubika':
                     await registrar.install_inline(bot, f'{origin}{normal_path}/inline')

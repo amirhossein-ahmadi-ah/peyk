@@ -2,6 +2,6 @@ include README.md
 include CHANGES.md
 include LICENSE
 recursive-include docs *.md *.rst *.css *.png
-recursive-include examples *.py
+recursive-include examples *.py *.po *.mo
 recursive-include assets *.png
 recursive-include src/peyk py.typed

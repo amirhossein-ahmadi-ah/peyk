@@ -3,6 +3,7 @@ import inspect
 from abc import ABC, abstractmethod
 from collections.abc import Awaitable, Callable
 from typing import TypeVar
+from magic_filter import MagicFilter
 EventT = TypeVar('EventT')
 FilterResult = bool | dict[str, object]
 
@@ -56,7 +57,30 @@ Returns:
     Result produced by the operation."""
     if isinstance(value, BaseFilter):
         return value
+    if isinstance(value, MagicFilter):
+        return _MagicFilterAdapter(value)
     return CallableFilter(value)
+
+class _MagicFilterAdapter(BaseFilter):
+    """Evaluate a ``magic_filter`` expression (``F.text == "hi"``) against an event.
+
+    A ``MagicFilter`` object is callable, but calling it only *appends* a call
+    operation to the expression and returns another (always truthy)
+    ``MagicFilter``.  Wrapping it as a plain callable would therefore make
+    every ``F`` expression match every event; the expression must be applied
+    with :meth:`MagicFilter.resolve` instead.
+    """
+
+    def __init__(self, magic: MagicFilter) -> None:
+        self.magic = magic
+
+    async def __call__(self, event: object, **data: object) -> FilterResult:
+        result = self.magic.resolve(event)
+        if inspect.isawaitable(result):
+            result = await result
+        if isinstance(result, dict):
+            return {str(k): v for k, v in result.items()}
+        return bool(result)
 
 class _AndFilter(BaseFilter):
 

@@ -129,6 +129,28 @@ class Router:
         self._middlewares: list[BaseMiddleware] = []
         self._handler_middlewares: list[BaseMiddleware] = []
 
+    def command(self, *names: str, prefix: str='/') -> Callable[[Callable[P, R]], Callable[P, R]]:
+        """Register a message handler for one or more bot commands.
+
+        This is shorthand for ``router.message(Command(name, prefix=prefix))``
+        and is available on :class:`Router`, :class:`Dispatcher` and (through
+        :meth:`Bot.command`) on the bot's own router. Each alias is registered
+        independently, so all of them share the same Python callable::
+
+            @router.command("start", "help")
+            async def start(message): ...
+        """
+        if not names:
+            raise ValueError('command() requires at least one name')
+        from peyk.filters.command import Command
+        filters = tuple((Command(name, prefix=prefix) for name in names))
+
+        def decorator(handler: Callable[P, R]) -> Callable[P, R]:
+            for command_filter in filters:
+                self.message(command_filter)(handler)
+            return handler
+        return decorator
+
     def include_router(self, router: Router) -> Router:
         """Performs the include router operation for the dispatcher client.
 

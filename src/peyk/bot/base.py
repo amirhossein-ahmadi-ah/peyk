@@ -175,25 +175,10 @@ class Bot(Generic[ClientT]):
         """Register one handler for one or more command names.
 
         Each alias is registered independently so all aliases share the exact
-        original Python callable and its type signature.
+        original Python callable and its type signature. This delegates to
+        :meth:`peyk.dispatcher.router.Router.command` on the bot's router.
         """
-        if not names:
-            raise ValueError('command() requires at least one name')
-        from peyk.filters.command import Command
-        filters = tuple((Command(name, prefix=prefix) for name in names))
-
-        def decorator(handler: Handler[HandlerP, HandlerR]) -> Handler[HandlerP, HandlerR]:
-            """Performs the decorator operation for the bot client.
-
-Args:
-    handler: Value used by this operation.
-
-Returns:
-    Result produced by the bot operation."""
-            for command_filter in filters:
-                self.router.message(command_filter)(handler)
-            return handler
-        return decorator
+        return self.router.command(*names, prefix=prefix)
 
     def message(self, *filters: object) -> Callable[[Handler[HandlerP, HandlerR]], Handler[HandlerP, HandlerR]]:
         """Register a message handler on the bot's plain router."""

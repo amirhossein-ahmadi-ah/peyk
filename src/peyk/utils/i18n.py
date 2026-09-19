@@ -1,5 +1,6 @@
 from __future__ import annotations
 import gettext
+from functools import partial
 from typing import Awaitable
 from pathlib import Path
 from typing import Callable, Mapping
@@ -88,5 +89,9 @@ class I18nMiddleware:
     async def __call__(self, handler: Callable[[], Awaitable[object]], event: object, data: dict[str, object]) -> object:
         locale = self.get_locale(event, data)
         self.i18n.set_locale(locale)
-        data.update({'i18n': self.i18n, 'locale': locale, 'gettext': self.i18n.gettext, 'ngettext': self.i18n.ngettext, 'lazy_gettext': self.i18n.lazy_gettext})
+        # Bind the locale into the helpers instead of relying on the shared
+        # ``i18n.current_locale``: with concurrent handlers (or an ``await``
+        # between this middleware and the handler) another user's update
+        # could otherwise switch the locale mid-handler.
+        data.update({'i18n': self.i18n, 'locale': locale, 'gettext': partial(self.i18n.gettext, locale=locale), 'ngettext': partial(self.i18n.ngettext, locale=locale), 'lazy_gettext': partial(self.i18n.lazy_gettext, locale=locale)})
         return await handler()
