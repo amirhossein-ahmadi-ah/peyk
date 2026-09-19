@@ -26,13 +26,17 @@ autosummary_generate = True
 autosummary_imported_members = False
 # Recursive autosummary creates many leaf pages that are linked from the
 # generated index pages rather than appearing as explicit hand-written
-# toctree entries.  Treat those links as intentional.  Duplicate objects are
-# also expected from the compatibility facades (models/helpers) and the
-# canonical one-file API pages.
+# toctree entries, so "toc.not_included" is intentional.
+#
+# "ref.python" silences "more than one target found for cross-reference":
+# the Telegram/Bale/Rubika packages each define their own Message, User,
+# File, Chat... so a bare ``Message`` in a docstring is inherently ambiguous.
+# To keep real broken references visible, qualify the name in the docstring
+# (e.g. :class:`peyk.types.Message`) and drop this entry.
 suppress_warnings = [
     "toc.not_included",
-    "duplicate",
     "autosummary.import_cycle",
+    "ref.python",
 ]
 
 autodoc_default_options = {
@@ -92,3 +96,30 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # reproducible.  Python types in signatures are rendered directly by
 # autodoc/Napoleon.  A future hosted build can add an inventory mapping if
 # cross-project links become useful.
+
+
+# ---------------------------------------------------------------------------
+# Duplicate object descriptions
+# ---------------------------------------------------------------------------
+# "duplicate object description of X, other instance in Y" is emitted by the
+# Python domain WITHOUT a warning type, so it can NOT be silenced through
+# ``suppress_warnings`` (there is no "duplicate" category).  Peyk deliberately
+# documents the same objects from several places (compat facades, the
+# one-page ``api_reference`` and the recursive autosummary pages), so drop
+# exactly that message with a logging filter instead of failing ``-W`` builds.
+import logging
+
+
+class _DropDuplicateObjectWarnings(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        return "duplicate object description" not in record.getMessage()
+
+
+def setup(app):  # noqa: D103 - Sphinx hook
+    flt = _DropDuplicateObjectWarnings()
+    # Sphinx prefixes module loggers with "sphinx." so the python domain's
+    # logger is "sphinx.sphinx.domains.python"; attach to both spellings so
+    # this keeps working if that ever changes.
+    for name in ("sphinx.domains.python", "sphinx.sphinx.domains.python"):
+        logging.getLogger(name).addFilter(flt)
+    return {"parallel_read_safe": True, "parallel_write_safe": True}

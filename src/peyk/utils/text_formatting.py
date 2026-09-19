@@ -24,10 +24,10 @@ class RichText:
     """Immutable, composable rich-text intermediate representation.
 
     Example:
-        ```python
-        text = RichText.from_value("Hello ") + bold("world")
-        rendered = text.render("bale")
-        ```
+        .. code-block:: python
+
+            text = RichText.from_value("Hello ") + bold("world")
+            rendered = text.render("bale")
     """
     nodes: tuple[Node, ...] = field(default_factory=tuple)
 

@@ -55,13 +55,15 @@ class Bot(Generic[ClientT]):
     """Unified async bot facade over one audited platform client.
 
     Example:
-        ```python
-        bot = Bot("TOKEN", platform="telegram")
-        @bot.command("start")
-        async def start(message):
-            await bot.send_message(message.chat.id, "Hello")
-        bot.run()
-        ```
+        .. code-block:: python
+
+            bot = Bot("TOKEN", platform="telegram")
+
+            @bot.command("start")
+            async def start(message):
+                await bot.send_message(message.chat.id, "Hello")
+
+            bot.run()
     """
 
     def __init__(self, token: str, *, platform: PlatformLiteral, defaults: Optional[BotDefaults]=None, on_unsupported: UnsupportedPolicy=UnsupportedPolicy.DEFAULT, session: Optional[Session]=None, retry_policy: Optional[RetryPolicy]=None, logger: Optional[logging.Logger]=None, base_url: Optional[str]=None) -> None:

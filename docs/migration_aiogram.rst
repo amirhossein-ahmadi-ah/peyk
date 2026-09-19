@@ -6,23 +6,26 @@ Peyk intentionally follows aiogram 3 naming and handler patterns where the seman
 Import mapping
 --------------
 
-+----------------------+--------------------------+
-| aiogram              | peyk                     |
-+======================+==========================+
-| ``Bot``              | ``peyk.Bot``             |
-+----------------------+--------------------------+
-| ``Dispatcher``       | ``peyk.Dispatcher``      |
-+----------------------+--------------------------+
-| ``Router``            | ``peyk.Router``          |
-+----------------------+--------------------------+
-| ``F``                | ``peyk.F``               |
-+----------------------+--------------------------+
-| ``Command``          | ``peyk.Command``         |
-+----------------------+--------------------------+
-| ``CallbackData``     | ``peyk.CallbackData``    |
-+----------------------+--------------------------+
-| keyboard builders    | ``peyk.keyboard``        |
-+----------------------+--------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - aiogram
+     - peyk
+   * - ``Bot``
+     - ``peyk.Bot``
+   * - ``Dispatcher``
+     - ``peyk.Dispatcher``
+   * - ``Router``
+     - ``peyk.Router``
+   * - ``F``
+     - ``peyk.F``
+   * - ``Command``
+     - ``peyk.Command``
+   * - ``CallbackData``
+     - ``peyk.CallbackData``
+   * - keyboard builders
+     - ``peyk.keyboard``
 
 What is intentionally identical
 --------------------------------

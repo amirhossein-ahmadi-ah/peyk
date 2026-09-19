@@ -1,5 +1,5 @@
 Writing multi-platform bots
-==========================
+===========================
 
 Create one ``Bot`` per platform and keep application handlers platform-neutral. The platform is selected once at construction time.
 
