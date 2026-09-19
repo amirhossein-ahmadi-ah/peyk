@@ -55,7 +55,6 @@ peyk documentation
    reference/transport
    reference/platform_core
    reference/enums
-   utils
 
 Indices and tables
 ==================

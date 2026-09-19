@@ -28,10 +28,11 @@ autosummary_imported_members = False
 autodoc_default_options = {
     "members": True,
     "undoc-members": False,
+    "inherited-members": False,
     "show-inheritance": True,
     "member-order": "bysource",
 }
-autodoc_typehints = "signature"
+autodoc_typehints = "none"
 autodoc_class_signature = "mixed"
 autodoc_preserve_defaults = True
 

@@ -2,27 +2,17 @@ Bale API
 ========
 
 The Bale adapter provides the typed asynchronous client and Bale-specific
-request/response models.  The generated reference below recursively discovers
-the restructured ``types`` and ``methods`` packages.
+request/response models.  The large ``types`` and ``methods`` surfaces are
+generated into dedicated pages so every public object has one canonical
+API location.
 
 Client
 ------
 
 .. automodule:: peyk.platforms.bale
-   :members:
+   :members: BaleClient, build_inline_keyboard_button, validate_callback_data, BaleAPIError
    :undoc-members: false
    :show-inheritance:
-
-Shared client methods
----------------------
-
-Bale and Telegram inherit a small set of proven platform-neutral request methods.
-They are documented here as part of each platform reference so the complete
-public client surface is discoverable from either page.
-
-.. automodule:: peyk.platforms._telegram_like.base_client
-   :members:
-   :undoc-members: false
 
 Types and methods
 -----------------
@@ -31,13 +21,13 @@ Types and methods
 
 .. autosummary::
    :toctree: generated/bale
-   :recursive:
 
-   peyk.platforms.bale.types
-   peyk.platforms.bale.methods
+   types
+   methods
 
 Supporting modules
 ------------------
 
 .. automodule:: peyk.platforms.bale.errors
    :members:
+   :undoc-members: false
