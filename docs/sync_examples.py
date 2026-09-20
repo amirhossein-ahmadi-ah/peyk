@@ -1,3 +1,23 @@
+#!/usr/bin/env python3
+"""مثال‌های صفحه‌ی اصلی (mainpage.html) را از فایل‌های واقعی پوشه‌ی examples/ می‌خواند.
+
+فقط بین دو مارکر زیر در mainpage.html را بازنویسی می‌کند:
+
+    /* EXAMPLES:START ... */
+    /* EXAMPLES:END */
+
+اجرا (از ریشه‌ی پروژه):
+
+    uv run python docs/sync_examples.py           # به‌روزرسانی
+    uv run python docs/sync_examples.py --check   # فقط بررسی (برای CI)
+
+اگر بخواهی فقط بخشی از یک فایل در صفحه بیاید، داخل همان فایل بنویس:
+
+    # landing:start
+    ...
+    # landing:end
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -7,6 +27,7 @@ import sys
 import textwrap
 from pathlib import Path
 
+# ── این لیست را ویرایش کن: (id, برچسب تب, فایل داخل examples/) ─────────────
 EXAMPLES: list[tuple[str, str, str]] = [
     ("echo", "echo", "echo_bot.py"),
     ("router", "router", "dispatcher_router.py"),
@@ -16,7 +37,7 @@ EXAMPLES: list[tuple[str, str, str]] = [
     ("webhook", "webhook", "webhook.py"),
 ]
 
-MAX_LINES = 40
+MAX_LINES = 40  # بیشتر از این باشد هشدار می‌دهد (مثال‌ها باید کوتاه بمانند)
 START_TAG, END_TAG = "# landing:start", "# landing:end"
 BLOCK_RE = re.compile(r"(/\* EXAMPLES:START.*?\*/)(.*?)(/\* EXAMPLES:END \*/)", re.DOTALL)
 
@@ -57,6 +78,7 @@ def load_snippet(path: Path) -> str:
 
 def js_string(s: str) -> str:
     out = json.dumps(s, ensure_ascii=False)
+    # "<" را escape می‌کنیم تا "</script>" یا "<!--" داخل کد، صفحه را نشکند
     return out.replace("<", "\\u003c").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
 
 
@@ -65,7 +87,8 @@ def build_block(examples_dir: Path) -> str:
     for ex_id, label, filename in EXAMPLES:
         src = examples_dir / filename
         if not src.is_file():
-            sys.exit(f"فایل مثال پیدا نشد: {src}")
+            have = ", ".join(sorted(f.name for f in examples_dir.glob("*.py"))) or "(هیچ فایل .py نیست)"
+            sys.exit(f"فایل مثال پیدا نشد: {filename} | فایل‌های موجود در {examples_dir}: {have}")
         items.append(
             "    { id: %s, label: %s, file: %s, code:\n      %s }"
             % (
@@ -80,19 +103,26 @@ def build_block(examples_dir: Path) -> str:
 
 def main() -> int:
     root = find_root()
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--html", type=Path)
-    ap.add_argument("--examples", type=Path, default=root / "examples")
-    ap.add_argument("--check", action="store_true")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
+    ap.add_argument("--html", type=Path, help="مسیر mainpage.html (پیش‌فرض: جست‌وجو در پروژه)")
+    ap.add_argument("--examples", type=Path, default=root / "examples", help="پوشه‌ی examples")
+    ap.add_argument("--check", action="store_true", help="فقط بررسی کن؛ اگر قدیمی بود با کد ۱ خارج شو")
     args = ap.parse_args()
 
     html_path = args.html or find_html(root)
+    if not html_path.is_file():
+        sys.exit(f"فایل HTML پیدا نشد: {html_path}")
+    if not args.examples.is_dir():
+        sys.exit(f"پوشه‌ی examples پیدا نشد: {args.examples}")
     raw = html_path.read_bytes().decode("utf-8")
     crlf = "\r\n" in raw
     html = raw.replace("\r\n", "\n")
 
     if not BLOCK_RE.search(html):
-        sys.exit("مارکرهای /* EXAMPLES:START */ و /* EXAMPLES:END */ در HTML پیدا نشدند.")
+        sys.exit(
+            f"مارکرهای /* EXAMPLES:START */ و /* EXAMPLES:END */ در {html_path} پیدا نشدند "
+            "(نسخه‌ی جدید mainpage.html را commit کن)."
+        )
 
     block = build_block(args.examples)
     new = BLOCK_RE.sub(lambda m: m.group(1) + block + m.group(3), html, count=1)
