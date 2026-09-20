@@ -30,9 +30,8 @@
 <style>
 @font-face{font-family:"Vazirmatn";src:local("Vazirmatn"),url("_static/fonts/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Vazirmatn";src:local("Vazirmatn Bold"),url("_static/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-@font-face{font-family:"Peyda";src:local("Peyda Bold"),url("_static/fonts/Peyda-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-@font-face{font-family:"Geist";src:local("Geist"),url("_static/fonts/Geist.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"Geist Mono";src:local("Geist Mono"),url("_static/fonts/GeistMono.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist";src:local("Geist"),url("_static/fonts/Geist-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Geist Mono";src:local("Geist Mono"),url("_static/fonts/GeistMono-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
 
 :root{
   --bg:#F3F1EC; --surface:#FAF9F6; --text:#16161A; --muted:#5F5E5A;
@@ -41,7 +40,7 @@
   --dx:12px;
 
   --font-body:"Geist","Vazirmatn","Vazir",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
-  --font-head:"Geist","Peyda","Estedad","Vazirmatn","Vazir",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --font-head:"Geist","Vazirmatn","Vazir",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
   --font-mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 
   --r-1:4px; --r-2:6px; --r-3:8px;
@@ -514,7 +513,7 @@ bot.run()</code></pre>
 
       <div class="chat" id="chat" data-platform="telegram">
         <div class="chat-head">
-          <img src="_static/logo.svg" alt="" width="20" height="20" />
+          <img id="chatLogo" src="_static/telegram.svg" alt="" width="20" height="20" />
           <strong id="chatTitle">Telegram</strong>
           <small>bot</small>
         </div>
@@ -898,10 +897,10 @@ except PlatformError as e:
   }
   $$('[data-copy]').forEach(function (b) { bindCopy(b, function () { return b.getAttribute('data-copy'); }); });
 
-  var KEYWORDS = 'from|import|async|def|await|class|return|try|except|raise|for|in|if|else|elif|with|as|pass|None|True|False';
+  var KEYWORDS = 'from|import|async|def|await|class|return|try|except|raise|for|in|if|else|elif|with|as|pass|None|True|False|while|break|continue|lambda|not|and|or|is|yield|finally|assert|del|global|nonlocal';
   var TOKEN = new RegExp(
     '(#[^\\n]*)' +                                            // 1 comment
-    '|("(?:[^"\\\\\\n]|\\\\.)*(?:"|$)|\'(?:[^\'\\\\\\n]|\\\\.)*(?:\'|$))' + // 2 string (اجازه‌ی رشته‌ی ناتمام هنگام تایپ)
+    '|("""[\\s\\S]*?(?:"""|$)|\'\'\'[\\s\\S]*?(?:\'\'\'|$)|"(?:[^"\\\\\\n]|\\\\.)*(?:"|$)|\'(?:[^\'\\\\\\n]|\\\\.)*(?:\'|$))' + // 2 string (اجازه‌ی رشته‌ی ناتمام هنگام تایپ)
     '|(@[A-Za-z_][\\w.]*)' +                                  // 3 decorator
     '|\\b(' + KEYWORDS + ')\\b',                              // 4 keyword
     'g'
@@ -948,7 +947,8 @@ except PlatformError as e:
     return select;
   }
 
-  var heroCode = $('#heroCode'), heroPre = heroCode.parentNode, chat = $('#chat'), chatTitle = $('#chatTitle');
+  var heroCode = $('#heroCode'), heroPre = heroCode.parentNode, chat = $('#chat'), chatTitle = $('#chatTitle'), chatLogo = $('#chatLogo');
+  ['telegram', 'bale', 'rubika'].forEach(function (n) { new Image().src = '_static/' + n + '.svg'; });
   var heroPanel = $('#heroPanel');
   var platform = 'telegram', run = 0, phase = 'pre', chatT = [], seqT = [], swapT = 0;
   var PH = '\u0001';
@@ -1010,6 +1010,7 @@ except PlatformError as e:
     platform = next;
     chat.setAttribute('data-platform', platform);
     chatTitle.textContent = platform.charAt(0).toUpperCase() + platform.slice(1);
+    chatLogo.src = '_static/' + platform + '.svg';
     heroPanel.setAttribute('aria-labelledby', tab.id);
     if (same || phase === 'pre') return;
     if (phase === 'typing') {
