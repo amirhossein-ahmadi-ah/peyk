@@ -40,8 +40,12 @@ jobs:
       - name: Sync landing-page examples from examples/
         # اگر sync خراب شد، سایت با مثال‌های پایه‌ی داخل mainpage.html دیپلوی می‌شود
         run: |
-          python docs/sync_examples.py --html docs/mainpage.html \
-            || echo "::warning::sync_examples.py failed - keeping the built-in examples in mainpage.html"
+          if out=$(python docs/sync_examples.py --html docs/mainpage.html 2>&1); then
+            echo "$out"
+          else
+            echo "$out"
+            echo "::warning title=sync_examples.py failed::${out//$'\n'/%0A}"
+          fi
 
       - name: Build Sphinx
         run: sphinx-build -b html docs docs/_build/html -W --keep-going
