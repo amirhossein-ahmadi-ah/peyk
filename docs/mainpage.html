@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="fa" dir="rtl" id="root">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>peyk — یک بات، سه پیام‌رسان</title>
+<meta name="description" content="کتابخانه‌ی async بات برای پایتون: تلگرام، بله و روبیکا با API سبک aiogram ۳." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%231F4FE0' d='M16 2a14 14 0 1 0 0 28 14 14 0 0 0 0-28Zm-3 7h4a5 5 0 0 1 0 10h-2v4h-2V9Z'/%3E%3C/svg%3E" />
+
+<style>
+/* ============================================================
+1. TOKENS
+============================================================ /
+:root{
+--bg:#F3F1EC; --surface:#FAF9F6; --text:#16161A; --muted:#5F5E5A;
+--line:#DAD6CD; --accent:#1F4FE0; --accent-warm:#F28C1B;
+--font-sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+--font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+--font-fa:"Vazirmatn","Tahoma",sans-serif;
+--sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px;
+--sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:96px;
+--r-1:4px; --r-2:6px; --r-3:8px;
+--ease:cubic-bezier(.2,.7,.2,1); --dur:200ms;
+color-scheme:light dark;
+}
+:root[data-theme="dark"]{
+--bg:#0E0F12; --surface:#14161A; --text:#ECEAE4; --muted:#9A988F;
+--line:#26282D; --accent:#5B82FF; --accent-warm:#FFB347;
+}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]){
+--bg:#0E0F12; --surface:#14161A; --text:#ECEAE4; --muted:#9A988F;
+--line:#26282D; --accent:#5B82FF; --accent-warm:#FFB347;
+}
+}
+/ برای self-host فونت‌ها این بلوک رو از کامنت دربیار:
+@font-face{font-family:"Geist";src:url("/fonts/Geist-Regular.woff2")format("woff2");font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("/fonts/GeistMono-Regular.woff2")format("woff2");font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("/fonts/Vazirmatn-Regular.woff2")format("woff2");font-display:swap}
+*/
+
+/* ============================================================
+2. BASE
+============================================================ /
+,::before,::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;background:var(--bg);color:var(--text);
+font-family:var(--font-sans);font-size:17px;line-height:1.6;
+-webkit-font-smoothing:antialiased;
+}
+html[dir="rtl"] body{font-family:var(--font-fa);line-height:1.75}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em;margin:0}
+html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3{font-weight:700;letter-spacing:0}
+a{color:inherit}
+code,pre{font-family:var(--font-mono);font-feature-settings:"liga" 0,"calt" 0}
+pre,code,.code{direction:ltr;text-align:left;unicode-bidi:isolate}
+pre{
+margin:0;padding:var(--sp-5);background:var(--surface);
+border:1px solid var(--line);border-radius:var(--r-2);
+font-size:12.5px;line-height:1.65;overflow:auto;
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+.skip{position:absolute;inset-inline-start:16px;top:-100px;background:var(--surface);
+border:1px solid var(--line);padding:8px 12px;border-radius:var(--r-1);z-index:100}
+.skip:focus{top:16px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+
+/* ============================================================
+3. HEADER
+============================================================ */
+header.site{
+position:sticky;top:0;z-index:40;height:56px;
+background:color-mix(in oklab,var(--bg) 92%,transparent);
+backdrop-filter:saturate(120%) blur(6px);
+border-block-end:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;gap:24px;height:56px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-weight:500}
+.brand svg{width:22px;height:22px}
+nav.main{display:flex;gap:20px;margin-inline-start:24px}
+nav.main a{color:var(--muted);text-decoration:none;font-size:14px;transition:color var(--dur)}
+nav.main a:hover{color:var(--text)}
+.actions{margin-inline-start:auto;display:flex;align-items:center;gap:12px}
+.icon-btn{background:none;border:1px solid var(--line);border-radius:var(--r-1);
+width:32px;height:32px;display:grid;place-items:center;color:var(--muted);cursor:pointer}
+.icon-btn:hover{color:var(--text)}
+.lang-btn{background:none;border:0;color:var(--muted);font:inherit;font-size:13px;cursor:pointer;padding:4px}
+.lang-btn:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;
+border-radius:var(--r-1);font-size:14px;text-decoration:none;
+border:1px solid var(--line);cursor:pointer;font-family:inherit;
+transition:background var(--dur),color var(--dur),border-color var(--dur)}
+.btn-primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{background:var(--surface)}
+
+/* ============================================================
+4. HERO
+============================================================ */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding-block:96px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-block:48px;gap:40px}}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;
+text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.hero h1{font-size:clamp(2.4rem,7vw,5.5rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 20px}
+html[dir="ltr"] .hero h1{font-size:clamp(3rem,8vw,6rem)}
+.sub{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 28px}
+.cta{display:flex;gap:12px;margin-block-end:24px;flex-wrap:wrap}
+.install{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line);
+background:var(--surface);border-radius:var(--r-2);padding:8px 12px}
+.install code{font-size:13px}
+.copy{background:none;border:0;color:var(--muted);cursor:pointer;padding:4px;
+display:inline-flex;align-items:center;gap:6px;font:inherit}
+.copy:hover{color:var(--text)}
+.copy-label{font-size:12px;font-family:var(--font-fa)}
+.version{font-family:var(--font-mono);font-size:11px;color:var(--muted);
+padding-inline-start:8px;border-inline-start:1px solid var(--line)}
+
+.hero-demo{display:flex;flex-direction:column;gap:16px}
+.tabs{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--r-2);
+background:var(--surface);padding:2px;width:max-content}
+.tabs [role="tab"]{background:none;border:0;padding:6px 12px;font:inherit;
+font-size:13px;color:var(--muted);cursor:pointer;border-radius:var(--r-1);
+display:inline-flex;align-items:center;gap:6px}
+.tabs [role="tab"][aria-selected="true"]{color:var(--text);background:var(--bg)}
+.tabs [role="tab"][aria-selected="true"]::after{content:"";display:inline-block;
+width:5px;height:5px;border-radius:50%;background:var(--accent-warm)}
+
+.code-panel{border:1px solid var(--line);border-radius:var(--r-2);background:var(--surface);overflow:hidden}
+.code-head{display:flex;justify-content:space-between;align-items:center;
+padding:8px 12px;border-block-end:1px solid var(--line);
+background:color-mix(in oklab,var(--surface) 70%,var(--bg));
+font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.code-panel pre{border:0;border-radius:0;padding:24px;background:transparent;min-height:220px}
+.code-panel code{color:var(--text)}
+.k-kw{color:var(--accent)}
+.k-str{color:var(--accent-warm)}
+.k-cm{color:var(--muted);font-style:italic}
+.caret{display:inline-block;width:.5ch;background:var(--accent-warm);color:transparent;
+animation:blink 1s steps(2,end) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.chat{border:1px solid var(--line);border-radius:var(--r-2);background:var(--surface);overflow:hidden}
+.chat-head{display:flex;justify-content:space-between;padding:8px 12px;
+border-block-end:1px solid var(--line);font-size:12px;color:var(--muted)}
+.chat-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.bubble{max-width:70%;padding:8px 12px;border:1px solid var(--line);
+border-radius:var(--r-2);font-size:13.5px;background:var(--bg)}
+.bubble.user{align-self:flex-end;color:var(--muted)}
+.bubble.bot{align-self:flex-start;background:var(--surface);border-color:var(--accent-warm)}
+[data-platform="rubika"] .bubble.bot{border-color:var(--accent)}
+
+/* ============================================================
+5. STRIP
+============================================================ */
+.strip{display:flex;align-items:center;gap:24px;padding-block:24px;
+border-block:1px solid var(--line);flex-wrap:wrap}
+.platforms{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.platforms li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.plat-glyph{font-family:var(--font-mono);color:var(--muted);transition:color var(--dur)}
+.platforms li:hover .plat-glyph{color:var(--accent)}
+.strip-note{margin:0;color:var(--muted);font-size:14px;margin-inline-start:auto}
+.strip-note a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line)}
+.strip-note a:hover{text-decoration-color:var(--accent)}
+
+/* ============================================================
+6. BENTO
+============================================================ */
+section.features,section.examples,section.migration{padding-block:96px}
+section.examples,section.migration{border-block-start:1px solid var(--line)}
+.features h2,.examples h2,.migration h2{
+font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:-.02em;margin:0 0 48px}
+html[dir="rtl"] .features h2,html[dir="rtl"] .examples h2,html[dir="rtl"] .migration h2{font-weight:700}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--line);
+border:1px solid var(--line);border-radius:var(--r-3);overflow:hidden}
+.cell{background:var(--bg);padding:32px;display:flex;flex-direction:column;gap:16px}
+.cell h3{margin:0 0 4px;font-size:16px;font-weight:500}
+.cell p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.cell pre{font-size:12px;padding:16px}
+.cell--3{grid-column:span 3}
+.cell--4{grid-column:span 4}
+.cell--5{grid-column:span 5}
+.cell--6{grid-column:span 6}
+.cell--7{grid-column:span 7}
+@media(max-width:900px){.cell{grid-column:span 12!important}}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-family:var(--font-mono);font-size:11px;padding:3px 8px;
+border:1px solid var(--line);border-radius:var(--r-1);color:var(--muted)}
+.diagram{width:100%;height:auto}
+.diagram rect{fill:none;stroke:var(--line)}
+.diagram path{fill:none;stroke:var(--line)}
+.diagram text{fill:var(--muted);font:12px var(--font-mono)}
+.inline-link{color:var(--text);text-decoration:underline;text-decoration-color:var(--line);font-size:14px}
+.inline-link:hover{text-decoration-color:var(--accent)}
+
+/* ============================================================
+7. EXAMPLES
+============================================================ */
+.ex-tabs{display:flex;gap:20px;border-block-end:1px solid var(--line);margin:0}
+.ex-tabs [role="tab"]{background:none;border:0;padding:10px 0;font:inherit;
+font-size:14px;color:var(--muted);cursor:pointer;border-block-end:2px solid transparent;
+margin-block-end:-1px}
+.ex-tabs [role="tab"][aria-selected="true"]{color:var(--text);border-block-end-color:var(--accent)}
+.ex-panels{margin-block-start:24px}
+.ex-panels>div[role="tabpanel"]{border:1px solid var(--line);border-radius:var(--r-2);overflow:hidden}
+.ex-panels pre{border:0;border-radius:0;background:var(--surface)}
+
+/* ============================================================
+8. MIGRATION
+============================================================ */
+.mig-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+@media(max-width:800px){.mig-grid{grid-template-columns:1fr}}
+.map{width:100%;border-collapse:collapse;font-size:13.5px}
+.map th,.map td{text-align:start;padding:10px 12px;border-block-end:1px solid var(--line)}
+.map th{font-weight:500;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.map code{font-size:13px}
+.mig-notes p{margin:0 0 16px;color:var(--muted)}
+
+/* ============================================================
+9. FOOTER
+============================================================ */
+footer.site{border-block-start:1px solid var(--line);padding-block:48px;margin-block-start:96px}
+.foot-inner{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-brand{display:flex;gap:8px;align-items:center;font-weight:500}
+.foot-brand svg{width:20px;height:20px}
+.foot-nav{display:flex;gap:20px}
+.foot-nav a{color:var(--muted);text-decoration:none;font-size:14px}
+.foot-nav a:hover{color:var(--text)}
+.foot-inner .install{margin-inline-start:auto}
+
+/* ============================================================
+10. MOTION
+============================================================ /
+@media(prefers-reduced-motion:reduce){
+,::before,::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+html{scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main" data-i18n="skip">پرش به محتوا</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+<div class="wrap header-inner">
+<a class="brand" href="#top" aria-label="peyk">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path fill="var(--accent)" d="M16 1C7.7 1 1 7.7 1 16s6.7 15 15 15 15-6.7 15-15S24.3 1 16 1Zm-3.5 7h4.2a5.5 5.5 0 0 1 0 11h-1.4v5h-2.8V8Z"/>
+<circle cx="10.5" cy="24.5" r="2" fill="var(--accent-warm)"/>
+</svg>
+<span>peyk</span>
+</a>
+<nav class="main" aria-label="primary">
+<a href="#docs" data-i18n="nav.docs">مستندات</a>
+<a href="#examples" data-i18n="nav.examples">مثال‌ها</a>
+<a href="#platforms" data-i18n="nav.platforms">پلتفرم‌ها</a>
+<a href="https://github.com/amirhossein-ahmadi-ah/peyk" rel="noopener">GitHub ↗</a>
+</nav>
+<div class="actions">
+<button class="icon-btn" id="themeBtn" aria-label="theme">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6 6l1.5 1.5M16.5 16.5 18 18M6 18l1.5-1.5M16.5 7.5 18 6"/>
+</svg>
+</button>
+<button class="lang-btn" id="langBtn" aria-label="language">EN</button>
+<a class="btn btn-primary" href="#docs" data-i18n="nav.docs">مستندات</a>
+</div>
+</div>
+</header>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<section class="hero wrap" id="top">
+<div class="hero-text">
+<p class="eyebrow" data-i18n="hero.eyebrow">کتابخانه‌ی پایتون · MIT</p>
+<h1 data-i18n="hero.title">یک بات، سه پیام‌رسان.</h1>
+<p class="sub" data-i18n="hero.sub">کاملاً async، تایپ‌شده، با API سبک aiogram ۳ — برای تلگرام، بله و روبیکا.</p>
+<div class="cta">
+<a class="btn btn-primary" href="#docs" data-i18n="cta.primary">شروع سریع</a>
+<a class="btn btn-ghost" href="#docs" data-i18n="cta.secondary">مستندات</a>
+</div>
+<div class="install">
+<code>pip install peyk</code>
+<button class="copy" data-copy="pip install peyk" aria-label="copy">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+</svg>
+<span class="copy-label" hidden data-i18n="hero.copied">کپی شد</span>
+</button>
+<span class="version">v0.0.0-TODO</span>
+</div>
+</div>
+
+<div class="hero-demo" id="heroDemo">
+<div class="tabs" role="tablist" aria-label="platform">
+<button role="tab" data-platform="bale" aria-selected="false" tabindex="-1">Bale</button>
+<button role="tab" data-platform="telegram" aria-selected="true" tabindex="0">Telegram</button>
+<button role="tab" data-platform="rubika" aria-selected="false" tabindex="-1">Rubika</button>
+</div>
+
+<div class="code-panel">
+<div class="code-head"><span>bot.py</span><span>python</span></div>
+<pre aria-live="polite"><code id="heroCode"></code></pre>
+</div>
+
+<div class="chat" id="chat" data-platform="telegram">
+<div class="chat-head"><span id="chatTitle">Telegram</span><span>bot</span></div>
+<div class="chat-body">
+<div class="bubble user">/start</div>
+<div class="bubble bot">Hello from peyk!</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= STRIP ================= -->
+<section class="wrap strip" id="platforms">
+<ul class="platforms" aria-label="platforms">
+<li><span class="plat-glyph" aria-hidden="true">◐</span>Telegram</li>
+<li><span class="plat-glyph" aria-hidden="true">◑</span>Bale</li>
+<li><span class="plat-glyph" aria-hidden="true">◒</span>Rubika</li>
+</ul>
+<p class="strip-note">
+<span data-i18n="platforms.note">توانایی‌ها روی هر پلتفرم متفاوت است — ماتریس کامل در مستندات.</span>
+<a href="#docs" data-i18n="platforms.link">ماتریس توانایی‌ها</a> →
+</p>
+</section>
+
+<!-- ================= BENTO ================= -->
+<section class="features wrap">
+<h2 data-i18n="features.title">آنچه peyk می‌دهد</h2>
+<div class="bento">
+
+<article class="cell cell--7">
+<header><h3 data-i18n="f.async.t">async-first</h3>
+<p data-i18n="f.async.b">کاملاً async/await؛ چند پیام همزمان بدون بلاک شدن.</p></header>
+<pre><code>async def a(message):
+await message.answer("A")
+
+async def b(message):
+await message.answer("B")
+
+هر دو هم‌زمان اجرا می‌شوند — بدون بلاک</code></pre>
+</article>
+
+<article class="cell cell--5">
+<header><h3 data-i18n="f.multi.t">چند-پلتفرمی</h3>
+<p data-i18n="f.multi.b">یک کد، سه پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.</p></header>
+<pre><code>Bot("TOKEN", platform="telegram")
+Bot("TOKEN", platform="bale")
+Bot("TOKEN", platform="rubika")</code></pre>
+</article>
+
+<article class="cell cell--5">
+<header><h3 data-i18n="f.aio.t">آشنا برای aiogram</h3>
+<p data-i18n="f.aio.b">اگر aiogram می‌شناسی، ده دقیقه‌ای شروع می‌کنی.</p></header>
+<pre><code>router = Router()
+
+@router.message(Command("start"))
+async def start(message): ...</code></pre>
+</article>
+
+<article class="cell cell--3">
+<header><h3 data-i18n="f.type.t">تایپ‌شده</h3>
+<p data-i18n="f.type.b">کاملاً تایپ‌شده، سازگار با mypy و pyright.</p></header>
+<div class="badges"><span class="badge">py.typed</span><span class="badge">mypy</span><span class="badge">pyright</span></div>
+</article>
+
+<article class="cell cell--4">
+<header><h3 data-i18n="f.retry.t">خطا و retry</h3>
+<p data-i18n="f.retry.b">مدیریت خطا و retry، با خطای مخصوص هر پلتفرم.</p></header>
+<pre><code>try:
+await bot.send(...)
+except PlatformError as e:
+await retry(e)</code></pre>
+</article>
+
+<article class="cell cell--6">
+<header><h3 data-i18n="f.fsm.t">FSM و کیبورد</h3>
+<p data-i18n="f.fsm.b">FSM و کیبورد یکپارچه برای همه‌ی پلتفرم‌ها.</p></header>
+<svg class="diagram" viewBox="0 0 320 90" aria-hidden="true">
+<rect x="8" y="30" width="80" height="30" rx="4"/><text x="48" y="50" text-anchor="middle">idle</text>
+<rect x="120" y="30" width="80" height="30" rx="4"/><text x="160" y="50" text-anchor="middle">Form.name</text>
+<rect x="232" y="30" width="80" height="30" rx="4"/><text x="272" y="50" text-anchor="middle">done</text>
+<path d="M88 45 H120"/><path d="M200 45 H232"/>
+</svg>
+</article>
+
+<article class="cell cell--3">
+<header><h3 data-i18n="f.docs.t">مستندات</h3>
+<p data-i18n="f.docs.b">راهنما، مرجع API و مثال‌های آماده.</p></header>
+<a class="inline-link" href="#docs">/docs →</a>
+</article>
+
+<article class="cell cell--3">
+<header><h3 data-i18n="f.oss.t">متن‌باز</h3>
+<p data-i18n="f.oss.b">MIT؛ بدون قفل.</p></header>
+<a class="inline-link" href="https://github.com/amirhossein-ahmadi-ah/peyk" rel="noopener">repo →</a>
+</article>
+
+</div>
+</section>
+
+<!-- ================= EXAMPLES ================= -->
+<section class="examples wrap" id="examples">
+<h2 data-i18n="ex.title">مثال‌های واقعی</h2>
+<div class="ex-tabs" role="tablist">
+<button role="tab" data-ex="echo" aria-selected="true" tabindex="0">echo</button>
+<button role="tab" data-ex="cmds" aria-selected="false" tabindex="-1">commands</button>
+<button role="tab" data-ex="cbq" aria-selected="false" tabindex="-1">callbacks</button>
+<button role="tab" data-ex="fsm" aria-selected="false" tabindex="-1">FSM</button>
+<button role="tab" data-ex="multi" aria-selected="false" tabindex="-1">multi-platform</button>
+</div>
+<div class="ex-panels" id="exPanels"></div>
+</section>
+
+<!-- ================= MIGRATION ================= -->
+<section class="migration wrap">
+<h2 data-i18n="mig.title">از aiogram می‌آیید؟</h2>
+<div class="mig-grid">
+<table class="map">
+<thead><tr><th>aiogram</th><th>peyk</th></tr></thead>
+<tbody>
+<tr><td><code>from aiogram import Bot</code></td><td><code>from peyk import Bot</code></td></tr>
+<tr><td><code>Bot(token)</code></td><td><code>Bot(token, platform="…")</code></td></tr>
+<tr><td><code>from aiogram import Router</code></td><td><code>from peyk import Router</code></td></tr>
+<tr><td><code>from aiogram.filters import Command</code></td><td><code>from peyk.filters import Command</code></td></tr>
+</tbody>
+</table>
+<div class="mig-notes">
+<p data-i18n="mig.note">سه تفاوت عمدی: انتخاب صریح platform، اشیای neutral با .raw، و افت توانایی به‌صورت هشدار.</p>
+<a class="inline-link" href="#docs" data-i18n="mig.link">راهنمای مهاجرت →</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+<div class="wrap foot-inner">
+<div class="foot-brand">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path fill="var(--accent)" d="M16 1C7.7 1 1 7.7 1 16s6.7 15 15 15 15-6.7 15-15S24.3 1 16 1Zm-3.5 7h4.2a5.5 5.5 0 0 1 0 11h-1.4v5h-2.8V8Z"/>
+<circle cx="10.5" cy="24.5" r="2" fill="var(--accent-warm)"/>
+</svg>
+<span>peyk</span>
+</div>
+<nav class="foot-nav">
+<a href="#docs" data-i18n="foot.docs">مستندات</a>
+<a href="https://github.com/amirhossein-ahmadi-ah/peyk" rel="noopener" data-i18n="foot.github">مخزن</a>
+<a href="https://pypi.org/project/peyk/">PyPI</a>
+<a href="https://github.com/amirhossein-ahmadi-ah/peyk/blob/main/LICENSE" data-i18n="foot.license">مجوز MIT</a>
+</nav>
+<div class="install">
+<code>pip install peyk</code>
+<button class="copy" data-copy="pip install peyk" aria-label="copy">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+</svg>
+</button>
+</div>
+</div>
+</footer>
+
+<script>
+/* ============================================================
+i18n
+============================================================ */
+const I18N = {
+fa:{
+"title":"peyk — یک بات، سه پیام‌رسان",
+"skip":"پرش به محتوا",
+"nav.docs":"مستندات","nav.examples":"مثال‌ها","nav.platforms":"پلتفرم‌ها",
+"cta.primary":"شروع سریع","cta.secondary":"مستندات",
+"hero.eyebrow":"کتابخانه‌ی پایتون · MIT",
+"hero.title":"یک بات، سه پیام‌رسان.",
+"hero.sub":"کاملاً async، تایپ‌شده، با API سبک aiogram ۳ — برای تلگرام، بله و روبیکا.",
+"hero.copied":"کپی شد",
+"platforms.note":"توانایی‌ها روی هر پلتفرم متفاوت است — ماتریس کامل در مستندات.",
+"platforms.link":"ماتریس توانایی‌ها",
+"features.title":"آنچه peyk می‌دهد",
+"f.async.t":"async-first","f.async.b":"کاملاً async/await؛ چند پیام همزمان بدون بلاک شدن.",
+"f.multi.t":"چند-پلتفرمی","f.multi.b":"یک کد، سه پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.",
+"f.aio.t":"آشنا برای aiogram","f.aio.b":"اگر aiogram می‌شناسی، ده دقیقه‌ای شروع می‌کنی.",
+"f.type.t":"تایپ‌شده","f.type.b":"کاملاً تایپ‌شده، سازگار با mypy و pyright.",
+"f.retry.t":"خطا و retry","f.retry.b":"مدیریت خطا و retry، با خطای مخصوص هر پلتفرم.",
+"f.fsm.t":"FSM و کیبورد","f.fsm.b":"FSM و کیبورد یکپارچه برای همه‌ی پلتفرم‌ها.",
+"f.docs.t":"مستندات","f.docs.b":"راهنما، مرجع API و مثال‌های آماده.",
+"f.oss.t":"متن‌باز","f.oss.b":"MIT؛ بدون قفل.",
+"ex.title":"مثال‌های واقعی",
+"mig.title":"از aiogram می‌آیید؟",
+"mig.note":"سه تفاوت عمدی: انتخاب صریح platform، اشیای neutral با .raw، و افت توانایی به‌صورت هشدار.",
+"mig.link":"راهنمای مهاجرت →",
+"foot.docs":"مستندات","foot.github":"مخزن","foot.license":"مجوز MIT"
+},
+en:{
+"title":"peyk — One bot, three messengers",
+"skip":"Skip to content",
+"nav.docs":"Docs","nav.examples":"Examples","nav.platforms":"Platforms",
+"cta.primary":"Quick start","cta.secondary":"Documentation",
+"hero.eyebrow":"Python library · MIT",
+"hero.title":"One bot, three messengers.",
+"hero.sub":"Fully async, typed, aiogram-3-style — for Telegram, Bale, and Rubika.",
+"hero.copied":"Copied",
+"platforms.note":"Capabilities differ per platform — see the matrix.",
+"platforms.link":"Capability matrix",
+"features.title":"What peyk gives you",
+"f.async.t":"Async-first","f.async.b":"Fully async/await; concurrent handlers without blocking.",
+"f.multi.t":"Multi-platform","f.multi.b":"One handler, three platform values.",
+"f.aio.t":"aiogram-shaped","f.aio.b":"If you know aiogram, you're productive in ten minutes.",
+"f.type.t":"Typed","f.type.b":"Ships py.typed; works with mypy and pyright.",
+"f.retry.t":"Errors & retry","f.retry.b":"Retry handling, per-platform error types.",
+"f.fsm.t":"FSM & keyboards","f.fsm.b":"Unified FSM and keyboards across platforms.",
+"f.docs.t":"Docs","f.docs.b":"Guides, API reference, and runnable examples.",
+"f.oss.t":"Open source","f.oss.b":"MIT; no lock-in.",
+"ex.title":"Working examples",
+"mig.title":"Coming from aiogram?",
+"mig.note":"Three intentional differences: explicit platform, neutral objects exposing .raw, capability-aware degradation.",
+"mig.link":"Migration guide →",
+"foot.docs":"Docs","foot.github":"Repo","foot.license":"MIT License"
+}
+};
+
+/* ============================================================
+Theme + language
+============================================================ */
+const root = document.documentElement;
+try{
+const t = localStorage.getItem('peyk.theme');
+if(t==='light'||t==='dark') root.dataset.theme = t;
+const l = localStorage.getItem('peyk.lang');
+if(l==='fa'||l==='en') applyLang(l,false);
+}catch(e){}
+
+function applyLang(lang, save=true){
+root.lang = lang;
+root.dir = lang==='fa' ? 'rtl' : 'ltr';
+document.querySelectorAll('[data-i18n]').forEach(el=>{
+const k = el.getAttribute('data-i18n');
+if(I18N[lang][k]) el.textContent = I18N[lang][k];
+});
+document.getElementById('langBtn').textContent = lang==='fa'?'EN':'FA';
+document.title = I18N[lang].title;
+if(save){ try{ localStorage.setItem('peyk.lang', lang);}catch(e){} }
+// rebuild examples with new labels
+buildExamples(lang);
+}
+
+document.getElementById('themeBtn').addEventListener('click',()=>{
+const cur = root.dataset.theme ||
+(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+const next = cur==='dark' ? 'light' : 'dark';
+root.dataset.theme = next;
+try{ localStorage.setItem('peyk.theme', next);}catch(e){}
+});
+
+document.getElementById('langBtn').addEventListener('click',()=>{
+applyLang(root.lang==='fa' ? 'en' : 'fa');
+});
+
+/* ============================================================
+Copy buttons
+============================================================ */
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+btn.addEventListener('click', async ()=>{
+try{ await navigator.clipboard.writeText(btn.dataset.copy); }catch(e){ return; }
+const label = btn.querySelector('.copy-label');
+if(label){
+label.hidden = false;
+setTimeout(()=>{ label.hidden = true; },1500);
+}
+});
+});
+
+/* ============================================================
+Hero typing + platform switcher
+============================================================ */
+const heroCode = document.getElementById('heroCode');
+const chat = document.getElementById('chat');
+const chatTitle = document.getElementById('chatTitle');
+
+function botSource(platform){
+return `from peyk import Bot
+
+bot = Bot("TOKEN", platform="$`{platform}")
+
+@bot.command("start")
+async def start(message):
+await message.answer("Hello from peyk!")
+
+bot.run()`;
+}
+
+function esc(s){ return s.replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>'); }
+function highlight(src){
+return esc(src)
+.replace(/\b(from|import|async|def|await|class)\b/g,'<span class="k-kw">$1&lt;/span&gt;') .replace(/("(?:[^"\\]|\\.)*")/g,'&lt;span class="k-str"&gt;$1</span>')
+.replace(/(#.*)$/gm,'&lt;span class="k-cm"&gt;$1</span>');
+}
+
+let platform = 'telegram';
+let typed = false;
+
+function render({type=false}={}){
+const src = botSource(platform);
+if(!type || matchMedia('(prefers-reduced-motion: reduce)').matches){
+heroCode.innerHTML = highlight(src);
+return;
+}
+heroCode.innerHTML = '';
+const t0 = performance.now();
+const dur = Math.min(1400, src.length8);
+function frame(now){
+const p = Math.min(1,(now-t0)/dur);
+const n = Math.floor(psrc.length);
+heroCode.innerHTML = highlight(src.slice(0,n)) + (p<1?'<span class="caret">.</span>':'');
+if(p<1) requestAnimationFrame(frame);
+else heroCode.innerHTML = highlight(src);
+}
+requestAnimationFrame(frame);
+}
+
+render({type:true});
+chatTitle.textContent = 'Telegram';
+
+/* platform tabs */
+document.querySelectorAll('#heroDemo [role="tab"]').forEach((tab,i,arr)=>{
+tab.addEventListener('click', ()=>selectTab(i));
+tab.addEventListener('keydown', e=>{
+if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+e.preventDefault();
+const dir = root.dir==='rtl' ? -1 : 1;
+const step = (e.key==='ArrowRight'?1:-1)*dir;
+selectTab((i+step+arr.length)%arr.length, true);
+}
+});
+});
+function selectTab(i, focus=false){
+const tabs = document.querySelectorAll('#heroDemo [role="tab"]');
+tabs.forEach((t,j)=>{
+t.setAttribute('aria-selected', j===i ? 'true' : 'false');
+t.tabIndex = j===i ? 0 : -1;
+});
+if(focus) tabs[i].focus();
+platform = tabs[i].dataset.platform;
+chat.dataset.platform = platform;
+chatTitle.textContent = platform.charAt(0).toUpperCase()+platform.slice(1);
+render({type:false});
+}
+
+/* ============================================================
+Examples
+============================================================ */
+const EXAMPLES = {
+echo:{ file:'examples/echo.py', code:
+`from peyk import Bot
+
+bot = Bot("TOKEN", platform="telegram")
+
+@bot.message()
+async def echo(message):
+await message.answer(message.text)
+
+bot.run()}, cmds:{ file:'examples/commands.py', code:from peyk import Bot, Router
+from peyk.filters import Command
+
+router = Router()
+
+@router.message(Command("start"))
+async def start(message):
+await message.answer("hi", keyboard=[["Help"], ["About"]])
+
+@router.message(Command("help"))
+async def help_(message):
+await message.answer("commands: /start /help")
+
+bot = Bot("TOKEN", platform="bale")
+bot.include_router(router)
+bot.run()}, cbq:{ file:'examples/callbacks.py', code:@router.callback_query()
+async def on_cb(q):
+await q.answer("ok")
+await q.message.edit_text("done")}, fsm:{ file:'examples/fsm.py', code:from peyk.fsm import State, StatesGroup
+
+class Form(StatesGroup):
+name = State()
+
+@router.message(Command("form"))
+async def begin(message, state):
+await state.set(Form.name)
+await message.answer("name?")
+
+@router.message(Form.name)
+async def got_name(message, state):
+await state.clear()
+await message.answer(f"hi {message.text}")}, multi:{ file:'examples/multi_platform.py', code:from peyk import Bot
+
+یک هندلر، سه پلتفرم — تفاوت‌ها مستند شده‌اند.
+for platform in ("telegram", "bale", "rubika"):
+bot = Bot("TOKEN", platform=platform)
+
+@bot.command("ping")
+async def ping(message):
+await message.answer("pong")
+
+bot.run()` }
+};
+
+function buildExamples(lang){
+const panels = document.getElementById('exPanels');
+const order = ['echo','cmds','cbq','fsm','multi'];
+panels.innerHTML = order.map((id,i)=>&lt;div role="tabpanel" id="ex-${id}" {EXAMPLES[id].file}</span><span>python</span></div>
+<pre><code>${highlight(EXAMPLES[id].code)}</code></pre>
+</div>`).join('');
+}
+
+/* tab switching for examples */
+document.querySelectorAll('.ex-tabs [role="tab"]').forEach((tab,i,arr)=>{
+tab.addEventListener('click', ()=>selectEx(i));
+tab.addEventListener('keydown', e=>{
+if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+e.preventDefault();
+const dir = root.dir==='rtl' ? -1 : 1;
+const step = (e.key==='ArrowRight'?1:-1)*dir;
+selectEx((i+step+arr.length)%arr.length, true);
+}
+});
+});
+function selectEx(i, focus=false){
+const tabs = document.querySelectorAll('.ex-tabs [role="tab"]');
+tabs.forEach((t,j)=>{
+t.setAttribute('aria-selected', j===i ? 'true' : 'false');
+t.tabIndex = j===i ? 0 : -1;
+});
+if(focus) tabs[i].focus();
+document.querySelectorAll('.ex-panels [role="tabpanel"]').forEach((p,j)=>{
+p.hidden = j !== i;
+});
+}
+
+/* initial build */
+buildExamples(root.lang || 'fa');
+</script>
+</body>
+</html>
