@@ -13,22 +13,10 @@
 <meta property="og:description" content="کتابخانه‌ی async بات برای پایتون: تلگرام، بله و روبیکا با API سبک aiogram ۳." />
 <meta property="og:locale" content="fa_IR" />
 <meta name="twitter:card" content="summary" />
-<!-- TODO: <link rel="canonical" href="https://…/"> و og:image (تصویر ثابت ساخته‌شده از لوگو + شعار) بعد از مشخص شدن آدرس نهایی -->
 <link rel="icon" href="_static/logo.svg" type="image/svg+xml" />
 
-<!--
-  ساختار روی GitHub Pages (توسط .github/workflows/docs.yml ساخته می‌شود):
-    /peyk/            ← همین فایل (docs/mainpage.html → _site/index.html)
-    /peyk/document/   ← مستندات Sphinx
-  مسیرها نسبی‌اند:
-    لوگو    → _static/logo.svg        (workflow از docs/_static به _site/_static کپی می‌کند)
-    فونت‌ها → _static/fonts/*.woff2   (اختیاری)
--->
-
 <script>
-/* قبل از اولین رندر: تم و زبان ذخیره‌شده را اعمال کن تا صفحه پرش نکند */
 (function(){
-  /* progressive enhancement: مخفی‌سازی‌ها فقط زیر .js اعمال می‌شوند. اگر اسکریپت اصلی اجرا نشد، بعد از ۴ ثانیه .js برداشته می‌شود */
   document.documentElement.classList.add('js');
   setTimeout(function(){ if(!window.__peyk) document.documentElement.classList.remove('js'); },4000);
 })();
@@ -40,22 +28,16 @@
 </script>
 
 <style>
-/* ============================================================
-   1. FONTS  (self-host؛ فایل‌ها را در docs/_static/fonts/ بگذار)
-============================================================ */
 @font-face{font-family:"Vazirmatn";src:local("Vazirmatn"),url("_static/fonts/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Vazirmatn";src:local("Vazirmatn Bold"),url("_static/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Peyda";src:local("Peyda Bold"),url("_static/fonts/Peyda-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-@font-face{font-family:"Geist";src:local("Geist"),url("_static/fonts/Geist-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"Geist Mono";src:local("Geist Mono"),url("_static/fonts/GeistMono-Variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist";src:local("Geist"),url("_static/fonts/Geist.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist Mono";src:local("Geist Mono"),url("_static/fonts/GeistMono.woff2") format("woff2");font-weight:100 900;font-display:swap}
 
-/* ============================================================
-   2. TOKENS
-============================================================ */
 :root{
   --bg:#F3F1EC; --surface:#FAF9F6; --text:#16161A; --muted:#5F5E5A;
   --line:#DAD6CD; --accent:#1F4FE0; --accent-warm:#F28C1B;
-  --warm-ink:#B45309;   /* متن نارنجی (AA روی --surface)؛ --accent-warm خام فقط برای عناصر غیرمتنی */
+  --warm-ink:#B45309;
   --dx:12px;
 
   --font-body:"Geist","Vazirmatn","Vazir",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
@@ -84,16 +66,13 @@
 }
 html[dir="rtl"]{--dx:-12px}
 
-/* ============================================================
-   3. BASE
-============================================================ */
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   margin:0;background:var(--bg);color:var(--text);
   font-family:var(--font-body);font-size:17px;line-height:1.75;
-  overflow-x:hidden;overflow-x:clip;   /* شبکه‌ی ایمنی؛ ریشه‌ی مشکل‌ها جدا رفع شده */
+  overflow-x:hidden;overflow-x:clip;
   -webkit-font-smoothing:antialiased;
 }
 html[lang="en"] body{line-height:1.6}
@@ -110,7 +89,6 @@ img{max-width:100%}
 .skip:focus{top:12px}
 .wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:var(--gutter)}
 
-/* کد همیشه LTR و چپ‌چین، حتی داخل صفحه‌ی RTL */
 code,pre,.code{font-family:var(--font-mono);font-feature-settings:"liga" 0,"calt" 0;
   direction:ltr;text-align:left;unicode-bidi:isolate}
 pre{margin:0;padding:18px 20px;font-size:13px;line-height:1.7;tab-size:4;
@@ -120,9 +98,6 @@ pre{margin:0;padding:18px 20px;font-size:13px;line-height:1.7;tab-size:4;
 .t-str{color:var(--warm-ink)}
 .t-cm{color:var(--muted);font-style:italic}
 
-/* ============================================================
-   4. BUTTONS & SMALL CONTROLS
-============================================================ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;
   border:1px solid var(--line);border-radius:var(--r-1);font:inherit;font-size:15px;font-weight:500;line-height:1;
   text-decoration:none;cursor:pointer;color:var(--text);background:transparent;
@@ -158,11 +133,7 @@ pre{margin:0;padding:18px 20px;font-size:13px;line-height:1.7;tab-size:4;
 .install .prompt{color:var(--muted);font-family:var(--font-mono);font-size:13px;user-select:none}
 .install code{font-size:14px;white-space:nowrap}
 
-/* ============================================================
-   5. HEADER
-============================================================ */
 .site-header{position:sticky;top:0;z-index:50;height:var(--header-h)}
-/* پس‌زمینه و خط باریک روی pseudo-element؛ فقط opacity انیمیت می‌شود. بدون JS همیشه دیده می‌شود */
 .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg);
   border-block-end:1px solid var(--line);transition:opacity var(--dur) var(--ease)}
 .js .site-header:not([data-scrolled])::before{opacity:0}
@@ -192,9 +163,6 @@ pre{margin:0;padding:18px 20px;font-size:13px;line-height:1.7;tab-size:4;
 }
 @media (max-width:520px){.hide-sm{display:none}}
 
-/* ============================================================
-   6. HERO
-============================================================ */
 .hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(36px,6vw,72px);align-items:start;
   padding-block:clamp(36px,7vw,96px) clamp(56px,8vw,96px)}
 .hero>*{min-width:0}
@@ -236,7 +204,6 @@ html[lang="en"] .hero h1{font-size:clamp(2.4rem,1.2rem + 4vw,3.4rem);line-height
   .code-panel pre{font-size:11px;min-height:calc(9 * 1.7 * 11px + 32px)}
 }
 
-/* ماک چت: عمداً LTR و بدون آینه شدن. سبک‌ها تزئینی‌اند، نه کپی UI واقعی پیام‌رسان‌ها */
 .chat{direction:ltr;text-align:left;border:1px solid var(--line);border-radius:var(--r-2);background:var(--surface);overflow:hidden}
 .chat-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-block-end:1px solid var(--line);font-size:14px}
 .chat-head img{width:20px;height:20px;display:block}
@@ -257,9 +224,6 @@ html[lang="en"] .hero h1{font-size:clamp(2.4rem,1.2rem + 4vw,3.4rem);line-height
 .chat[data-platform="rubika"] .bubble{border-radius:var(--r-1)}
 .chat[data-platform="rubika"] .bubble.user{border-color:var(--accent);color:var(--text)}
 
-/* ============================================================
-   7. PLATFORMS STRIP
-============================================================ */
 .strip{border-block:1px solid var(--line)}
 .strip-inner{display:flex;align-items:center;flex-wrap:wrap;gap:16px 40px;padding-block:28px}
 .platforms{display:flex;flex-wrap:wrap;gap:12px 36px;list-style:none;margin:0;padding:0}
@@ -273,14 +237,10 @@ html[lang="en"] .hero h1{font-size:clamp(2.4rem,1.2rem + 4vw,3.4rem);line-height
 .strip-note a:hover,.inline-link:hover{text-decoration-color:var(--accent-warm)}
 @media (max-width:720px){.strip-note{margin-inline-start:0}}
 
-/* ============================================================
-   8. SECTIONS
-============================================================ */
 .section{padding-block:var(--section)}
 .section--ruled{border-block-start:1px solid var(--line)}
 .section h2{font-size:clamp(1.85rem,1.1rem + 2.6vw,2.75rem);margin-block-end:clamp(28px,4vw,48px)}
 
-/* ---------- bento ---------- */
 .bento{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:var(--r-3);overflow:hidden}
 .cell{display:flex;flex-direction:column;gap:20px;min-width:0;padding:clamp(20px,3vw,32px);background:var(--bg)}
@@ -319,7 +279,6 @@ html[lang="en"] .cell p{line-height:1.6}
 .diagram text{fill:var(--text);font:12px var(--font-mono)}
 .diagram .lbl{fill:var(--muted);font-size:11px}
 
-/* ---------- examples ---------- */
 .ex-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-block-end:1px solid var(--line);
   -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .ex-tabs::-webkit-scrollbar{display:none}
@@ -331,7 +290,6 @@ html[lang="en"] .cell p{line-height:1.6}
 .ex-panel{margin-block-start:20px;border:1px solid var(--line);border-radius:var(--r-2);overflow:hidden;background:var(--surface)}
 .ex-panel pre{border:0;font-size:13.5px;padding:20px 22px}
 
-/* ---------- migration ---------- */
 .mig-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
 @media (max-width:900px){.mig-grid{grid-template-columns:minmax(0,1fr)}}
 .map-wrap{border:1px solid var(--line);border-radius:var(--r-2);overflow:hidden;background:var(--surface)}
@@ -359,9 +317,6 @@ html[lang="en"] .cell p{line-height:1.6}
   .map code{white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}
 }
 
-/* ============================================================
-   9. FOOTER
-============================================================ */
 .site-footer{border-block-start:1px solid var(--line);padding-block:40px}
 .footer-inner{display:flex;align-items:center;flex-wrap:wrap;gap:20px 32px}
 .foot-brand{display:inline-flex;align-items:center;gap:10px;font-family:"Geist",var(--font-body);font-weight:600;font-size:17px}
@@ -372,24 +327,16 @@ html[lang="en"] .cell p{line-height:1.6}
 .footer-inner .install{margin-inline-start:auto}
 @media (max-width:720px){.footer-inner .install{margin-inline-start:0}}
 
-/* ============================================================
-   10. WARMTH + MOTION
-   قاعده: فقط opacity و transform (و stroke-dashoffset روی SVG)، ۱۵۰–۴۵۰ms، بدون حلقه‌ی بی‌پایان جز هایلایت FSM.
-   حالت مخفی فقط زیر .js اعمال می‌شود؛ بدون JS همه‌چیز دیده می‌شود.
-============================================================ */
 .nt,.nt *{transition:none!important}
 
-/* --- لینک‌ها: زیرخط گرم روی hover --- */
 .main a,.foot-nav a{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:6px;
   transition:color var(--dur) var(--ease),text-decoration-color var(--dur) var(--ease)}
 .main a:hover,.foot-nav a:hover{text-decoration-color:var(--accent-warm)}
 
-/* --- کادر نصب: تاکید گرم هنگام فوکوس کیبورد --- */
 .install{transition:border-color var(--dur) var(--ease)}
 .install:focus-within{border-color:var(--accent-warm)}
 @supports selector(:has(*)){.install:focus-within:not(:has(:focus-visible)){border-color:var(--line)}}
 
-/* --- کاراکتر token در دمو (فقط همین کلمه انیمیت می‌شود) --- */
 .plat{position:relative;display:inline-block;isolation:isolate}
 .plat::before{content:"";position:absolute;inset:-1px -3px;z-index:-1;border-radius:2px;background:var(--accent-warm);opacity:0}
 .plat.out{opacity:0;transition:opacity 140ms var(--ease)}
@@ -398,7 +345,6 @@ html[lang="en"] .cell p{line-height:1.6}
 @keyframes platIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
 @keyframes platFlash{from{opacity:.22}to{opacity:0}}
 
-/* --- چت: کاربر → سه‌نقطه → پاسخ (data-step ۰..۳) --- */
 .bubble{transition:opacity 240ms var(--ease),transform 240ms var(--ease),border-color var(--dur) var(--ease)}
 .typing{display:inline-flex;gap:4px;align-items:center;justify-self:start;align-self:start;padding:12px 14px;
   opacity:0;transition:opacity 150ms var(--ease)}
@@ -413,32 +359,27 @@ html[lang="en"] .cell p{line-height:1.6}
 .js .chat[data-step="1"] .bubble.user,.js .chat[data-step="2"] .bubble.user,.js .chat[data-step="3"] .bubble.user{opacity:1;transform:none}
 .js .chat[data-step="3"] .bubble.bot:not(.typing){opacity:1;transform:none}
 
-/* --- بارگذاری هیرو: یک لحظه‌ی هماهنگ --- */
 .js .hero-h1 .ln{opacity:0;transform:translateY(14px);will-change:opacity,transform}
 .js .hero-h1.is-in .ln{opacity:1;transform:none;will-change:auto;transition:opacity 420ms var(--ease),transform 420ms var(--ease)}
 .js .hero-h1.is-in .ln:nth-child(2){transition-delay:80ms}
 .js [data-hero]:not(.is-in){opacity:0;transform:translateY(12px);will-change:opacity,transform}
 .js [data-hero].is-in{opacity:1;transform:none;transition:opacity 400ms var(--ease),transform 400ms var(--ease)}
 
-/* --- آشکارسازی هنگام اسکرول (یک‌بار) --- */
 .js [data-reveal]:not([data-reveal="cell"]):not(.is-in){opacity:0;will-change:opacity,transform}
 .js [data-reveal="head"]:not(.is-in){transform:translateX(calc(var(--dx) * -1))}
 .js [data-reveal="panel"]:not(.is-in){transform:translateY(12px)}
 .js [data-reveal="row"]:not(.is-in){transform:translateY(8px)}
 .js [data-reveal].is-in:not([data-reveal="cell"]){opacity:1;transform:none;
   transition:opacity 380ms var(--ease) var(--d,0ms),transform 380ms var(--ease) var(--d,0ms)}
-/* سلول‌های bento: قاب و خط‌های باریک ثابت می‌مانند؛ محتوای سلول بالا می‌آید */
 .js .cell:not(.is-in)>*{opacity:0;transform:translateY(12px);will-change:opacity,transform}
 .js .cell.is-in>*{opacity:1;transform:none;transition:opacity 400ms var(--ease) var(--d,0ms),transform 400ms var(--ease) var(--d,0ms)}
 .js .cell.is-in>*:nth-child(2){transition-delay:calc(var(--d,0ms) + 60ms)}
 
-/* --- bento hover: کادر muted + رنگ‌مایه‌ی گرم خیلی کم --- */
 .cell{position:relative;isolation:isolate}
 .cell::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border:1px solid var(--muted);
   background:var(--bg);background:color-mix(in oklab,var(--accent-warm) 5%,var(--bg));opacity:0;transition:opacity var(--dur) var(--ease)}
 @media (hover:hover){.cell:hover::before{opacity:1}}
 
-/* --- نمودار FSM --- */
 .diagram .ahd{stroke-linecap:round;stroke-linejoin:round}
 .diagram .hl{fill:var(--accent-warm);fill-opacity:.1;stroke:var(--accent-warm);stroke-width:1.5;opacity:0;
   transition:opacity 220ms var(--ease),transform 300ms var(--ease)}
@@ -451,7 +392,6 @@ html[lang="en"] .cell p{line-height:1.6}
 .diagram.anim.is-drawn .ahd.g1,.diagram.anim.is-drawn .lbl.g1{transition-delay:350ms}
 .diagram.anim.is-drawn .ahd.g2,.diagram.anim.is-drawn .lbl.g2{transition-delay:650ms}
 
-/* --- سلول async: دو هندلر هم‌زمان --- */
 .runs{direction:ltr;display:grid;gap:6px;margin-block-start:12px;font-family:var(--font-mono);font-size:12px;line-height:1;color:var(--muted)}
 .run{display:flex;align-items:center;gap:10px}
 .run .lb{flex:0 0 1ch}
@@ -460,7 +400,6 @@ html[lang="en"] .cell p{line-height:1.6}
 .js .runs .tk{opacity:.22;transition:opacity 150ms var(--ease)}
 .js .runs .tk.on{opacity:1}
 
-/* --- تب‌های مثال: خط متحرک + کراس‌فید پنل --- */
 .ex-tabs{position:relative}
 .ex-ink{position:absolute;left:0;bottom:0;width:1px;height:2px;background:var(--accent);transform-origin:0 0;
   transition:transform 320ms var(--ease);pointer-events:none}
@@ -468,7 +407,6 @@ html[lang="en"] .cell p{line-height:1.6}
 .ex-panel.is-out,.ex-panel.is-pre{opacity:0}
 .ex-panel.is-pre{transition:none}
 
-/* --- جدول مهاجرت --- */
 .map code{position:relative}
 .map td:last-child code::after{content:"";position:absolute;inset-inline:0;bottom:-2px;height:2px;background:var(--accent-warm);
   opacity:0;transform:scaleX(0);transform-origin:0 50%}
@@ -478,12 +416,10 @@ html[lang="en"] .cell p{line-height:1.6}
 @keyframes sweepOut{to{opacity:0}}
 .map tbody tr:hover{background:var(--surface);background:color-mix(in oklab,var(--accent-warm) 5%,var(--surface))}
 
-/* --- کراس‌فید رنگ هنگام عوض شدن تم (JS فقط ~۲۶۰ms کلاس را نگه می‌دارد) --- */
 .theming,.theming *,.theming *::before,.theming *::after{
   transition-property:background-color,color,border-color,fill,stroke,text-decoration-color,opacity,transform!important;
   transition-duration:200ms!important;transition-timing-function:var(--ease)!important}
 
-/* --- reduced motion: همه‌چیز فوراً در حالت نهایی --- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -499,7 +435,6 @@ html[lang="en"] .cell p{line-height:1.6}
 <a class="skip" href="#main" data-i18n="skip">پرش به محتوا</a>
 <div class="sr-only" id="live" role="status" aria-live="polite"></div>
 
-<!-- ================= HEADER ================= -->
 <header class="site-header" id="siteHeader" data-open="false">
   <div class="wrap header-inner">
     <a class="brand" href="#top" aria-label="peyk">
@@ -530,7 +465,6 @@ html[lang="en"] .cell p{line-height:1.6}
 
 <main id="main">
 
-<!-- ================= HERO ================= -->
 <section class="hero wrap" id="top" aria-labelledby="hero-title">
   <div class="hero-text">
     <h1 class="hero-h1" id="hero-title" data-i18n="hero.title" data-i18n-html><span class="ln">یک بات،</span> <span class="ln">سه پیام‌رسان.</span></h1>
@@ -549,7 +483,6 @@ html[lang="en"] .cell p{line-height:1.6}
         <span class="ok" aria-hidden="true"><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span class="msg" data-i18n="copy.done">کپی شد</span></span>
       </button>
     </div>
-    <!-- TODO: نشان نسخه / PyPI بعد از انتشار -->
   </div>
 
   <div class="demo" id="heroDemo" data-hero>
@@ -597,7 +530,6 @@ bot.run()</code></pre>
   </div>
 </section>
 
-<!-- ================= PLATFORMS ================= -->
 <section class="strip" id="platforms" aria-labelledby="platforms-h">
   <div class="wrap strip-inner">
     <h2 class="sr-only" id="platforms-h" data-i18n="platforms.aria">پلتفرم‌های پشتیبانی‌شده</h2>
@@ -613,7 +545,6 @@ bot.run()</code></pre>
   </div>
 </section>
 
-<!-- ================= FEATURES ================= -->
 <section class="section" id="features" aria-labelledby="features-h">
   <div class="wrap">
     <h2 id="features-h" data-reveal="head" data-i18n="features.title">آنچه peyk می‌دهد</h2>
@@ -725,7 +656,6 @@ except PlatformError as e:
   </div>
 </section>
 
-<!-- ================= EXAMPLES ================= -->
 <section class="section section--ruled" id="examples" aria-labelledby="ex-h">
   <div class="wrap">
     <h2 id="ex-h" data-reveal="head" data-i18n="ex.title">مثال‌های کوتاه</h2>
@@ -735,7 +665,6 @@ except PlatformError as e:
   </div>
 </section>
 
-<!-- ================= MIGRATION ================= -->
 <section class="section section--ruled" id="migration" aria-labelledby="mig-h">
   <div class="wrap">
     <h2 id="mig-h" data-reveal="head" data-i18n="mig.title">از aiogram می‌آیید؟</h2>
@@ -775,7 +704,6 @@ except PlatformError as e:
 
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div class="foot-brand">
@@ -813,9 +741,6 @@ except PlatformError as e:
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   };
 
-  /* ============================================================
-     i18n
-  ============================================================ */
   var I18N = {
     fa: {
       "title": "peyk — یک بات، سه پیام‌رسان",
@@ -912,12 +837,9 @@ except PlatformError as e:
     lb.textContent = lang === 'fa' ? 'EN' : 'FA';
     lb.setAttribute('lang', lang === 'fa' ? 'en' : 'fa');
     if (save) store.set('peyk.lang', lang);
-    if (ink) inkPlace(true);   // جهت عوض می‌شود؛ خط تب‌ها را دوباره جا بده (بدون انیمیشن)
+    if (ink) inkPlace(true);
   }
 
-  /* ============================================================
-     Theme + language + mobile menu
-  ============================================================ */
   var themeIcon = $('#themeBtn svg'), spin = 0, themeT = 0;
   $('#themeBtn').addEventListener('click', function () {
     var cur = root.dataset.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -939,7 +861,6 @@ except PlatformError as e:
   document.addEventListener('click', function (e) { if (!header.contains(e.target)) setMenu(false); });
   $$('#mainNav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
-  /* هدر: بعد از ۸px اسکرول، پس‌زمینه‌ی ساده + خط باریک */
   var scrolled = false, sTick = false;
   function onScroll() {
     if (sTick) return; sTick = true;
@@ -952,9 +873,6 @@ except PlatformError as e:
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ============================================================
-     Copy buttons (با fallback برای مرورگرهای قدیمی / غیر HTTPS)
-  ============================================================ */
   function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
     return new Promise(function (resolve, reject) {
@@ -980,9 +898,6 @@ except PlatformError as e:
   }
   $$('[data-copy]').forEach(function (b) { bindCopy(b, function () { return b.getAttribute('data-copy'); }); });
 
-  /* ============================================================
-     Syntax highlighting (یک‌بار عبور، بدون تداخل span)
-  ============================================================ */
   var KEYWORDS = 'from|import|async|def|await|class|return|try|except|raise|for|in|if|else|elif|with|as|pass|None|True|False';
   var TOKEN = new RegExp(
     '(#[^\\n]*)' +                                            // 1 comment
@@ -1006,9 +921,6 @@ except PlatformError as e:
   }
   $$('code[data-hl]').forEach(function (c) { c.innerHTML = highlight(c.textContent); });
 
-  /* ============================================================
-     Accessible tabs (ARIA roles + کلیدهای جهتی، RTL-aware)
-  ============================================================ */
   function tablist(list, onSelect) {
     var tabs = $$('[role="tab"]', list);
     function select(i, focus) {
@@ -1036,9 +948,6 @@ except PlatformError as e:
     return select;
   }
 
-  /* ============================================================
-     Hero demo: بارگذاری هماهنگ → تایپ (یک‌بار) → چت. تب‌ها فقط توکن platform="…" را عوض می‌کنند
-  ============================================================ */
   var heroCode = $('#heroCode'), heroPre = heroCode.parentNode, chat = $('#chat'), chatTitle = $('#chatTitle');
   var heroPanel = $('#heroPanel');
   var platform = 'telegram', run = 0, phase = 'pre', chatT = [], seqT = [], swapT = 0;
@@ -1052,7 +961,6 @@ except PlatformError as e:
            '    await message.answer("Hello from peyk!")\n\n' +
            'bot.run()';
   }
-  /* همان کد هایلایت‌شده، ولی مقدار platform داخل یک span جدا تا فقط همان انیمیت شود */
   function heroHTML(p) { return highlight(botSource(PH)).replace(PH, '<span class="plat">' + p + '</span>'); }
 
   function setStep(n, now) {
@@ -1060,7 +968,6 @@ except PlatformError as e:
     chat.setAttribute('data-step', String(n));
     if (now) { void chat.offsetWidth; chat.classList.remove('nt'); }
   }
-  /* 0 پنهان → 1 پیام کاربر → 2 سه‌نقطه (~۶۰۰ms) → 3 پاسخ ربات */
   function playChat() {
     chatT.forEach(clearTimeout); chatT = [];
     if (rm()) { setStep(3, true); return; }
@@ -1074,7 +981,7 @@ except PlatformError as e:
     var id = ++run, t0 = performance.now(), dur = Math.min(1800, src.length * 11);
     heroPre.setAttribute('aria-busy', 'true');
     (function frame(now) {
-      if (id !== run) return;                       // با عوض شدن تب، تایپ لغو می‌شود
+      if (id !== run) return;
       var p = Math.min(1, (now - t0) / dur), n = Math.floor(p * src.length);
       if (p < 1) { heroCode.innerHTML = highlight(src.slice(0, n)) + '<span class="caret"></span>'; requestAnimationFrame(frame); }
       else { heroPre.removeAttribute('aria-busy'); heroCode.innerHTML = heroHTML(platform); phase = 'done'; playChat(); }
@@ -1087,8 +994,6 @@ except PlatformError as e:
     items.forEach(function (el, i) { seqT.push(setTimeout(function () { el.classList.add('is-in'); }, 220 + i * 90)); });
     seqT.push(setTimeout(function () { phase = 'typing'; typeOnce(botSource(platform)); }, 220 + items.length * 90 + 330));
   }
-
-  /* فقط توکن platform: محو کلمه‌ی قبلی → کلمه‌ی جدید با فلش گرم */
   function swapToken(p) {
     var tok = $('.plat', heroCode);
     if (!tok) { heroCode.innerHTML = heroHTML(p); return; }
@@ -1106,8 +1011,8 @@ except PlatformError as e:
     chat.setAttribute('data-platform', platform);
     chatTitle.textContent = platform.charAt(0).toUpperCase() + platform.slice(1);
     heroPanel.setAttribute('aria-labelledby', tab.id);
-    if (same || phase === 'pre') return;            // هنوز تایپ شروع نشده؛ تایپ با platform جدید انجام می‌شود
-    if (phase === 'typing') {                       // وسط تایپ: تایپ لغو، کد کامل با platform جدید
+    if (same || phase === 'pre') return;
+    if (phase === 'typing') {
       run++; heroPre.removeAttribute('aria-busy');
       heroCode.innerHTML = heroHTML(platform); phase = 'done';
     } else swapToken(platform);
@@ -1115,7 +1020,6 @@ except PlatformError as e:
   });
   bindCopy($('#heroCopy'), function () { return botSource(platform); });
 
-  /* حالت نهایی فوری (reduced motion، یا وقتی کاربر وسط کار آن را روشن کند) */
   function showFinal() {
     run++; seqT.forEach(clearTimeout); chatT.forEach(clearTimeout); seqT = []; chatT = []; clearTimeout(swapT);
     heroPre.removeAttribute('aria-busy');
@@ -1125,10 +1029,6 @@ except PlatformError as e:
     if (fsm) fsm.stop();
   }
 
-  /* ============================================================
-     Examples
-     ⚠ فقط echo از README تأیید شده؛ بقیه را با examples/ ریپو مقایسه کن.
-  ============================================================ */
   var EXAMPLES = [
     { id: 'echo', label: 'echo', file: 'examples/echo.py', code:
 'from peyk import Bot\n\n' +
@@ -1209,7 +1109,6 @@ except PlatformError as e:
     bindCopy($('.copy', panel), function () { return ex.code; });
   });
 
-  /* خط زیر تب‌ها: فقط transform (translateX + scaleX) */
   var ink = document.createElement('span');
   ink.className = 'ex-ink'; ink.setAttribute('aria-hidden', 'true');
   exTabs.appendChild(ink);
@@ -1222,7 +1121,6 @@ except PlatformError as e:
     if (quick) { void ink.offsetWidth; ink.classList.remove('nt'); }
   }
 
-  /* کراس‌فید پنل: قدیمی محو (۱۵۰ms) ← جدید ظاهر (۱۵۰ms) */
   var exCur = 0, exT = 0;
   function exShow(i) {
     var next = exList[i], cur = exList[exCur];
@@ -1244,21 +1142,17 @@ except PlatformError as e:
   else window.addEventListener('resize', function () { inkPlace(true); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { inkPlace(true); });
 
-  /* ============================================================
-     FSM: رسم فلش‌ها هنگام ورود به viewport، سپس هایلایت آرام
-     (idle → Form.name → done). خارج از صفحه یا تب پنهان: متوقف.
-  ============================================================ */
   function initFsm() {
     var svg = $('#fsm');
     if (!svg || rm() || !('IntersectionObserver' in window)) return null;
     var hl = $('.hl', svg), base = $('rect.on', svg), stops = [0, 132, 264];
     var idx = 0, timer = 0, drawn = false, ready = false, seen = false, tm = [];
     function later(fn, ms) { var id = setTimeout(fn, ms); tm.push(id); }
-    svg.classList.add('anim'); base.classList.remove('on');   // هایلایت متحرک جای حالت ثابت را می‌گیرد
+    svg.classList.add('anim'); base.classList.remove('on');
     function step() {
       idx = (idx + 1) % 3;
       if (idx) { hl.style.transform = 'translateX(' + stops[idx] + 'px)'; return; }
-      hl.classList.remove('show');                             // بعد از done: محو، بازگشت بی‌صدا به idle، ظاهر
+      hl.classList.remove('show');
       later(function () {
         hl.classList.add('nt'); hl.style.transform = 'translateX(0)'; void hl.getBoundingClientRect();
         hl.classList.remove('nt'); hl.classList.add('show');
@@ -1282,7 +1176,6 @@ except PlatformError as e:
   }
   var fsm = null;
 
-  /* سلول async: دو هندلر هم‌زمان جلو می‌روند (یک‌بار) */
   function runAsync() {
     if (rm()) return;
     $$('#asyncRuns .run').forEach(function (row, ri) {
@@ -1292,7 +1185,6 @@ except PlatformError as e:
   }
   function onRevealed(el) { if (el.id === 'asyncCell') setTimeout(runAsync, 500); }
 
-  /* آشکارسازی با IntersectionObserver: هر عنصر فقط یک‌بار */
   function setupReveal() {
     var els = $$('[data-reveal]');
     if (!('IntersectionObserver' in window)) {
@@ -1321,13 +1213,10 @@ except PlatformError as e:
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ============================================================
-     Init
-  ============================================================ */
   applyLang(root.lang === 'en' ? 'en' : 'fa', false);
   if (rm()) showFinal();
   else {
-    heroCode.innerHTML = '<span class="caret"></span>';   // پنل تا شروع تایپ خالی (min-height رزرو شده)
+    heroCode.innerHTML = '<span class="caret"></span>';
     setupReveal();
     fsm = initFsm();
     heroSeq();
