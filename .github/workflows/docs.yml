@@ -1,11 +1,16 @@
 name: Docs & Site
 
+# نتیجه‌ی deploy:
+#   https://amirhossein-ahmadi-ah.github.io/peyk/            ← docs/mainpage.html (سایت معرفی)
+#   https://amirhossein-ahmadi-ah.github.io/peyk/document/   ← مستندات Sphinx
+
 on:
   push:
     branches: [main]
     paths:
-      - "docs/"
-      - "peyk/"
+      - "docs/**"
+      - "src/peyk/**"
+      - "examples/**"
       - "pyproject.toml"
       - ".github/workflows/docs.yml"
   workflow_dispatch:
@@ -36,21 +41,49 @@ jobs:
         run: sphinx-build -b html docs docs/_build/html -W --keep-going
 
       - name: Assemble _site
+        shell: bash
         run: |
           set -euo pipefail
           rm -rf _site
-          mkdir -p _site/documentation
+          mkdir -p _site/document _site/_static
 
+          # --- سایت معرفی: ریشه‌ی سایت ---
           if [ ! -f docs/mainpage.html ]; then
             echo "::error::docs/mainpage.html پیدا نشد"; exit 1
           fi
-
           cp docs/mainpage.html _site/index.html
-          cp -R docs/_build/html/. _site/documentation/
+
+          # --- مستندات Sphinx: زیر /document/ ---
+          cp -R docs/_build/html/. _site/document/
+
+          # --- دارایی‌های سایت معرفی (لوگو و فونت‌ها)؛ صفحه‌ی اصلی در ریشه است
+          #     و به _static/... نسبت به خودش اشاره می‌کند ---
+          if [ ! -f docs/_static/logo.svg ]; then
+            echo "::error::docs/_static/logo.svg پیدا نشد"; exit 1
+          fi
+          cp docs/_static/logo.svg _site/_static/logo.svg
+          if [ -d docs/_static/fonts ]; then
+            cp -R docs/_static/fonts _site/_static/fonts
+          fi
+
+          # برای اینکه پوشه‌های شروع‌شده با _ (مثل _static) سرو شوند
           touch _site/.nojekyll
 
-          echo "--- _site ---"; ls -la _site
-          echo "--- _site/documentation ---"; ls -la _site/documentation | head
+      - name: Check links from the landing page
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+          while read -r p; do
+            case "$p" in */) p="${p}index.html" ;; esac
+            if [ ! -f "_site/$p" ]; then
+              echo "::error::لینک شکسته در mainpage.html → $p"; missing=1
+            fi
+          done < <(grep -oE 'href="document/[^"#]*"' docs/mainpage.html | sed -E 's/^href="(.*)"$/\1/' | sort -u)
+          [ "$missing" -eq 0 ]
+
+          echo "--- _site ---";          ls -la _site
+          echo "--- _site/document ---"; ls -la _site/document | head
 
       - uses: actions/upload-pages-artifact@v3
         with:
