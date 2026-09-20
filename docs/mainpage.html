@@ -1030,6 +1030,7 @@ except PlatformError as e:
     if (fsm) fsm.stop();
   }
 
+  /* EXAMPLES:START — تولیدشده با sync_examples.py؛ دستی ویرایش نکن */
   var EXAMPLES = [
     { id: "echo", label: "echo", file: "examples/echo_bot.py", code:
       "\"\"\"Minimal echo bot using the simple API.\"\"\"\nfrom peyk import Bot\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\n\n@bot.message()\nasync def echo(message):\n    if message.text:\n        await message.answer(message.text)\n\nif __name__ == \"__main__\":\n    bot.run()" },
@@ -1049,6 +1050,7 @@ except PlatformError as e:
     { id: "webhook", label: "webhook", file: "examples/webhook.py", code:
       "\"\"\"Webhook runner example.\"\"\"\nfrom peyk import Bot, Dispatcher\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\ndp = Dispatcher()\ndp.include_router(bot.router)\n\nif __name__ == \"__main__\":\n    dp.run_webhook(bot, base_url=\"https://example.com\", secrets=[\"replace-me\"])" }
   ];
+  /* EXAMPLES:END */
 
   var exTabs = $('#exTabs'), exPanels = $('#exPanels');
   var COPY_ICON = '<svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>';
