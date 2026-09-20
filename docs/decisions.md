@@ -1021,3 +1021,19 @@ claiming that those platforms deliver them.
 - A separate Scene API is not documented as an existing public feature; the FSM
   guide describes state-group-based scene-style flows because that is the
   implemented public surface.
+
+
+## Docs theme refresh (2026-09-20)
+
+- The sidebar showed two large logos because `html_logo` and Furo's
+  `light_logo`/`dark_logo` are rendered together. Only `html_logo` is set now.
+- The logo is shipped as a transparent SVG (`docs/_static/logo.svg`,
+  `docs/_static/favicon.svg`, `assets/logo.svg`), vectorised from
+  `assets/logo-source.png`, which is kept unchanged as the source.
+- The landing page no longer embeds a large image; a small logo sits next to the
+  title via CSS (`.. rst-class:: peyk-home` in `index.rst`).
+- Look and feel: blue->cyan palette taken from the logo, navy dark mode, rounded
+  corners, card-style toctrees on the landing page. Colours live in
+  `html_theme_options` (`light_css_variables` / `dark_css_variables`), layout in
+  `_static/custom.css`. Pygments styles were intentionally left at Furo defaults.
+- Not verified here: `sphinx-build` (Sphinx/Furo were not installed).

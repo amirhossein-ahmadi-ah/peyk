@@ -1,12 +1,13 @@
+.. rst-class:: peyk-home
+
 peyk documentation
 ==================
 
 ``peyk`` is an async multi-platform bot library for Telegram, Bale, and Rubika. It follows aiogram 3-style application patterns while normalizing the parts that can be shared safely across platforms.
 
-.. image:: _static/logo.png
-   :alt: peyk logo
-   :width: 180px
-   :align: center
+.. container:: peyk-actions
+
+   :doc:`Get started <quickstart>` `GitHub <https://github.com/amirhossein-ahmadi-ah/peyk/>`__
 
 .. toctree::
    :maxdepth: 2

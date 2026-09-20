@@ -65,16 +65,128 @@ napoleon_use_ivar = True
 # project and is closer in spirit to docs.aiogram.dev than the bare Sphinx
 # theme.  It remains a normal Sphinx theme, so no source restructuring is
 # required to switch themes later.
+#
+# The look (palette, radii, landing-page cards) is layered on top of Furo via
+# the CSS variables below plus ``_static/custom.css``; both are derived from the
+# logo's blue -> cyan gradient with the orange kept for the logo only.
 html_theme = "furo"
 html_title = "peyk documentation"
 html_static_path = ["_static"]
-html_logo = "_static/logo.png"
-html_favicon = "_static/favicon-32.png"
+# ONE logo only.  Furo renders ``html_logo`` *and* ``light_logo``/``dark_logo``
+# when both are configured, which is what produced two big logos in the
+# sidebar.  The logo is a transparent SVG, so it works on light and dark alike.
+html_logo = "_static/logo.svg"
+html_favicon = "_static/favicon.svg"
+
+_FONT_SANS = (
+    "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI Variable', "
+    "'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
+)
+_FONT_MONO = (
+    "'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, 'SF Mono', "
+    "Menlo, Consolas, 'Liberation Mono', monospace"
+)
+
 html_theme_options = {
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
-    "light_logo": "logo.png",
-    "dark_logo": "logo-dark.png",
+    "light_css_variables": {
+        "font-stack": _FONT_SANS,
+        "font-stack--monospace": _FONT_MONO,
+        "color-brand-primary": "#2563eb",
+        "color-brand-content": "#2563eb",
+        "color-background-primary": "#ffffff",
+        "color-background-secondary": "#f7f9fc",
+        "color-background-hover": "#eef3fd",
+        "color-background-hover--transparent": "#eef3fd00",
+        "color-background-border": "#e4e9f2",
+        "color-foreground-primary": "#0f172a",
+        "color-foreground-secondary": "#4b5a70",
+        "color-foreground-muted": "#66758c",
+        "color-foreground-border": "#9aa8bd",
+        "color-sidebar-background": "#f7f9fc",
+        "color-sidebar-background-border": "#e4e9f2",
+        "color-sidebar-caption-text": "#66758c",
+        "color-sidebar-link-text": "#334155",
+        "color-sidebar-link-text--top-level": "#0f172a",
+        "color-sidebar-item-background--hover": "#e9effc",
+        "color-sidebar-item-background--current": "#e3ebfd",
+        "color-sidebar-search-background": "#ffffff",
+        "color-sidebar-search-background--focus": "#ffffff",
+        "color-sidebar-search-border": "#dbe2ee",
+        "color-sidebar-search-icon": "#66758c",
+        "color-sidebar-search-text": "#0f172a",
+        "color-toc-item-text--active": "#2563eb",
+        "color-link": "#2563eb",
+        "color-link--hover": "#1d4ed8",
+        "color-link-underline": "transparent",
+        "color-link-underline--hover": "#2563eb",
+        "color-link--visited": "#2563eb",
+        "color-link-underline--visited": "transparent",
+        "color-link--visited--hover": "#1d4ed8",
+        "color-link-underline--visited--hover": "#2563eb",
+        "color-inline-code-background": "#eef2f8",
+        "color-code-background": "#f6f8fc",
+        "color-code-foreground": "#1e293b",
+        "color-highlight-on-target": "#fff4cc",
+        "color-api-name": "#1d4ed8",
+        "color-api-pre-name": "#4b5a70",
+        "color-api-background": "#f3f6fc",
+        "color-api-background-hover": "#eaf0fb",
+        "color-table-header-background": "#f3f6fb",
+        "color-table-border": "#e4e9f2",
+        # peyk-specific tokens used by custom.css
+        "peyk-cyan": "#06b6d4",
+        "peyk-accent-soft": "rgba(37, 99, 235, 0.09)",
+    },
+    "dark_css_variables": {
+        "font-stack": _FONT_SANS,
+        "font-stack--monospace": _FONT_MONO,
+        "color-brand-primary": "#5b9bff",
+        "color-brand-content": "#7fb0ff",
+        "color-background-primary": "#0b1020",
+        "color-background-secondary": "#0e1528",
+        "color-background-hover": "#141d36",
+        "color-background-hover--transparent": "#141d3600",
+        "color-background-border": "#1d2845",
+        "color-foreground-primary": "#e7ecf6",
+        "color-foreground-secondary": "#a3b1c9",
+        "color-foreground-muted": "#7f8fab",
+        "color-foreground-border": "#4a5a7a",
+        "color-sidebar-background": "#0e1528",
+        "color-sidebar-background-border": "#1d2845",
+        "color-sidebar-caption-text": "#7f8fab",
+        "color-sidebar-link-text": "#b8c4d9",
+        "color-sidebar-link-text--top-level": "#e7ecf6",
+        "color-sidebar-item-background--hover": "#16203d",
+        "color-sidebar-item-background--current": "#182645",
+        "color-sidebar-search-background": "#0b1020",
+        "color-sidebar-search-background--focus": "#0b1020",
+        "color-sidebar-search-border": "#24314f",
+        "color-sidebar-search-icon": "#7f8fab",
+        "color-sidebar-search-text": "#e7ecf6",
+        "color-toc-item-text--active": "#7fb0ff",
+        "color-link": "#7fb0ff",
+        "color-link--hover": "#a6c8ff",
+        "color-link-underline": "transparent",
+        "color-link-underline--hover": "#7fb0ff",
+        "color-link--visited": "#7fb0ff",
+        "color-link-underline--visited": "transparent",
+        "color-link--visited--hover": "#a6c8ff",
+        "color-link-underline--visited--hover": "#7fb0ff",
+        "color-inline-code-background": "#141d38",
+        "color-code-background": "#0f1730",
+        "color-code-foreground": "#dbe4f5",
+        "color-highlight-on-target": "#3d3210",
+        "color-api-name": "#8dbaff",
+        "color-api-pre-name": "#a3b1c9",
+        "color-api-background": "#0f1730",
+        "color-api-background-hover": "#141d38",
+        "color-table-header-background": "#0f1730",
+        "color-table-border": "#1d2845",
+        "peyk-cyan": "#22d3ee",
+        "peyk-accent-soft": "rgba(91, 155, 255, 0.12)",
+    },
     # NOTE: replace YOUR_GITHUB_USERNAME once the repo is pushed, so the
     # "Edit this page" / "View source" links in the built docs are correct.
     "source_repository": "https://github.com/amirhossein-ahmadi-ah/peyk/",

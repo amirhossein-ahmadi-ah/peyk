@@ -1,9 +1,376 @@
+/* ==========================================================================
+   peyk docs - modern theme layer on top of Furo
 
-.sidebar-brand {
-  border-radius: 14px;
-  padding: 0.35rem;
+   Colours live in docs/conf.py (light_css_variables / dark_css_variables);
+   this file only holds shape, spacing and layout.  Everything degrades
+   gracefully: if a modern CSS feature is missing the stock Furo look remains.
+   ========================================================================== */
+
+:root {
+  --peyk-radius: 12px;
+  --peyk-radius-lg: 16px;
+  --peyk-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --peyk-gradient: linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #06b6d4 100%);
 }
 
-.dark .sidebar-brand {
-  background: #141820;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand-primary) 28%, transparent);
+}
+
+/* ---- typography ---------------------------------------------------------- */
+
+article {
+  line-height: 1.72;
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+article h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+article h2 {
+  margin-top: 2.6rem;
+}
+
+article p,
+article li {
+  color: var(--color-foreground-primary);
+}
+
+/* ---- sidebar: one small logo + name on a single row ---------------------- */
+
+.sidebar-brand {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 1.15rem 1.1rem 0.4rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sidebar-logo-container {
+  flex: none;
+}
+
+.sidebar-logo {
+  display: block;
+  height: 2.2rem;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  filter: drop-shadow(0 4px 10px rgba(37, 99, 235, 0.28));
+}
+
+.sidebar-brand-text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+/* search box: rounded field with a brand-coloured focus ring */
+.sidebar-search-container {
+  margin: 0.55rem 0.8rem 0.6rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--color-sidebar-search-border);
+  transition: box-shadow 0.15s var(--peyk-ease);
+}
+
+.sidebar-search-container:focus-within {
+  box-shadow: inset 0 0 0 2px var(--color-brand-primary);
+}
+
+.sidebar-search {
+  border: 0 !important;
+}
+
+/* navigation tree: rounded "pill" items instead of full-bleed rows */
+.sidebar-tree {
+  padding: 0 0.55rem;
+}
+
+.sidebar-tree .reference {
+  border-radius: 8px;
+}
+
+.sidebar-tree .current-page > .reference {
+  background: var(--color-sidebar-item-background--current);
+  color: var(--color-brand-primary);
+  font-weight: 600;
+}
+
+.sidebar-tree .caption,
+.sidebar-tree :not(.caption) > .caption-text {
+  letter-spacing: 0.09em;
+}
+
+.sidebar-scroll,
+.toc-scroll,
+html {
+  scrollbar-width: thin;
+}
+
+/* ---- content: code, admonitions, tables ---------------------------------- */
+
+.highlight {
+  border: 1px solid var(--color-background-border);
+  border-radius: var(--peyk-radius);
+}
+
+article pre {
+  line-height: 1.65;
+}
+
+article code.literal,
+article .sig-inline {
+  border-radius: 0.4em;
+  padding: 0.12em 0.4em;
+}
+
+.admonition,
+details {
+  border-radius: var(--peyk-radius);
+  overflow: hidden;
+}
+
+table.docutils {
+  border: 1px solid var(--color-table-border);
+  border-radius: var(--peyk-radius);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* autodoc signatures */
+article dt.sig {
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+
+/* previous / next page links */
+.related-pages a {
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--color-background-border);
+  border-radius: var(--peyk-radius);
+  text-decoration: none;
+  transition: border-color 0.15s var(--peyk-ease), background-color 0.15s var(--peyk-ease);
+}
+
+.related-pages a:hover {
+  border-color: var(--color-brand-primary);
+  background: var(--peyk-accent-soft);
+}
+
+/* ==========================================================================
+   Landing page (docs/index.rst carries ``.. rst-class:: peyk-home``)
+   ========================================================================== */
+
+/* title with the small logo sitting next to the text */
+.peyk-home > h1 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(2.1rem, 1.5rem + 2vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.peyk-home > h1::before {
+  content: "";
+  display: inline-block;
+  width: 0.88em;
+  height: 1.06em;
+  margin-right: 0.5em;
+  vertical-align: -0.14em;
+  background: url("logo.svg") center / contain no-repeat;
+}
+
+/* gradient headline text (only where background-clip:text exists) */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .peyk-home > h1 {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-foreground-primary) 0%,
+      var(--color-foreground-primary) 38%,
+      var(--color-brand-primary) 78%,
+      var(--peyk-cyan) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .peyk-home > h1 > .headerlink {
+    -webkit-text-fill-color: var(--color-foreground-border);
+  }
+}
+
+.peyk-home > h1 + p {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  font-size: 1.14rem;
+  line-height: 1.65;
+  color: var(--color-foreground-secondary);
+}
+
+/* call-to-action buttons (a paragraph of two links inside a container) */
+.peyk-actions p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.peyk-actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--color-background-border);
+  border-radius: 999px;
+  background: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s var(--peyk-ease), color 0.15s var(--peyk-ease),
+    transform 0.15s var(--peyk-ease), filter 0.15s var(--peyk-ease);
+}
+
+.peyk-actions a:hover {
+  border-color: var(--color-brand-primary);
+  color: var(--color-brand-primary);
+}
+
+.peyk-actions a:first-child {
+  border-color: transparent;
+  background-image: var(--peyk-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -10px rgba(37, 99, 235, 0.8);
+}
+
+.peyk-actions a:first-child:hover {
+  color: #ffffff;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* the toctrees become full-width cards; long lists flow into two columns */
+.peyk-home > .toctree-wrapper {
+  position: relative;
+  margin: 1.2rem 0 0;
+  padding: 1.3rem 1.4rem 1.1rem;
+  border: 1px solid var(--color-background-border);
+  border-radius: var(--peyk-radius-lg);
+  background: var(--color-background-primary);
+  transition: border-color 0.18s var(--peyk-ease), box-shadow 0.18s var(--peyk-ease),
+    transform 0.18s var(--peyk-ease);
+}
+
+/* small gradient tab on top of every card */
+.peyk-home > .toctree-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 1.4rem;
+  width: 2.4rem;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--peyk-gradient);
+}
+
+.peyk-home > .toctree-wrapper:hover {
+  border-color: color-mix(in srgb, var(--color-brand-primary) 40%, var(--color-background-border));
+  box-shadow: 0 16px 32px -20px color-mix(in srgb, var(--color-brand-primary) 70%, transparent);
+  transform: translateY(-2px);
+}
+
+.peyk-home .toctree-wrapper .caption {
+  margin: 0.1rem 0 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-brand-primary);
+}
+
+.peyk-home .toctree-wrapper ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.peyk-home .toctree-wrapper > ul {
+  columns: 2 16rem;
+  column-gap: 2.5rem;
+}
+
+.peyk-home .toctree-wrapper li {
+  margin: 0;
+  padding: 0;
+}
+
+.peyk-home .toctree-wrapper > ul > li {
+  margin: 0 0 0.75rem;
+  break-inside: avoid;
+}
+
+.peyk-home .toctree-wrapper > ul > li > a {
+  color: var(--color-foreground-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.peyk-home .toctree-wrapper ul ul {
+  margin: 0.3rem 0 0.1rem 0.3rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--color-background-border);
+}
+
+.peyk-home .toctree-wrapper ul ul li {
+  margin: 0 0 0.15rem;
+}
+
+.peyk-home .toctree-wrapper ul ul a {
+  color: var(--color-foreground-secondary);
+  font-size: 0.92rem;
+}
+
+.peyk-home .toctree-wrapper a {
+  text-decoration: none;
+}
+
+.peyk-home .toctree-wrapper a:hover {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
