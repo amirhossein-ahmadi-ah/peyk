@@ -1031,56 +1031,23 @@ except PlatformError as e:
   }
 
   var EXAMPLES = [
-    { id: 'echo', label: 'echo', file: 'examples/echo.py', code:
-'from peyk import Bot\n\n' +
-'bot = Bot("TOKEN", platform="telegram")\n\n' +
-'@bot.message()\n' +
-'async def echo(message):\n' +
-'    await message.answer(message.text or "")\n\n' +
-'bot.run()' },
+    { id: "echo", label: "echo", file: "examples/echo_bot.py", code:
+      "\"\"\"Minimal echo bot using the simple API.\"\"\"\nfrom peyk import Bot\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\n\n@bot.message()\nasync def echo(message):\n    if message.text:\n        await message.answer(message.text)\n\nif __name__ == \"__main__\":\n    bot.run()" },
 
-    { id: 'cmds', label: 'commands', file: 'examples/commands.py', code:
-'from peyk import Bot, Router\n' +
-'from peyk.filters import Command\n\n' +
-'router = Router()\n\n' +
-'@router.message(Command("start"))\n' +
-'async def start(message):\n' +
-'    await message.answer("hi")\n\n' +
-'@router.message(Command("help"))\n' +
-'async def help_(message):\n' +
-'    await message.answer("commands: /start /help")\n\n' +
-'bot = Bot("TOKEN", platform="bale")\n' +
-'bot.include_router(router)\n' +
-'bot.run()' },
+    { id: "router", label: "router", file: "examples/dispatcher_router.py", code:
+      "\"\"\"Dispatcher + Router example with a real router tree and event flow.\"\"\"\nfrom peyk import Bot, Dispatcher, Router, F\n\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\ndispatcher = Dispatcher()\nmessages = Router(name=\"messages\")\nadmin = Router(name=\"admin\")\n\n\n@messages.message(F.text)\nasync def echo(message):\n    await message.answer(f\"echo: {message.text}\")\n\n\n@admin.command(\"admin\")\nasync def admin_command(message):\n    await message.answer(\"Admin router handled /admin\")\n\n\n# Child routers are registered on the dispatcher, not only defined locally.\n# Routers are tried in the order they are included and the FIRST match wins.\n# ``messages`` matches every text message (including \"/admin\"), so the more\n# specific ``admin`` router must come first or it would never be reached.\ndispatcher.include_router(admin)\ndispatcher.include_router(messages)\n\n\nif __name__ == \"__main__\":\n    dispatcher.run_polling(bot)" },
 
-    { id: 'cbq', label: 'callbacks', file: 'examples/callbacks.py', code:
-'@router.callback_query()\n' +
-'async def on_cb(q):\n' +
-'    await q.answer("ok")\n' +
-'    await q.message.edit_text("done")' },
+    { id: "callbacks", label: "callbacks", file: "examples/callback_data.py", code:
+      "\"\"\"A complete typed callback-data flow: send the buttons, then handle clicks.\"\"\"\nfrom peyk import Bot, CallbackData\nfrom peyk.keyboard import InlineKeyboardBuilder\n\n\nclass Product(CallbackData, prefix=\"product\"):\n    id: int\n    action: str\n\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\n\n\n@bot.command(\"products\")\nasync def products(message):\n    keyboard = (\n        InlineKeyboardBuilder()\n        .button(text=\"Buy\", callback_data=Product(id=42, action=\"buy\").pack())\n        .button(text=\"Details\", callback_data=Product(id=42, action=\"details\").pack())\n        .adjust(2)\n        .as_markup()\n    )\n    await message.answer(\"Choose an action:\", reply_markup=keyboard)\n\n\n@bot.callback_query(Product.filter())\nasync def callback(query, callback_data: Product):\n    await query.answer(f\"{callback_data.action}: product #{callback_data.id}\")\n\n\nif __name__ == \"__main__\":\n    bot.run()" },
 
-    { id: 'fsm', label: 'FSM', file: 'examples/fsm.py', code:
-'from peyk.fsm import State, StatesGroup\n\n' +
-'class Form(StatesGroup):\n' +
-'    name = State()\n\n' +
-'@router.message(Command("form"))\n' +
-'async def begin(message, state):\n' +
-'    await state.set(Form.name)\n' +
-'    await message.answer("name?")\n\n' +
-'@router.message(Form.name)\n' +
-'async def got_name(message, state):\n' +
-'    await state.clear()\n' +
-'    await message.answer(f"hi {message.text}")' },
+    { id: "fsm", label: "FSM", file: "examples/finite_state_machine.py", code:
+      "\"\"\"A complete multi-step FSM conversation using the dispatcher integration.\"\"\"\nfrom peyk import Bot, Dispatcher\nfrom peyk.filters import StateFilter\nfrom peyk.fsm import FSMContext, MemoryStorage, State, StatesGroup\n\n\nclass Form(StatesGroup):\n    name = State()\n    age = State()\n\n\nstorage = MemoryStorage()\ndispatcher = Dispatcher(storage=storage)\nbot = Bot(\"TOKEN\", platform=\"telegram\")\n\n\n@dispatcher.command(\"start\")\nasync def start(message, state: FSMContext):\n    await state.set_state(Form.name)\n    await message.answer(\"What is your name?\")\n\n\n@dispatcher.message(StateFilter(Form.name))\nasync def name_step(message, state: FSMContext):\n    await state.update_data(name=message.text or \"\")\n    await state.set_state(Form.age)\n    await message.answer(\"How old are you?\")\n\n\n@dispatcher.message(StateFilter(Form.age))\nasync def age_step(message, state: FSMContext):\n    data = await state.update_data(age=message.text or \"\")\n    await message.answer(f\"Thanks {data['name']}! Your age is {data['age']}.\")\n    await state.clear()\n\n\nif __name__ == \"__main__\":\n    dispatcher.run_polling(bot)" },
 
-    { id: 'multi', label: 'multi-platform', file: 'examples/multi_platform.py', code:
-'import sys\n' +
-'from peyk import Bot\n\n' +
-'# telegram | bale | rubika\n' +
-'bot = Bot("TOKEN", platform=sys.argv[1])\n\n' +
-'@bot.command("ping")\n' +
-'async def ping(message):\n' +
-'    await message.answer("pong")\n\n' +
-'bot.run()' }
+    { id: "multi", label: "multi-platform", file: "examples/multi_platform.py", code:
+      "\"\"\"Run the same handler logic on multiple platforms.\"\"\"\nfrom peyk import Bot, run\n\ntelegram = Bot(\"TELEGRAM_TOKEN\", platform=\"telegram\")\nbale = Bot(\"BALE_TOKEN\", platform=\"bale\")\n\n@telegram.command(\"start\")\n@bale.command(\"start\")\nasync def start(message):\n    await message.answer(\"Hello from the shared handler\")\n\nif __name__ == \"__main__\":\n    run(telegram, bale)" },
+
+    { id: "webhook", label: "webhook", file: "examples/webhook.py", code:
+      "\"\"\"Webhook runner example.\"\"\"\nfrom peyk import Bot, Dispatcher\n\nbot = Bot(\"TOKEN\", platform=\"telegram\")\ndp = Dispatcher()\ndp.include_router(bot.router)\n\nif __name__ == \"__main__\":\n    dp.run_webhook(bot, base_url=\"https://example.com\", secrets=[\"replace-me\"])" }
   ];
 
   var exTabs = $('#exTabs'), exPanels = $('#exPanels');

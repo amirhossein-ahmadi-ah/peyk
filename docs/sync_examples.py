@@ -10,10 +10,10 @@ from pathlib import Path
 EXAMPLES: list[tuple[str, str, str]] = [
     ("echo", "echo", "echo_bot.py"),
     ("router", "router", "dispatcher_router.py"),
-    ("keyboards", "keyboards", "keyboards.py"),
     ("callbacks", "callbacks", "callback_data.py"),
     ("fsm", "FSM", "finite_state_machine.py"),
     ("multi", "multi-platform", "multi_platform.py"),
+    ("webhook", "webhook", "webhook.py"),
 ]
 
 MAX_LINES = 40
