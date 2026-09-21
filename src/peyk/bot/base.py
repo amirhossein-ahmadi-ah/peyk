@@ -91,6 +91,11 @@ class Bot(Generic[ClientT]):
             self._client = cast(ClientT, self._client_cls(self._token, self._session, retry_policy=self._retry_policy, logger=self._client_logger, base_url=self._base_url))
         return self._client
 
+    @property
+    def token(self) -> str:
+        """Return the bot token this bot was created with (read-only)."""
+        return self._token
+
     def supports(self, feature: Feature) -> bool:
         """Return whether the audited capability is usable."""
         return self.capabilities.supports(feature)
@@ -639,6 +644,28 @@ Returns:
         self._unsupported(Feature.UNBAN)
         return await strategies.unban_chat_member(self, chat_id, user_id)
 
+    async def create_chat_invite_link(self, chat_id: int | str, *, name: str | None=None, expire_date: int | None=None, member_limit: int | None=None, creates_join_request: bool | None=None) -> str:
+        """Create an invite link for a chat and return its URL.
+
+        ``name``, ``expire_date``, ``member_limit`` and ``creates_join_request``
+        are enforceable by Telegram only. Bale's ``createChatInviteLink`` takes
+        just the chat ID, so those options are rejected there rather than
+        silently ignored. The bot must be an administrator of the chat.
+
+        Example:
+            .. code-block:: python
+
+                link = await bot.create_chat_invite_link(chat_id)
+        """
+        self._unsupported(Feature.INVITE_LINKS)
+        if self.platform == 'telegram':
+            created = await self.client.create_chat_invite_link(chat_id, name=name, expire_date=expire_date, member_limit=member_limit, creates_join_request=creates_join_request)
+            return created.invite_link
+        if name is not None or expire_date is not None or member_limit is not None or creates_join_request is not None:
+            raise UnsupportedFeatureError(Feature.INVITE_LINKS, self.platform, self.capabilities.get(Feature.INVITE_LINKS))
+        result = await self.client.create_chat_invite_link(chat_id)
+        return _invite_link_url(result)
+
     async def get_file(self, file_id: str) -> File:
         """Return a neutral file descriptor."""
         self._unsupported(Feature.GET_FILE)
@@ -648,6 +675,16 @@ Returns:
         """Download file bytes using the platform-specific file descriptor/URL."""
         self._unsupported(Feature.GET_FILE)
         return await strategies.download(self, file_id)
+
+def _invite_link_url(result: object) -> str:
+    """Extract the invite URL from Bale's ``{"invite_link": ...}`` (or bare string) result."""
+    if isinstance(result, dict):
+        link = result.get('invite_link')
+        if isinstance(link, str) and link:
+            return link
+    elif isinstance(result, str) and result:
+        return result
+    raise ValueError(f'Unexpected invite link response: {result!r}')
 
 def _is_invalid_token(exc: BaseException) -> bool:
     """Recognize the audited HTTP authentication failure shape."""

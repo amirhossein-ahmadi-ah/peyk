@@ -47,6 +47,11 @@ class RubikaClient:
         self._retry_policy = retry_policy or RetryPolicy()
         self._base_url = f"{(base_url or self.base_url).rstrip('/')}/{token}"
 
+    @property
+    def token(self) -> str:
+        """Return the bot token this client was created with (read-only)."""
+        return self._token
+
     async def __aenter__(self) -> "RubikaClient":
         """Enter the async context manager and return this client."""
         return self

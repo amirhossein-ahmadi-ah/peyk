@@ -6,6 +6,12 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- `Bot.create_chat_invite_link()` now exists on the platform-neutral `Bot`; it returned
+  `AttributeError` even though the Bale/Telegram clients implemented it. It returns the
+  invite URL as a `str`. `name`, `expire_date`, `member_limit` and `creates_join_request`
+  are Telegram-only and raise `UnsupportedFeatureError` on Bale; Rubika is unsupported.
+- The bot token is now readable: `bot.token` and `bot.client.token` (Bale, Telegram and
+  Rubika). Previously only the private `_token` attribute existed.
 - `Router.command()` (and therefore `Dispatcher.command()`) now exists; only
   `Bot.command()` did, so three shipped examples crashed on load.
 - `F` (magic-filter) expressions passed to `@router.message(...)`,

@@ -55,6 +55,11 @@ class TelegramLikeClient(Generic[UserT, WebhookInfoT, FileT, ChatT, ChatMemberT]
         self._retry_policy = retry_policy or RetryPolicy()
         self._base_url = f'{base_url or self.base_url}/bot{token}'
 
+    @property
+    def token(self) -> str:
+        """Return the bot token this client was created with (read-only)."""
+        return self._token
+
     async def close(self) -> None:
         """Close only a transport session created by this client.
         

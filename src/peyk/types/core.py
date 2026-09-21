@@ -82,6 +82,7 @@ class Message(IncomingMessage, _BoundActions):
     from_user: Optional[User] = None
     chat: Optional[Chat] = None
     content_type: ContentType = ContentType.UNKNOWN
+    reply_to_message: Optional['Message'] = None
     bot: Optional["Bot"] = field(default=None, repr=False, compare=False, hash=False)
 
     def _chat(self) -> Identifier:
