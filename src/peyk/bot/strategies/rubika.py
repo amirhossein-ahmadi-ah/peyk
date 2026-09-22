@@ -276,6 +276,18 @@ Returns:
     Result produced by the bot operation."""
     raise NotImplementedError('Rubika has no audited get-chat-member operation')
 
+async def get_chat_administrators(client: RubikaClient, bot: object, chat_id: int | str) -> list[ChatMember]:
+    """Retrieves the administrator list for a chat from the bot API.
+
+Args:
+    client: Value used by this operation.
+    bot: Value used by this operation.
+    chat_id: Identifier of the target chat.
+
+Returns:
+    Result produced by the bot operation."""
+    raise NotImplementedError('Rubika has no audited get-chat-administrators operation')
+
 async def ban_chat_member(client: RubikaClient, bot: object, chat_id: int | str, user_id: int) -> bool:
     """Performs the ban chat member operation for the bot client.
 

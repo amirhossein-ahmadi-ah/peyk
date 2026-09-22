@@ -100,6 +100,33 @@ class Bot(Generic[ClientT]):
         """Return whether the audited capability is usable."""
         return self.capabilities.supports(feature)
 
+    def __getattr__(self, name: str) -> object:
+        """Fall back to the raw platform client for platform-specific operations.
+
+        The neutral surface defined above this point only wraps the handful
+        of methods that make sense across Telegram, Bale *and* Rubika at
+        once. Everything else the audited client for the active platform
+        exposes (Telegram gifts/stories/business/passport, Bale sticker-set
+        management, Rubika-only calls, ...) is reached transparently through
+        ``bot.<method>(...)`` instead of forcing ``bot.client.<method>(...)``
+        for those. Python only calls ``__getattr__`` once normal attribute
+        lookup (instance dict, then the class and its bases) has already
+        failed, so this never shadows a method defined above - it only fills
+        in names the neutral facade does not define itself.
+
+        A name that does not exist on the active platform's client still
+        raises a plain ``AttributeError`` naming the platform, so a typo or
+        a genuinely wrong-platform call fails immediately and clearly rather
+        than resolving to ``None``.
+        """
+        if name.startswith('_') or name in {'client', 'platform'}:
+            raise AttributeError(name)
+        client = self.client
+        attr = getattr(client, name, None)
+        if attr is None or not callable(attr):
+            raise AttributeError(f"'{type(self).__name__}' has no attribute {name!r} on platform {self.platform!r}")
+        return attr
+
     async def __aenter__(self) -> 'Bot[ClientT]':
         return self
 
@@ -619,6 +646,18 @@ Args:
 Returns:
     Result produced by the bot operation."""
         return await strategies.get_chat_member(self, chat_id, user_id)
+
+    async def get_chat_administrators(self, chat_id: int | str) -> list[ChatMember]:
+        """Retrieves the list of chat administrators through the bot API.
+
+Args:
+    chat_id: Identifier of the target chat.
+
+Returns:
+    Result produced by the bot operation."""
+        self._unsupported(Feature.ADMINISTRATORS)
+        return await strategies.get_chat_administrators(self, chat_id)
+    get_chat_admins = get_chat_administrators
 
     async def ban_chat_member(self, chat_id: int | str, user_id: int) -> bool:
         """Performs the ban chat member operation for the bot client.

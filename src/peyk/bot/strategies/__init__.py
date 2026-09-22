@@ -234,6 +234,17 @@ Returns:
     Result produced by the bot operation."""
     return await _module(bot).get_chat_member(bot.client, bot, chat_id, uid)
 
+async def get_chat_administrators(bot: object, chat_id: int | str) -> list[ChatMember]:
+    """Retrieves the administrator list for a chat from the bot API.
+
+Args:
+    bot: Value used by this operation.
+    chat_id: Identifier of the target chat.
+
+Returns:
+    Result produced by the bot operation."""
+    return await _module(bot).get_chat_administrators(bot.client, bot, chat_id)
+
 async def ban_chat_member(bot: object, chat_id: int | str, uid: int) -> bool:
     """Performs the ban chat member operation for the bot client.
 

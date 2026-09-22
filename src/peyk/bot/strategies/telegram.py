@@ -279,6 +279,23 @@ Returns:
     raw_user = getattr(raw, 'user', None)
     return ChatMember(status=getattr(raw, 'status', ''), user=user(raw_user) if raw_user is not None else None, raw=raw)
 
+async def get_chat_administrators(client: TelegramClient, bot: object, chat_id: int | str) -> list[ChatMember]:
+    """Retrieves the administrator list for a chat from the bot API.
+
+Args:
+    client: Value used by this operation.
+    bot: Value used by this operation.
+    chat_id: Identifier of the target chat.
+
+Returns:
+    Result produced by the bot operation."""
+    raw_members = await client.get_chat_administrators(chat_id)
+    result: list[ChatMember] = []
+    for raw in raw_members:
+        raw_user = getattr(raw, 'user', None)
+        result.append(ChatMember(status=getattr(raw, 'status', ''), user=user(raw_user) if raw_user is not None else None, raw=raw))
+    return result
+
 async def ban_chat_member(client: TelegramClient, bot: object, chat_id: int | str, user_id: int) -> bool:
     """Performs the ban chat member operation for the bot client.
 
