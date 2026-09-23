@@ -27,6 +27,7 @@ from peyk.platforms.bale.models import (
     Chat,
     ChatMember,
     ChatMemberAdministrator,
+    ChatPermissions,
     File,
     Message,
     Update,
@@ -299,6 +300,36 @@ async def test_ban_chat_member(client) -> None:
     assert server.calls_for("banChatMember")[0]["body"] == {
         "chat_id": 200,
         "user_id": 7,
+    }
+
+
+@pytest.mark.asyncio
+async def test_restrict_chat_member(client) -> None:
+    bale_client, server = client
+    server.set_response("restrictChatMember", lambda body: True)
+
+    result = await bale_client.restrict_chat_member(
+        200, 7, ChatPermissions(can_send_messages=False)
+    )
+
+    assert result is True
+    assert server.calls_for("restrictChatMember")[0]["body"] == {
+        "chat_id": 200,
+        "user_id": 7,
+        "permissions": {"can_send_messages": False},
+    }
+
+
+@pytest.mark.asyncio
+async def test_restrict_chat_member_accepts_mapping(client) -> None:
+    bale_client, server = client
+    server.set_response("restrictChatMember", lambda body: True)
+
+    assert await bale_client.restrict_chat_member(200, 7, {"can_send_messages": True}) is True
+    assert server.calls_for("restrictChatMember")[0]["body"] == {
+        "chat_id": 200,
+        "user_id": 7,
+        "permissions": {"can_send_messages": True},
     }
 
 

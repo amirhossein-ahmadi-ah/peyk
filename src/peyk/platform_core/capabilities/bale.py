@@ -14,7 +14,7 @@ for feature, method in {
     Feature.EDIT_TEXT:"BaleClient.edit_message_text", Feature.EDIT_CAPTION:"BaleClient.edit_message_caption", Feature.EDIT_MARKUP:"BaleClient.edit_message_reply_markup",
     Feature.DELETE:"TelegramLikeClient.delete_message", Feature.REPLY_TO:"BaleClient.send_message", Feature.CHAT_ACTIONS:"BaleClient.send_chat_action",
     Feature.PAYMENTS:"BaleClient.send_invoice", Feature.GET_FILE:"TelegramLikeClient.get_file", Feature.POLLING:"BaleClient.get_updates",
-    Feature.WEBHOOK:"BaleClient.set_webhook", Feature.BAN:"BaleClient.ban_chat_member", Feature.UNBAN:"TelegramLikeClient.unban_chat_member",
+    Feature.WEBHOOK:"BaleClient.set_webhook", Feature.BAN:"BaleClient.ban_chat_member", Feature.UNBAN:"TelegramLikeClient.unban_chat_member", Feature.RESTRICT:"BaleClient.restrict_chat_member",
     Feature.PROMOTE:"BaleClient.promote_chat_member", Feature.PIN:"BaleClient.pin_chat_message", Feature.UNPIN:"BaleClient.unpin_chat_message",
     Feature.INVITE_LINKS:"BaleClient.create_chat_invite_link", Feature.MEMBER_COUNT:"BaleClient.get_chat_members_count", Feature.ADMINISTRATORS:"BaleClient.get_chat_administrators",
     Feature.TITLE:"TelegramLikeClient.set_chat_title", Feature.DESCRIPTION:"BaleClient.set_chat_description", Feature.CHAT_PHOTO:"BaleClient.set_chat_photo",

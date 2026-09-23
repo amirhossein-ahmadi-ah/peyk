@@ -9,6 +9,7 @@ from .edit_message_reply_markup import edit_message_reply_markup
 from .forward_message import forward_message
 from .copy_message import copy_message
 from .ban_chat_member import ban_chat_member
+from .restrict_chat_member import restrict_chat_member
 from .promote_chat_member import promote_chat_member
 from .get_chat_administrators import get_chat_administrators
 from .pin_chat_message import pin_chat_message

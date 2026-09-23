@@ -60,6 +60,7 @@ class BaleClient(TelegramLikeClient[User, WebhookInfo, File, Chat, ChatMember]):
     forward_message = forward_message
     copy_message = copy_message
     ban_chat_member = ban_chat_member
+    restrict_chat_member = restrict_chat_member
     promote_chat_member = promote_chat_member
     get_chat_administrators = get_chat_administrators
     pin_chat_message = pin_chat_message

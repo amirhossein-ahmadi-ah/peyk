@@ -2,6 +2,7 @@
 
 from .user import User
 from .chat_photo import ChatPhoto
+from .chat_permissions import ChatPermissions
 from .chat import Chat
 from .photo_size import PhotoSize
 from .animation import Animation
@@ -47,4 +48,4 @@ from .input_media_document import InputMediaDocument
 from .input_media_item import InputMediaItem
 from .media_input import MediaInput
 
-__all__ = ['User', 'ChatPhoto', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update', 'InputMediaPhoto', 'InputMediaVideo', 'InputMediaAnimation', 'InputMediaAudio', 'InputMediaDocument', 'InputMediaItem', 'MediaInput']
+__all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update', 'InputMediaPhoto', 'InputMediaVideo', 'InputMediaAnimation', 'InputMediaAudio', 'InputMediaDocument', 'InputMediaItem', 'MediaInput']
