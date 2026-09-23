@@ -2,6 +2,7 @@
 
 from .types.user import User
 from .types.chat_photo import ChatPhoto
+from .types.chat_permissions import ChatPermissions
 from .types.chat import Chat
 from .types.photo_size import PhotoSize
 from .types.animation import Animation
@@ -39,5 +40,6 @@ from .types.chat_member_restricted import ChatMemberRestricted
 from .types.message import Message
 from .types.callback_query import CallbackQuery
 from .types.update import Update
+
 
 __all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update']
