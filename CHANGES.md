@@ -6,6 +6,10 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Multipart media uploads (bytes/streams, e.g. Bale `send_animation` with downloaded GIF bytes) sent
+  `reply_markup` as the Python `repr()` of the keyboard dataclass, so the platform dropped the inline
+  keyboard. Dataclass models and tuples are now JSON-encoded in form fields
+  (`TelegramLikeClient._form_field_value`, also used by the Telegram file-message path).
 - `Bot.create_chat_invite_link()` now exists on the platform-neutral `Bot`; it returned
   `AttributeError` even though the Bale/Telegram clients implemented it. It returns the
   invite URL as a `str`. `name`, `expire_date`, `member_limit` and `creates_join_request`

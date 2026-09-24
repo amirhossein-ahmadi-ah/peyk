@@ -6,6 +6,7 @@ most same-named public methods remain semantically different, so only
 identical-logic methods are promoted here.
 """
 from __future__ import annotations
+import dataclasses
 from typing import Any, Callable, Dict, Generic, Mapping, Optional, Protocol, Type, TypeVar, cast
 import orjson
 from peyk.transport import FilePayload, RetryPolicy, Session, run_with_retry
@@ -290,6 +291,22 @@ Args:
         """Serialize a structured value for a multipart string field."""
         return orjson.dumps(value).decode('utf-8')
 
+    @staticmethod
+    def _form_field_value(value: object) -> str:
+        """Render one multipart form field as a string.
+
+        Strings pass through, structured values (``dict``/``list``/``tuple`` and
+        dataclass models such as a rendered ``InlineKeyboardMarkup``) are JSON
+        encoded, and everything else falls back to ``str``.  Dataclass models must
+        be JSON encoded here: ``str()`` would send their Python ``repr`` and the
+        platform silently drops a ``reply_markup`` it cannot parse.
+        """
+        if isinstance(value, str):
+            return value
+        if isinstance(value, (dict, list, tuple)) or (dataclasses.is_dataclass(value) and not isinstance(value, type)):
+            return orjson.dumps(value).decode('utf-8')
+        return str(value)
+
     @classmethod
     def _build_media_request_kwargs(cls, field_name: str, media: object, *, json_fields: Optional[Mapping[str, object]]=None, form_fields: Optional[Mapping[str, str]]=None, extra_files: Optional[Mapping[str, object]]=None, default_filename: str) -> Dict[str, object]:
         """Build the platform-neutral JSON/multipart request for media.
@@ -312,7 +329,7 @@ Args:
             return {'json_body': payload}
         fields: Dict[str, str] = dict(form_fields or {})
         for key, value in (json_fields or {}).items():
-            fields[key] = value if isinstance(value, str) else cls._json_field(value) if isinstance(value, (dict, list)) else str(value)
+            fields[key] = cls._form_field_value(value)
         files: Dict[str, FilePayload] = {field_name: cls._as_file_payload(media, default_filename=default_filename)}
         for key, value in extra_files.items():
             if cls._is_upload(value):

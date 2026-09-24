@@ -27,7 +27,7 @@ async def _send_file_message(self, method_name: str, field_name: str, chat_id: C
     if not (self._is_upload(media) or any((self._is_upload(v) for v in (extra_files or {}).values()))):
         result = await self._call(method_name, json_body={**json_payload, **{k: v for k, v in (extra_files or {}).items()}})
         return Message.from_dict(result)
-    form_fields = {key: value if isinstance(value, str) else self._json_field(value) if isinstance(value, (dict, list)) else str(value) for key, value in json_payload.items() if key != field_name}
+    form_fields = {key: self._form_field_value(value) for key, value in json_payload.items() if key != field_name}
     self._apply_send_options_form(form_fields, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, reply_parameters=reply_parameters, reply_markup=reply_markup)
     kwargs = self._build_media_request_kwargs(field_name, media, form_fields=form_fields, extra_files=extra_files, default_filename=default_filename)
     result = await self._call(method_name, **kwargs)
