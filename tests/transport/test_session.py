@@ -52,3 +52,14 @@ async def test_session_reuses_same_connector_across_requests() -> None:
             # build a new ClientSession/TCPConnector per call.
             assert connector_before is connector_after
             assert session._session.connector is connector_before
+
+
+@pytest.mark.asyncio
+async def test_data_without_files_is_form_urlencoded() -> None:
+    app = _make_app()
+    async with TestServer(app) as server:
+        async with Session() as session:
+            resp = await session.request(
+                "POST", str(server.make_url("/echo")), data={"a": "1", "b": "x y"}
+            )
+    assert resp.body == b"a=1&b=x+y"

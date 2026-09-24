@@ -48,6 +48,14 @@ class TelegramLikeClient(Generic[UserT, WebhookInfoT, FileT, ChatT, ChatMemberT]
     chat_model: type[_FromDictModel[ChatT]]
     chat_member_parser: Callable[[Optional[dict]], Optional[ChatMemberT]]
     chat_member_count_method: str
+    string_media_form_encoded: bool = False
+    """Send string media references (``file_id``/URL) form-urlencoded, not as JSON.
+
+    Bale's media methods answer ``400 malformed request`` to a JSON body whose
+    media value is a plain string, but accept the same fields as
+    ``application/x-www-form-urlencoded`` (hand-verified against
+    ``sendAnimation``). Telegram accepts JSON, so the default stays ``False``.
+    """
 
     def __init__(self, token: str, session: Optional[Session]=None, *, retry_policy: Optional[RetryPolicy]=None, logger: object=None, base_url: Optional[str]=None) -> None:
         self._token = token
@@ -246,7 +254,7 @@ Returns:
             Returns:
                 The operation result (``Any``).
             """
-            return await self._session.request('POST', url, json_body=json_body if not files else None, data=data if files else None, files=files)
+            return await self._session.request('POST', url, json_body=json_body if not files else None, data=data, files=files)
         response = await run_with_retry(operation, self._retry_policy)
         body = response.json
         if not isinstance(body, dict):
@@ -313,7 +321,8 @@ Args:
 
         Public media APIs remain platform-owned because their parameter
         surfaces differ. This helper shares only the proven mechanics: a
-        string media reference stays in JSON, while an upload (or any extra
+        string media reference stays in JSON (or is form-urlencoded when the
+        platform sets ``string_media_form_encoded``, as Bale does), while an upload (or any extra
         upload such as a thumbnail) switches the complete request to
         multipart and normalizes upload values to ``FilePayload``.
         """
@@ -326,6 +335,8 @@ Args:
                 payload[key] = value
             if form_fields:
                 payload.update(form_fields)
+            if cls.string_media_form_encoded:
+                return {'data': {key: cls._form_field_value(value) for key, value in payload.items()}}
             return {'json_body': payload}
         fields: Dict[str, str] = dict(form_fields or {})
         for key, value in (json_fields or {}).items():

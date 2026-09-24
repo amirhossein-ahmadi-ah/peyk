@@ -44,6 +44,7 @@ class BaleClient(TelegramLikeClient[User, WebhookInfo, File, Chat, ChatMember]):
         base_url: Optional API base URL override for local tests.
     """
     base_url = BASE_URL
+    string_media_form_encoded = True
     chat_model = Chat
     chat_member_parser = ChatMember.from_dict
     chat_member_count_method = 'getChatMembersCount'

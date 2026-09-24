@@ -1037,3 +1037,20 @@ claiming that those platforms deliver them.
   `html_theme_options` (`light_css_variables` / `dark_css_variables`), layout in
   `_static/custom.css`. Pygments styles were intentionally left at Furo defaults.
 - Not verified here: `sphinx-build` (Sphinx/Furo were not installed).
+
+## Bale string media is sent form-urlencoded
+
+- Evidence (manual, against tapi.bale.ai): `sendAnimation` with a `file_id`
+  string returns `400 malformed request` for a JSON body (raw PowerShell and
+  peyk alike) but succeeds as `application/x-www-form-urlencoded` (POST or
+  query string).
+- Decision: `TelegramLikeClient.string_media_form_encoded` (default `False`);
+  `BaleClient` sets it to `True`. In `_build_media_request_kwargs` a string
+  media value then returns `{'data': ...}` (all values via `_form_field_value`)
+  instead of `{'json_body': ...}`. Telegram is unchanged.
+- `_call` now forwards `data` even without `files`; `Session.request` already
+  let aiohttp form-encode a plain mapping, so the transport needed no change.
+- Scope: only the shared string-media path (`send_animation/photo/video/
+  document/audio/voice`). UNKNOWN: whether Bale rejects JSON for non-media
+  methods (`sendMessage`, ...) and for `sendMediaGroup` with `file_id`s; those
+  are untouched until confirmed by `bot.client.send_message(...)`.

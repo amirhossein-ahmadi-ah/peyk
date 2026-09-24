@@ -1219,3 +1219,56 @@ async def test_bale_api_error_is_distinct_from_transport_http_status_error(
         await bale_client.send_message(200, "hello")
 
     assert not isinstance(exc_info.value, HTTPStatusError)
+
+
+# --- string media (file_id) must be form-urlencoded on Bale --------------------
+
+_MEDIA_SEEN: Dict[str, Any] = {}
+
+
+async def _reject_json_media(request: web.Request) -> web.Response:
+    """Mimic tapi.bale.ai: JSON bodies are 400, urlencoded forms are accepted."""
+    _MEDIA_SEEN["content_type"] = request.content_type
+    if request.content_type == "application/json":
+        return web.json_response(
+            {"ok": False, "error_code": 400, "description": "Bad Request: malformed request"},
+            status=400,
+        )
+    form = await request.post()
+    _MEDIA_SEEN["form"] = dict(form)
+    return web.json_response(
+        {
+            "ok": True,
+            "result": {"message_id": 1, "date": 1, "chat": SAMPLE_CHAT_RAW},
+        }
+    )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("method", "field"),
+    [
+        ("send_animation", "animation"),
+        ("send_photo", "photo"),
+        ("send_video", "video"),
+        ("send_document", "document"),
+    ],
+)
+async def test_string_media_is_sent_form_urlencoded(method: str, field: str) -> None:
+    _MEDIA_SEEN.clear()
+    app = web.Application()
+    app.router.add_post("/bot{token}/{method}", _reject_json_media)
+    async with TestServer(app) as server:
+        client = BaleClient(TOKEN, base_url=str(server.make_url("")).rstrip("/"))
+        try:
+            await getattr(client, method)(
+                6050929996, "290809805:-798957042332197117:1:abc", caption="hi"
+            )
+        finally:
+            await client.close()
+    assert _MEDIA_SEEN["content_type"] == "application/x-www-form-urlencoded"
+    assert _MEDIA_SEEN["form"] == {
+        "chat_id": "6050929996",
+        field: "290809805:-798957042332197117:1:abc",
+        "caption": "hi",
+    }
