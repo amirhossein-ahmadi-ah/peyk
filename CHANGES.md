@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Bale polls (an update kind that is in the live API but missing from Bale's docs; modelled on
+  pyrobale): new `bale.Poll` / `bale.PollOption` types, `Message.poll` is now parsed (so
+  `ContentType.POLL` works for Bale messages), and `Update.poll` is parsed and delivered to the
+  `@router.poll()` observer on Bale bots. Sending polls on Bale is still unsupported.
+
 ### Fixed
 
 - Multipart media uploads (bytes/streams, e.g. Bale `send_animation` with downloaded GIF bytes) sent

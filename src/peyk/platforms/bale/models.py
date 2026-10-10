@@ -14,6 +14,8 @@ from .types.sticker import Sticker
 from .types.sticker_set import StickerSet
 from .types.contact import Contact
 from .types.location import Location
+from .types.poll_option import PollOption
+from .types.poll import Poll
 from .types.file import File
 from .types.message_id import MessageId
 from .types.webhook_info import WebhookInfo
@@ -42,4 +44,4 @@ from .types.callback_query import CallbackQuery
 from .types.update import Update
 
 
-__all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update']
+__all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'PollOption', 'Poll', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update']

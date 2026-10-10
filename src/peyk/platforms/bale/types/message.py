@@ -10,6 +10,7 @@ from .invoice import Invoice
 from .location import Location
 from .message_entity import MessageEntity
 from .photo_size import PhotoSize
+from .poll import Poll
 from .sticker import Sticker
 from .successful_payment import SuccessfulPayment
 from .user import User
@@ -47,6 +48,7 @@ Preserves the existing dataclass fields and parsing behavior."""
     caption_entities: Optional[List[MessageEntity]] = None
     contact: Optional[Contact] = None
     location: Optional[Location] = None
+    poll: Optional[Poll] = None
     new_chat_members: Optional[List[User]] = None
     left_chat_member: Optional[User] = None
     invoice: Optional[Invoice] = None
@@ -69,7 +71,7 @@ Raises:
         if data is None:
             return None
         new_chat_members_raw = data.get('new_chat_members')
-        return cls(message_id=data['message_id'], from_=User.from_dict(data.get('from')), date=data.get('date'), chat=Chat.from_dict(data.get('chat')), sender_chat=Chat.from_dict(data.get('sender_chat')), forward_from=User.from_dict(data.get('forward_from')), forward_from_chat=Chat.from_dict(data.get('forward_from_chat')), forward_from_message_id=data.get('forward_from_message_id'), forward_date=data.get('forward_date'), reply_to_message=Message.from_dict(data.get('reply_to_message')), edit_date=data.get('edit_date'), media_group_id=data.get('media_group_id'), text=data.get('text'), entities=MessageEntity.list_from_result(data.get('entities')), animation=Animation.from_dict(data.get('animation')), audio=Audio.from_dict(data.get('audio')), document=Document.from_dict(data.get('document')), photo=PhotoSize.list_from_result(data.get('photo')), sticker=Sticker.from_dict(data.get('sticker')), video=Video.from_dict(data.get('video')), voice=Voice.from_dict(data.get('voice')), caption=data.get('caption'), caption_entities=MessageEntity.list_from_result(data.get('caption_entities')), contact=Contact.from_dict(data.get('contact')), location=Location.from_dict(data.get('location')), new_chat_members=[User.from_dict(u) for u in new_chat_members_raw] if new_chat_members_raw is not None else None, left_chat_member=User.from_dict(data.get('left_chat_member')), invoice=Invoice.from_dict(data.get('invoice')), successful_payment=SuccessfulPayment.from_dict(data.get('successful_payment')), web_app_data=WebAppData.from_dict(data.get('web_app_data')), reply_markup=data.get('reply_markup'))
+        return cls(message_id=data['message_id'], from_=User.from_dict(data.get('from')), date=data.get('date'), chat=Chat.from_dict(data.get('chat')), sender_chat=Chat.from_dict(data.get('sender_chat')), forward_from=User.from_dict(data.get('forward_from')), forward_from_chat=Chat.from_dict(data.get('forward_from_chat')), forward_from_message_id=data.get('forward_from_message_id'), forward_date=data.get('forward_date'), reply_to_message=Message.from_dict(data.get('reply_to_message')), edit_date=data.get('edit_date'), media_group_id=data.get('media_group_id'), text=data.get('text'), entities=MessageEntity.list_from_result(data.get('entities')), animation=Animation.from_dict(data.get('animation')), audio=Audio.from_dict(data.get('audio')), document=Document.from_dict(data.get('document')), photo=PhotoSize.list_from_result(data.get('photo')), sticker=Sticker.from_dict(data.get('sticker')), video=Video.from_dict(data.get('video')), voice=Voice.from_dict(data.get('voice')), caption=data.get('caption'), caption_entities=MessageEntity.list_from_result(data.get('caption_entities')), contact=Contact.from_dict(data.get('contact')), location=Location.from_dict(data.get('location')), poll=Poll.from_dict(data.get('poll')), new_chat_members=[User.from_dict(u) for u in new_chat_members_raw] if new_chat_members_raw is not None else None, left_chat_member=User.from_dict(data.get('left_chat_member')), invoice=Invoice.from_dict(data.get('invoice')), successful_payment=SuccessfulPayment.from_dict(data.get('successful_payment')), web_app_data=WebAppData.from_dict(data.get('web_app_data')), reply_markup=data.get('reply_markup'))
 
     @classmethod
     def list_from_result(cls, data: Optional[List[dict]]) -> List['Message']:

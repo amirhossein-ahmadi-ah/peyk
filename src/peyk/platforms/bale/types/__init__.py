@@ -14,6 +14,8 @@ from .sticker import Sticker
 from .sticker_set import StickerSet
 from .contact import Contact
 from .location import Location
+from .poll_option import PollOption
+from .poll import Poll
 from .file import File
 from .message_id import MessageId
 from .webhook_info import WebhookInfo
@@ -48,4 +50,4 @@ from .input_media_document import InputMediaDocument
 from .input_media_item import InputMediaItem
 from .media_input import MediaInput
 
-__all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update', 'InputMediaPhoto', 'InputMediaVideo', 'InputMediaAnimation', 'InputMediaAudio', 'InputMediaDocument', 'InputMediaItem', 'MediaInput']
+__all__ = ['User', 'ChatPhoto', 'ChatPermissions', 'Chat', 'PhotoSize', 'Animation', 'Audio', 'Document', 'Video', 'Voice', 'Sticker', 'StickerSet', 'Contact', 'Location', 'PollOption', 'Poll', 'File', 'MessageId', 'WebhookInfo', 'MessageEntity', 'LabeledPrice', 'ResponseParameters', 'Invoice', 'SuccessfulPayment', 'PreCheckoutQuery', 'Transaction', 'WebAppData', 'WebAppInfo', 'CopyTextButton', 'ReplyKeyboardMarkup', 'KeyboardButton', 'InlineKeyboardMarkup', 'InlineKeyboardButton', 'ReplyKeyboardRemove', 'ChatMember', 'ChatMemberOwner', 'ChatMemberAdministrator', 'ChatMemberMember', 'ChatMemberRestricted', 'Message', 'CallbackQuery', 'Update', 'InputMediaPhoto', 'InputMediaVideo', 'InputMediaAnimation', 'InputMediaAudio', 'InputMediaDocument', 'InputMediaItem', 'MediaInput']

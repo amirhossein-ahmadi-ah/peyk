@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 Handler = Callable[..., object]
 P = ParamSpec('P')
 R = TypeVar('R')
+_NAMED_NATIVE_OBSERVERS: dict[str, frozenset[str] | None] = {'telegram': None, 'bale': frozenset({'poll'})}
 
 @dataclass(frozen=True)
 class _Handler:
@@ -321,18 +322,21 @@ Returns:
 
         ``platform_event`` receives the complete native update object. For
         Telegram, a named observer receives the native model stored in the
-        corresponding ``Update`` field; other platforms currently have no
-        named-native observer surface.
+        corresponding ``Update`` field. Bale exposes only ``poll`` (an
+        undocumented but live update kind); Rubika has no named-native
+        observer surface.
         """
         merged = dict(data)
         merged['platform'] = platform
         result = await self._dispatch_observer(self.platform_event, update, merged)
         if result is not UNHANDLED:
             return result
-        if platform == 'telegram':
+        if platform in _NAMED_NATIVE_OBSERVERS:
             fields = getattr(update, '__dataclass_fields__', {})
             for name in fields:
                 if name == 'update_id':
+                    continue
+                if _NAMED_NATIVE_OBSERVERS[platform] is not None and name not in _NAMED_NATIVE_OBSERVERS[platform]:
                     continue
                 value = getattr(update, name, None)
                 if value is None:

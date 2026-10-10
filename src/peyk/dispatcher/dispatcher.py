@@ -11,7 +11,7 @@ from peyk.platforms.bale.types import Update as BaleUpdate
 from peyk.platforms.rubika.types import Update as RubikaUpdate
 from peyk.platforms.telegram.types import Update as TelegramUpdate
 from peyk.transport.errors import HTTPStatusError, NetworkError, RateLimitedError, TimeoutError_, TransportError
-from .router import Router, UNHANDLED
+from .router import Router, UNHANDLED, _NAMED_NATIVE_OBSERVERS
 from peyk.fsm import FSMStrategy
 from peyk.fsm.storage import BaseEventIsolation, BaseStorage
 logger = logging.getLogger(__name__)
@@ -126,7 +126,8 @@ class Dispatcher(Router):
         """Warn once when registered Telegram-native observers cannot receive updates on a bot."""
         if bot.platform == 'telegram':
             return
-        names = [name for name, observer in self._telegram_observers.items() if observer.handlers]
+        supported = _NAMED_NATIVE_OBSERVERS.get(bot.platform) or frozenset()
+        names = [name for name, observer in self._telegram_observers.items() if observer.handlers and name not in supported]
         if names:
             logger.warning('%s does not deliver Telegram-native update observers: %s', bot.platform, ', '.join(sorted(names)))
         if self.edited_message.handlers or self.channel_post.handlers or self.edited_channel_post.handlers:

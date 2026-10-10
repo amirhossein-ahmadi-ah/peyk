@@ -20,7 +20,7 @@ for feature, method in {
     Feature.TITLE:"TelegramLikeClient.set_chat_title", Feature.DESCRIPTION:"BaleClient.set_chat_description", Feature.CHAT_PHOTO:"BaleClient.set_chat_photo",
     Feature.LEAVE:"TelegramLikeClient.leave_chat", Feature.UPLOAD_BYTES:"TelegramLikeClient._as_file_payload",
 }.items(): CAPABILITIES[feature] = s(SupportLevel.FULL, method)
-CAPABILITIES[Feature.POLL] = s(SupportLevel.NONE, "docs/decisions.md", note="No send_poll method or poll model is present in the audited Bale client/model set.", confidence="inferred")
+CAPABILITIES[Feature.POLL] = s(SupportLevel.NONE, "docs/decisions.md", note="Bale cannot send polls (no send_poll method), but incoming polls are parsed (Message.poll and the Update.poll kind) and routed to the `poll` observer.", confidence="inferred")
 CAPABILITIES[Feature.DICE] = s(SupportLevel.NONE, "docs/decisions.md", note="No send_dice method or dice model is present in the audited Bale client/model set.", confidence="inferred")
 CAPABILITIES[Feature.VENUE] = s(SupportLevel.NONE, "docs/decisions.md", note="No send_venue method is present in the audited Bale client.", confidence="inferred")
 CAPABILITIES[Feature.REACTIONS] = s(SupportLevel.UNKNOWN, "docs/decisions.md", note="No confirmed Bale reaction contract in the audited project.", confidence="low")
