@@ -5,6 +5,7 @@ from .policy import UnsupportedPolicy, StyleFallback
 from peyk.platforms.bale import BaleClient
 from peyk.platforms.telegram import TelegramClient
 from peyk.platforms.rubika import RubikaClient
+from peyk.platforms.splus import SplusClient
 
 class BaleBot(Bot[BaleClient]):
     """Bot facade fixed to Bale."""
@@ -47,4 +48,14 @@ class RubikaBot(Bot[RubikaClient]):
 Returns:
     Result produced by the bot operation."""
         return super().client
-__all__ = ['BaleBot', 'Bot', 'BotDefaults', 'BotNotBoundError', 'InvalidTokenError', 'RubikaBot', 'TelegramBot', 'UnsupportedPolicy', 'StyleFallback']
+class SplusBot(Bot[SplusClient]):
+    """Bot facade fixed to Soroush Plus (Splus)."""
+
+    def __init__(self, token: str, **kwargs: object) -> None:
+        super().__init__(token, platform='splus', **kwargs)
+
+    @property
+    def client(self) -> SplusClient:
+        """Return the lazily-created raw Splus client."""
+        return super().client
+__all__ = ['BaleBot', 'Bot', 'BotDefaults', 'BotNotBoundError', 'InvalidTokenError', 'RubikaBot', 'SplusBot', 'TelegramBot', 'UnsupportedPolicy', 'StyleFallback']

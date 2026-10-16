@@ -75,7 +75,7 @@ class WebhookProcessor:
         return WebhookResult(200)
 
     def _parse(self, bot: Bot[object], payload: dict[str, object]) -> TelegramUpdate | BaleUpdate | RubikaUpdate | InlineMessage | None:
-        if bot.platform == "telegram":
+        if bot.platform in {"telegram", "splus"}:
             return TelegramUpdate.from_dict(payload)
         if bot.platform == "bale":
             return BaleUpdate.from_dict(payload)

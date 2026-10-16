@@ -109,7 +109,7 @@ class Text:
             text, metadata = render_rubika_metadata(self.to_rich_text())
             return {'text': text, 'metadata': {'meta_data_parts': metadata}}
         text = render_for(self.to_rich_text(), caps)
-        if caps.platform == 'telegram':
+        if caps.platform in {'telegram', 'splus'}:
             return {'text': text, 'parse_mode': 'HTML'}
         return {'text': text}
 
@@ -250,9 +250,9 @@ def _wrap_composition(kind: str, body: Sequence[Content]) -> RichText:
 def _target_capabilities(target: PlatformCapabilities | str) -> PlatformCapabilities:
     if isinstance(target, PlatformCapabilities):
         return target
-    from peyk.platform_core.adapters import BALE_CAPABILITIES, RUBIKA_CAPABILITIES, TELEGRAM_CAPABILITIES
+    from peyk.platform_core.adapters import BALE_CAPABILITIES, RUBIKA_CAPABILITIES, SPLUS_CAPABILITIES, TELEGRAM_CAPABILITIES
     try:
-        return {'telegram': TELEGRAM_CAPABILITIES, 'bale': BALE_CAPABILITIES, 'rubika': RUBIKA_CAPABILITIES}[target]
+        return {'telegram': TELEGRAM_CAPABILITIES, 'bale': BALE_CAPABILITIES, 'rubika': RUBIKA_CAPABILITIES, 'splus': SPLUS_CAPABILITIES}[target]
     except KeyError as exc:
         raise ValueError(f'unknown formatting target: {target!r}') from exc
 
@@ -322,7 +322,7 @@ def resolve_text(content: str | RichText | Text, platform_caps: PlatformCapabili
     if platform_caps.platform == 'rubika':
         rendered, metadata = render_rubika_metadata(rich)
         return (rendered, {'metadata': {'meta_data_parts': metadata}})
-    if platform_caps.platform == 'telegram':
+    if platform_caps.platform in {'telegram', 'splus'}:
         return (text, {'parse_mode': 'HTML'})
     return (text, {})
 __all__ = ['Text', 'Bold', 'Italic', 'Underline', 'Strikethrough', 'Spoiler', 'Code', 'Pre', 'TextLink', 'TextMention', 'BlockQuote', 'ExpandableBlockQuote', 'as_line', 'as_list', 'as_marked_list', 'as_numbered_list', 'as_section', 'as_marked_section', 'as_key_value', 'resolve_text', 'TextDefaults', 'bold', 'italic', 'underline', 'strikethrough', 'spoiler', 'code', 'pre', 'link', 'mention_user', 'mention_username', 'bale_expandable', 'ParseMode']

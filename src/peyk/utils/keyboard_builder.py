@@ -10,7 +10,7 @@ import warnings
 warnings.warn('peyk.utils.KeyboardBuilder is deprecated; use peyk.keyboard builders.', DeprecationWarning, stacklevel=2)
 from dataclasses import dataclass
 from typing import Optional
-from peyk.platform_core.adapters import BALE_CAPABILITIES, RUBIKA_CAPABILITIES, TELEGRAM_CAPABILITIES
+from peyk.platform_core.adapters import BALE_CAPABILITIES, RUBIKA_CAPABILITIES, SPLUS_CAPABILITIES, TELEGRAM_CAPABILITIES
 from peyk.platform_core.contracts import PlatformCapabilities
 from peyk.platform_core.capabilities import CapabilitySet
 
@@ -24,7 +24,7 @@ class _ButtonSpec:
     url: Optional[str] = None
     kind: str = 'Simple'
     payload: Optional[dict[str, object]] = None
-_CAPABILITIES = {'telegram': TELEGRAM_CAPABILITIES, 'bale': BALE_CAPABILITIES, 'rubika': RUBIKA_CAPABILITIES}
+_CAPABILITIES = {'telegram': TELEGRAM_CAPABILITIES, 'bale': BALE_CAPABILITIES, 'rubika': RUBIKA_CAPABILITIES, 'splus': SPLUS_CAPABILITIES}
 _RUBIKA_TYPES = {'Selection', 'Calendar', 'NumberPicker', 'StringPicker', 'Location', 'CameraImage', 'CameraVideo', 'GalleryImage', 'GalleryVideo', 'File', 'Audio', 'RecordAudio', 'Textbox', 'Link', 'AskMyPhoneNumber', 'AskMyLocation', 'Barcode'}
 
 def _normalize_target(target: str | PlatformCapabilities | CapabilitySet) -> tuple[str, PlatformCapabilities]:
@@ -43,7 +43,7 @@ def _normalize_target(target: str | PlatformCapabilities | CapabilitySet) -> tup
     return (key, _CAPABILITIES[key])
 
 class KeyboardBuilder:
-    """Build inline/keypad keyboards for Telegram, Bale and Rubika."""
+    """Build inline/keypad keyboards for Telegram, Bale, Rubika and Splus."""
 
     def __init__(self) -> None:
         self._rows: list[list[_ButtonSpec]] = [[]]
@@ -357,7 +357,7 @@ Returns:
         for row in rows:
             for spec in row:
                 self._validate_spec(spec, platform, capabilities)
-        if platform in {'telegram', 'bale'}:
+        if platform in {'telegram', 'bale', 'splus'}:
             if any((spec.kind == 'Reply' for row in rows for spec in row)):
                 return self._build_reply(rows, platform)
             if any((spec.kind in _RUBIKA_TYPES - {'Link'} for row in rows for spec in row)):
@@ -384,7 +384,7 @@ Returns:
 
     @staticmethod
     def _build_inline(rows: list[list[_ButtonSpec]], platform: str) -> object:
-        if platform == 'telegram':
+        if platform in {'telegram', 'splus'}:
             from peyk.platforms.telegram.types import InlineKeyboardButton, InlineKeyboardMarkup
         else:
             from peyk.platforms.bale.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -392,7 +392,7 @@ Returns:
 
     @staticmethod
     def _build_reply(rows: list[list[_ButtonSpec]], platform: str) -> object:
-        if platform == 'telegram':
+        if platform in {'telegram', 'splus'}:
             from peyk.platforms.telegram.types import KeyboardButton, ReplyKeyboardMarkup
         else:
             from peyk.platforms.bale.types import KeyboardButton, ReplyKeyboardMarkup

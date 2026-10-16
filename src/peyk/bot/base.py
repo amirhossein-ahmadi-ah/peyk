@@ -13,7 +13,7 @@ from peyk.platforms.rubika.types import Update as RubikaUpdate, InlineMessage
 from peyk.platforms.bale.types import WebhookInfo as BaleWebhookInfo
 from peyk.platforms.telegram.types import WebhookInfo as TelegramWebhookInfo
 from peyk.platforms.telegram.types import Update as TelegramUpdate
-from peyk.platform_core.adapters import bale as bale_adapter, rubika as rubika_adapter, telegram as telegram_adapter
+from peyk.platform_core.adapters import bale as bale_adapter, rubika as rubika_adapter, splus as splus_adapter, telegram as telegram_adapter
 from peyk.transport import RetryPolicy, Session
 from peyk.types import CallbackQuery, Chat, ChatMember, File, Message, User
 from peyk.utils.keyboard_builder import KeyboardBuilder
@@ -39,7 +39,7 @@ HandlerP = ParamSpec('HandlerP')
 HandlerR = TypeVar('HandlerR')
 Handler = Callable[HandlerP, HandlerR]
 StartupCallback = Callable[[], Awaitable[None] | None]
-PlatformLiteral = Literal['bale', 'telegram', 'rubika']
+PlatformLiteral = Literal['bale', 'telegram', 'rubika', 'splus']
 PlatformUpdate = Union[TelegramUpdate, BaleUpdate, RubikaUpdate, InlineMessage]
 NormalizedEvent = Union[Message, CallbackQuery, IncomingChatMemberStatusUpdate, IncomingPreCheckoutQuery, IncomingShippingQuery, IncomingMessageDeleted, IncomingBotMembershipChange, TelegramUpdate, BaleUpdate, RubikaUpdate]
 
@@ -73,7 +73,7 @@ class Bot(Generic[ClientT]):
         self.on_unsupported = on_unsupported
         self._warned: set[tuple[str, Feature]] = set()
         self._me: Optional[User] = None
-        self._client_cls = {'telegram': strategies.TELEGRAM_CLIENT, 'bale': strategies.BALE_CLIENT, 'rubika': strategies.RUBIKA_CLIENT}[platform]
+        self._client_cls = {'telegram': strategies.TELEGRAM_CLIENT, 'bale': strategies.BALE_CLIENT, 'rubika': strategies.RUBIKA_CLIENT, 'splus': strategies.SPLUS_CLIENT}[platform]
         self._token = token
         self._session = session
         self._retry_policy = retry_policy
@@ -151,6 +151,8 @@ class Bot(Generic[ClientT]):
             raise UnsupportedFeatureError(Feature.WEBHOOK_SECRET_HEADER, self.platform, self.capabilities.get(Feature.WEBHOOK_SECRET_HEADER))
         if self.platform == 'telegram':
             return await self.client.set_webhook(url, max_connections=max_connections, allowed_updates=list(allowed_updates) if allowed_updates is not None else None, drop_pending_updates=drop_pending_updates, secret_token=secret_token)
+        if self.platform == 'splus':
+            return await self.client.set_webhook(url, max_connections=max_connections, allowed_updates=list(allowed_updates) if allowed_updates is not None else None, drop_pending_updates=drop_pending_updates)
         if max_connections is not None or allowed_updates is not None or drop_pending_updates is not None:
             raise UnsupportedFeatureError(Feature.WEBHOOK, self.platform, self.capabilities.get(Feature.WEBHOOK))
         if self.platform == 'bale':
@@ -161,7 +163,7 @@ class Bot(Generic[ClientT]):
         """Remove the configured webhook when the platform exposes that operation."""
         if not self.supports(Feature.WEBHOOK):
             raise UnsupportedFeatureError(Feature.WEBHOOK, self.platform, self.capabilities.get(Feature.WEBHOOK))
-        if self.platform == 'telegram':
+        if self.platform in {'telegram', 'splus'}:
             return await self.client.delete_webhook(drop_pending_updates=drop_pending_updates)
         if self.platform == 'bale':
             if drop_pending_updates is not None:
@@ -171,7 +173,7 @@ class Bot(Generic[ClientT]):
 
     async def get_webhook_info(self) -> TelegramWebhookInfo | BaleWebhookInfo:
         """Return the native webhook-info model where the platform exposes it."""
-        if self.platform not in {'telegram', 'bale'}:
+        if self.platform not in {'telegram', 'bale', 'splus'}:
             raise UnsupportedFeatureError(Feature.WEBHOOK, self.platform, self.capabilities.get(Feature.WEBHOOK))
         return await self.client.get_webhook_info()
 
@@ -192,7 +194,7 @@ class Bot(Generic[ClientT]):
         """Normalize a raw platform update and bind supported events to this bot."""
         if self.platform == 'rubika' and isinstance(raw, InlineMessage):
             return cast(NormalizedEvent, self._bind(rubika_adapter.normalize_inline_message(raw)))
-        adapter = cast(Callable[[PlatformUpdate], NormalizedEvent], {'telegram': telegram_adapter.normalize_update, 'bale': bale_adapter.normalize_update, 'rubika': rubika_adapter.normalize_update}[self.platform])
+        adapter = cast(Callable[[PlatformUpdate], NormalizedEvent], {'telegram': telegram_adapter.normalize_update, 'bale': bale_adapter.normalize_update, 'rubika': rubika_adapter.normalize_update, 'splus': splus_adapter.normalize_update}[self.platform])
         return cast(NormalizedEvent, self._bind(adapter(raw)))
 
     def _bind(self, value: NormalizedEvent) -> NormalizedEvent:
@@ -306,15 +308,15 @@ Returns:
             return reply_markup.build(self.capabilities)
         if isinstance(reply_markup, InlineKeyboardBuilder | ReplyKeyboardBuilder):
             reply_markup = reply_markup.as_markup()
-        from peyk.keyboard.render import telegram, bale, rubika
+        from peyk.keyboard.render import telegram, bale, rubika, splus
         if isinstance(reply_markup, InlineKeyboard):
-            return {'telegram': telegram.inline_keyboard, 'bale': bale.inline_keyboard, 'rubika': rubika.inline_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
+            return {'telegram': telegram.inline_keyboard, 'bale': bale.inline_keyboard, 'rubika': rubika.inline_keyboard, 'splus': splus.inline_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
         if isinstance(reply_markup, ReplyKeyboard):
-            return {'telegram': telegram.reply_keyboard, 'bale': bale.reply_keyboard, 'rubika': rubika.reply_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
+            return {'telegram': telegram.reply_keyboard, 'bale': bale.reply_keyboard, 'rubika': rubika.reply_keyboard, 'splus': splus.reply_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
         if isinstance(reply_markup, KeyboardRemove):
-            return {'telegram': telegram.remove_keyboard, 'bale': bale.remove_keyboard, 'rubika': rubika.remove_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
+            return {'telegram': telegram.remove_keyboard, 'bale': bale.remove_keyboard, 'rubika': rubika.remove_keyboard, 'splus': splus.remove_keyboard}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
         if isinstance(reply_markup, ForceReply):
-            return {'telegram': telegram.force_reply, 'bale': bale.force_reply, 'rubika': rubika.force_reply}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
+            return {'telegram': telegram.force_reply, 'bale': bale.force_reply, 'rubika': rubika.force_reply, 'splus': splus.force_reply}[self.platform](reply_markup, self.capabilities, (self.on_unsupported, self.defaults.style_fallback))
         return reply_markup
 
     def _send_kwargs(self, kwargs: dict[str, object]) -> dict[str, object]:

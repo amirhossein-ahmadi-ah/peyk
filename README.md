@@ -4,7 +4,7 @@
 
 <h1 align="center">peyk</h1>
 
-<p align="center">An aiogram-style async bot library for Telegram, Bale, and Rubika.</p>
+<p align="center">An aiogram-style async bot library for Telegram, Bale, Rubika, and Soroush Plus.</p>
 
 ## 10-line quickstart
 

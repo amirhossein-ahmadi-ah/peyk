@@ -131,8 +131,8 @@ class Dispatcher(Router):
         if names:
             logger.warning('%s does not deliver Telegram-native update observers: %s', bot.platform, ', '.join(sorted(names)))
         if self.edited_message.handlers or self.channel_post.handlers or self.edited_channel_post.handlers:
-            if bot.platform == 'rubika':
-                logger.warning('rubika does not expose Telegram channel-post update kinds in the audited model; registered neutral observers will not fire: %s', ', '.join((name for name, obs in (('edited_message', self.edited_message), ('channel_post', self.channel_post), ('edited_channel_post', self.edited_channel_post)) if obs.handlers)))
+            if bot.platform in {'rubika', 'splus'}:
+                logger.warning('%s does not expose Telegram channel-post update kinds in the audited model; registered neutral observers will not fire: %s', bot.platform, ', '.join((name for name, obs in (('edited_message', self.edited_message), ('channel_post', self.channel_post), ('edited_channel_post', self.edited_channel_post)) if obs.handlers)))
 
     async def start_polling(self, *bots: Bot[object], polling_timeout: int=30, allowed_updates: Sequence[str] | None=None, skip_updates: bool=False, handle_signals: bool=True, close_bots: bool=True, handle_as_tasks: bool=False, max_concurrent_updates: int=100) -> None:
         """Poll all supplied bots concurrently until stopped or cancelled."""
@@ -208,7 +208,7 @@ Args:
         asyncio.run(self.start_polling(*bots, **kwargs))
 
     async def start_webhook(self, *bots: Bot[object], base_url: str, host: str='0.0.0.0', port: int=8080, path_prefix: str='/webhook', secrets: Sequence[str] | None=None, ssl_context: object | None=None, allowed_updates: Sequence[str] | None=None, drop_pending_updates: bool=False, manage_registration: bool=True, delete_on_shutdown: bool=False, max_connections: int | None=None, handle_in_background: bool=True) -> None:
-        """Serve Telegram, Bale and Rubika webhooks from one aiohttp app.
+        """Serve Telegram, Bale, Rubika and Splus webhooks from one aiohttp app.
 
         Each bot receives a non-token URL of ``{path_prefix}/{platform}/{secret}``.
         Rubika's confirmed inline endpoint is registered at the additional

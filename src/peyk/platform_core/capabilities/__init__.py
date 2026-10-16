@@ -215,18 +215,20 @@ def get_capabilities(platform: Platform | PlatformName) -> CapabilitySet:
 
 
 # Imported after the public types so platform declaration modules can use them.
-from . import bale, rubika, telegram  # noqa: E402
+from . import bale, rubika, splus, telegram  # noqa: E402
 
 CAPABILITY_MATRIX = CapabilityMatrix(MappingProxyType({
     "telegram": CapabilitySet("telegram", telegram.CAPABILITIES),
     "bale": CapabilitySet("bale", bale.CAPABILITIES),
     "rubika": CapabilitySet("rubika", rubika.CAPABILITIES),
+    "splus": CapabilitySet("splus", splus.CAPABILITIES),
 }))
 
 PLATFORM_SPECIFIC_METHODS: Mapping[str, tuple[str, ...]] = MappingProxyType({
     "telegram": telegram.PLATFORM_SPECIFIC_METHODS,
     "bale": bale.PLATFORM_SPECIFIC_METHODS,
     "rubika": rubika.PLATFORM_SPECIFIC_METHODS,
+    "splus": splus.PLATFORM_SPECIFIC_METHODS,
 })
 
 __all__ = [

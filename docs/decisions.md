@@ -1054,3 +1054,35 @@ claiming that those platforms deliver them.
   document/audio/voice`). UNKNOWN: whether Bale rejects JSON for non-media
   methods (`sendMessage`, ...) and for `sendMediaGroup` with `file_id`s; those
   are untouched until confirmed by `bot.client.send_message(...)`.
+
+## Splus platform
+
+- Soroush Plus (`splus`) exposes a Telegram-shaped bot API at
+  `https://api.splus.ir/bot<TOKEN>/<method>`; files are downloaded from
+  `https://api.splus.ir/file/bot<TOKEN>/<file_path>` (20 MB limit). Capabilities are declared from
+  the official documentation (splus.ir/p/documents, scraped with `scripts/scrape_splus_docs.py`).
+  Documented methods only: getUpdates, setWebhook, deleteWebhook, getWebhookInfo, getMe, logOut,
+  close, send{Message,Photo,Audio,Document,Video,Animation,Voice,VideoNote,MediaGroup,Location,
+  Contact,Sticker}, forwardMessage, copyMessage, getFile, answerCallbackQuery, *MyCommands,
+  editMessage{Text,Caption,Media,ReplyMarkup}, deleteMessage. Marked "coming soon" in the docs
+  (so `NONE`): sendChatAction, pin/unpinChatMessage, getChat, getUserProfilePhotos, getStickerSet,
+  ForceReply. Absent (so `NONE`): sendDice, polls, venues, payments, inline mode, web_app and
+  copy_text buttons. Buttons: inline = text/url/callback_data; reply = text/request_contact/
+  request_location.
+- Decision: reuse Telegram models, adapters, poller and keyboard renderers, but do **not**
+  inherit `TelegramClient`. `SplusClient` is a `TelegramLikeClient` that binds only the confirmed
+  methods (`SPLUS_METHODS`), so the Telegram-only surface is not silently attributed to Splus and
+  `scripts/audit_capabilities.py` keeps its "NONE claim must not resolve to an implementation"
+  guarantee.
+- Decision: `reply_parameters` and `link_preview_options` are translated in `SplusClient._call`
+  to `reply_to_message_id` / `allow_sending_without_reply` / `disable_web_page_preview`, because
+  that is the signature of every published Splus client. UNKNOWN: whether the server also accepts
+  the modern fields; probe with `scripts/probe_splus.py`.
+- Decision: `Update` kinds are `message`, `edited_message`, `callback_query` only. `allowed_updates`
+  is therefore not derived from the router for Splus, and Telegram-only observers log a warning.
+- Decision: Splus `setWebhook` has no `secret_token`; the webhook layer relies on the secret URL
+  path (like Bale) and does not require `X-Telegram-Bot-Api-Secret-Token` for `splus`.
+- Confirmed by the docs: `reply_to_message_id`, `disable_web_page_preview`, `setWebhook` without
+  `secret_token`, update kinds message/edited_message/callback_query, callback_data 1-64 bytes,
+  parse modes MarkdownV2/HTML/Markdown. Still `UNKNOWN`: chat administration, reactions, invite
+  links, topics, bot name/description; probe with `scripts/probe_splus.py`.

@@ -105,8 +105,26 @@ Args:
     url: Value used by this operation."""
         await bot.client.update_bot_endpoints(url, type=UpdateEndpointTypeEnum.RECEIVE_INLINE_MESSAGE)
 
+class SplusWebhookRegistrar:
+    """Register a Splus webhook.
+
+    Splus' ``setWebhook`` has no ``secret_token`` parameter, so, like Bale, the
+    request is authenticated by the framework's secret URL path instead of a
+    header.  ``allowed_updates`` is intentionally not derived from the router
+    for Splus: it only delivers ``message``, ``edited_message`` and
+    ``callback_query``.
+    """
+
+    async def install(self, bot: Bot[object], url: str, secret: str, options: WebhookOptions) -> None:
+        """Register ``url`` as the Splus webhook for ``bot``."""
+        await bot.client.set_webhook(url, max_connections=options.max_connections, allowed_updates=options.allowed_updates, drop_pending_updates=options.drop_pending_updates or None)
+
+    async def uninstall(self, bot: Bot[object]) -> None:
+        """Remove the Splus webhook for ``bot``."""
+        await bot.client.delete_webhook(drop_pending_updates=False)
+
 def registrar_for(bot: Bot[object]) -> WebhookRegistrar:
     """Return the audited registrar for ``bot.platform``."""
     if not bot.supports(Feature.WEBHOOK):
         raise UnsupportedFeatureError(Feature.WEBHOOK, bot.platform, bot.capabilities.get(Feature.WEBHOOK))
-    return {'telegram': TelegramWebhookRegistrar(), 'bale': BaleWebhookRegistrar(), 'rubika': RubikaWebhookRegistrar()}[bot.platform]
+    return {'telegram': TelegramWebhookRegistrar(), 'bale': BaleWebhookRegistrar(), 'rubika': RubikaWebhookRegistrar(), 'splus': SplusWebhookRegistrar()}[bot.platform]

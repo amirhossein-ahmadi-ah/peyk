@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 Handler = Callable[..., object]
 P = ParamSpec('P')
 R = TypeVar('R')
-_NAMED_NATIVE_OBSERVERS: dict[str, frozenset[str] | None] = {'telegram': None, 'bale': frozenset({'poll'})}
+_NAMED_NATIVE_OBSERVERS: dict[str, frozenset[str] | None] = {'telegram': None, 'bale': frozenset({'poll'}), 'splus': frozenset({'message', 'edited_message', 'callback_query'})}
 
 @dataclass(frozen=True)
 class _Handler:

@@ -5,8 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "peyk"
 version = "1.0.0"
-description = "An aiogram-style async bot library for Telegram, Bale, and Rubika."
-keywords = ["telegram", "bale", "rubika", "bot", "asyncio", "aiogram"]
+description = "An aiogram-style async bot library for Telegram, Bale, Rubika, and Soroush Plus."
+keywords = ["telegram", "bale", "rubika", "splus", "soroush-plus", "bot", "asyncio", "aiogram"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",

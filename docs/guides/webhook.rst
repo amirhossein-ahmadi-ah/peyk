@@ -1,7 +1,7 @@
 Webhook
 =======
 
-The built-in aiohttp webhook runner supports Telegram, Bale and Rubika through the audited registrar contracts.
+The built-in aiohttp webhook runner supports Telegram, Bale, Rubika and Soroush Plus (Splus) through the audited registrar contracts.
 
 .. code-block:: python
 

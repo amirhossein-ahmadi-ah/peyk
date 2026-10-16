@@ -59,5 +59,6 @@ class Platform(str, Enum):
     TELEGRAM = 'telegram'
     BALE = 'bale'
     RUBIKA = 'rubika'
+    SPLUS = 'splus'
     CUSTOM = 'custom'
 __all__ = ['ContentType', 'ChatType', 'ChatAction', 'ParseMode', 'ButtonStyle', 'Platform']

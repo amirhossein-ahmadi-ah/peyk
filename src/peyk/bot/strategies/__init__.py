@@ -4,13 +4,17 @@ from typing import Awaitable, Callable, TypeVar
 from peyk.platforms.bale import BaleClient
 from peyk.platforms.telegram import TelegramClient
 from peyk.platforms.rubika import RubikaClient
+from peyk.platforms.splus import SplusClient
 from peyk.types import Chat, ChatMember, File, Message, User
 from . import bale, rubika, telegram
 TELEGRAM_CLIENT = TelegramClient
 BALE_CLIENT = BaleClient
 RUBIKA_CLIENT = RubikaClient
+SPLUS_CLIENT = SplusClient
 from typing import Callable, Awaitable, Sequence
-_OPERATION_MODULES = {'telegram': telegram, 'bale': bale, 'rubika': rubika}
+# Splus is Telegram-shaped: it shares the Telegram operation strategies (the
+# SplusClient exposes the same method names and returns Telegram models).
+_OPERATION_MODULES = {'telegram': telegram, 'bale': bale, 'rubika': rubika, 'splus': telegram}
 
 def _module(bot: object) -> object:
     return _OPERATION_MODULES[bot.platform]

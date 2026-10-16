@@ -1,7 +1,7 @@
 """Peyk public API."""
 import asyncio
 
-from .bot import BaleBot, Bot, BotDefaults, BotNotBoundError, InvalidTokenError, RubikaBot, TelegramBot, UnsupportedPolicy, StyleFallback
+from .bot import BaleBot, Bot, BotDefaults, BotNotBoundError, InvalidTokenError, RubikaBot, SplusBot, TelegramBot, UnsupportedPolicy, StyleFallback
 from .bot.base import ClientLifecycle
 from .types import CallbackQuery, Chat, ChatMember, ChatType, ContentType, File, Message, User
 from .enums import ChatAction, ParseMode, Platform, ButtonStyle
@@ -25,6 +25,6 @@ __version__ = "1.0.0"
 
 __all__ = [
     "BaleBot", "Bot", "Dispatcher", "F", "Command", "CommandStart", "CommandObject", "CallbackData", "ChatTypeFilter", "StateFilter", "MagicData", "PlatformFilter", "SupportsFilter", "SkipHandler", "UNHANDLED", "ErrorEvent", "BotDefaults", "BotNotBoundError", "InvalidTokenError", "run", "CallbackQuery",
-    "Chat", "ChatMember", "ChatType", "ContentType", "Feature", "File", "Message", "RubikaBot", "Router",
+    "Chat", "ChatMember", "ChatType", "ContentType", "Feature", "File", "Message", "RubikaBot", "SplusBot", "Router",
     "TelegramBot", "flags", "get_flag", "check_flags", "UnsupportedPolicy", "StyleFallback", "User", "ChatAction", "ParseMode", "Platform", "ButtonStyle",
 ]

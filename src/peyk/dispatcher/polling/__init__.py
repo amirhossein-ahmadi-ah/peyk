@@ -80,17 +80,17 @@ async def prepare_polling(bot: Bot[object], *, skip_updates: bool) -> None:
     Rubika's endpoint-update parameters are intentionally not touched: the
     project decisions mark their semantics as low-confidence.
     """
-    if bot.platform not in {'telegram', 'bale'}:
+    if bot.platform not in {'telegram', 'bale', 'splus'}:
         return
     info = await bot.client.get_webhook_info()
     url = getattr(info, 'url', '')
     if skip_updates:
-        if bot.platform == 'telegram':
+        if bot.platform in {'telegram', 'splus'}:
             await bot.client.delete_webhook(drop_pending_updates=True)
         else:
             await bot.client.delete_webhook()
     elif url:
-        if bot.platform == 'telegram':
+        if bot.platform in {'telegram', 'splus'}:
             await bot.client.delete_webhook(drop_pending_updates=False)
         else:
             await bot.client.delete_webhook()
@@ -105,7 +105,7 @@ Args:
 
 Returns:
     Result produced by the dispatcher operation."""
-    if bot.platform == 'telegram':
+    if bot.platform in {'telegram', 'splus'}:
         return TelegramPoller(bot, timeout, allowed_updates)
     if bot.platform == 'bale':
         return BalePoller(bot, timeout, allowed_updates)

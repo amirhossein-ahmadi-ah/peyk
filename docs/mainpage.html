@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>peyk — یک بات، سه پیام‌رسان</title>
+<title>peyk — یک بات، چهار پیام‌رسان</title>
 <meta name="description" content="کتابخانه‌ی async بات برای پایتون: تلگرام، بله و روبیکا با API سبک aiogram ۳." />
 <meta name="color-scheme" content="light dark" />
 <meta name="theme-color" content="#F3F1EC" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="peyk — یک بات، سه پیام‌رسان" />
+<meta property="og:title" content="peyk — یک بات، چهار پیام‌رسان" />
 <meta property="og:description" content="کتابخانه‌ی async بات برای پایتون: تلگرام، بله و روبیکا با API سبک aiogram ۳." />
 <meta property="og:locale" content="fa_IR" />
 <meta name="twitter:card" content="summary" />
@@ -466,7 +466,7 @@ html[lang="en"] .cell p{line-height:1.6}
 
 <section class="hero wrap" id="top" aria-labelledby="hero-title">
   <div class="hero-text">
-    <h1 class="hero-h1" id="hero-title" data-i18n="hero.title" data-i18n-html><span class="ln">یک بات،</span> <span class="ln">سه پیام‌رسان.</span></h1>
+    <h1 class="hero-h1" id="hero-title" data-i18n="hero.title" data-i18n-html><span class="ln">یک بات،</span> <span class="ln">چهار پیام‌رسان.</span></h1>
     <p class="sub" data-hero data-i18n="hero.sub">کاملاً async، تایپ‌شده، با API سبک aiogram ۳ — برای تلگرام، بله و روبیکا.</p>
 
     <div class="cta" data-hero>
@@ -489,6 +489,7 @@ html[lang="en"] .cell p{line-height:1.6}
       <button type="button" role="tab" id="pt-bale" data-platform="bale" aria-selected="false" aria-controls="heroPanel" tabindex="-1">Bale</button>
       <button type="button" role="tab" id="pt-telegram" data-platform="telegram" aria-selected="true" aria-controls="heroPanel" tabindex="0">Telegram</button>
       <button type="button" role="tab" id="pt-rubika" data-platform="rubika" aria-selected="false" aria-controls="heroPanel" tabindex="-1">Rubika</button>
+      <button type="button" role="tab" id="pt-splus" data-platform="splus" aria-selected="false" aria-controls="heroPanel" tabindex="-1">Splus</button>
     </div>
 
     <div class="demo-panel" id="heroPanel" role="tabpanel" aria-labelledby="pt-telegram">
@@ -536,6 +537,7 @@ bot.run()</code></pre>
       <li>Telegram</li>
       <li>Bale</li>
       <li>Rubika</li>
+      <li>Soroush Plus</li>
     </ul>
     <p class="strip-note">
       <span data-i18n="platforms.note">توانایی‌ها روی هر پلتفرم متفاوت است.</span>
@@ -572,11 +574,12 @@ async def b(message):
       <article data-reveal="cell" class="cell cell--5">
         <header>
           <h3 data-i18n="f.multi.t">چندپلتفرمی</h3>
-          <p data-i18n="f.multi.b">یک کد، سه پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.</p>
+          <p data-i18n="f.multi.b">یک کد، چهار پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.</p>
         </header>
         <div class="art"><pre><code data-hl>Bot("TOKEN", platform="telegram")
 Bot("TOKEN", platform="bale")
 Bot("TOKEN", platform="rubika")
+Bot("TOKEN", platform="splus")
 
 # handlers stay the same</code></pre></div>
       </article>
@@ -742,13 +745,13 @@ except PlatformError as e:
 
   var I18N = {
     fa: {
-      "title": "peyk — یک بات، سه پیام‌رسان",
+      "title": "peyk — یک بات، چهار پیام‌رسان",
       "desc": "کتابخانه‌ی async بات برای پایتون: تلگرام، بله و روبیکا با API سبک aiogram ۳.",
       "skip": "پرش به محتوا",
       "nav.aria": "ناوبری اصلی", "nav.docs": "مستندات", "nav.examples": "مثال‌ها", "nav.platforms": "پلتفرم‌ها",
       "a11y.menu": "منو", "a11y.theme": "تغییر تم", "a11y.lang": "Switch to English", "a11y.copy": "کپی",
       "copy.done": "کپی شد",
-      "hero.title": "<span class=\"ln\">یک بات،</span> <span class=\"ln\">سه پیام‌رسان.</span>",
+      "hero.title": "<span class=\"ln\">یک بات،</span> <span class=\"ln\">چهار پیام‌رسان.</span>",
       "hero.sub": "کاملاً async، تایپ‌شده، با API سبک aiogram ۳ — برای تلگرام، بله و روبیکا.",
       "cta.primary": "شروع سریع", "cta.secondary": "مستندات",
       "demo.aria": "انتخاب پلتفرم",
@@ -757,7 +760,7 @@ except PlatformError as e:
       "platforms.link": "ماتریس توانایی‌ها را ببین",
       "features.title": "آنچه peyk می‌دهد",
       "f.async.t": "async-first", "f.async.b": "کاملاً async/await؛ چند پیام همزمان بدون بلاک شدن.",
-      "f.multi.t": "چندپلتفرمی", "f.multi.b": "یک کد، سه پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.",
+      "f.multi.t": "چندپلتفرمی", "f.multi.b": "یک کد، چهار پیام‌رسان؛ تفاوت‌ها صریح مستند شده‌اند.",
       "f.aio.t": "آشنا برای aiogram", "f.aio.b": "اگر aiogram می‌شناسی، ده دقیقه‌ای شروع می‌کنی.",
       "f.type.t": "تایپ‌شده", "f.type.b": "کاملاً تایپ‌شده، سازگار با mypy و pyright.",
       "f.retry.t": "خطا و retry", "f.retry.b": "مدیریت خطا و retry، با خطای مخصوص هر پلتفرم.",
@@ -778,14 +781,14 @@ except PlatformError as e:
       "foot.aria": "پیوندها", "foot.docs": "مستندات", "foot.github": "مخزن", "foot.license": "مجوز MIT"
     },
     en: {
-      "title": "peyk — One bot, three messengers",
-      "desc": "An async bot library for Python: Telegram, Bale and Rubika with an aiogram-3-style API.",
+      "title": "peyk — One bot, four messengers",
+      "desc": "An async bot library for Python: Telegram, Bale, Rubika and Soroush Plus with an aiogram-3-style API.",
       "skip": "Skip to content",
       "nav.aria": "Primary", "nav.docs": "Docs", "nav.examples": "Examples", "nav.platforms": "Platforms",
       "a11y.menu": "Menu", "a11y.theme": "Toggle theme", "a11y.lang": "تغییر به فارسی", "a11y.copy": "Copy",
       "copy.done": "Copied",
-      "hero.title": "<span class=\"ln\">One bot,</span> <span class=\"ln\">three messengers.</span>",
-      "hero.sub": "Fully async, typed, aiogram-3-style API — for Telegram, Bale and Rubika.",
+      "hero.title": "<span class=\"ln\">One bot,</span> <span class=\"ln\">four messengers.</span>",
+      "hero.sub": "Fully async, typed, aiogram-3-style API — for Telegram, Bale, Rubika and Soroush Plus.",
       "cta.primary": "Quick start", "cta.secondary": "Documentation",
       "demo.aria": "Choose a platform",
       "platforms.aria": "Supported platforms",
@@ -793,7 +796,7 @@ except PlatformError as e:
       "platforms.link": "See the capability matrix",
       "features.title": "What peyk gives you",
       "f.async.t": "Async-first", "f.async.b": "Fully async/await; concurrent handlers without blocking.",
-      "f.multi.t": "Multi-platform", "f.multi.b": "One codebase, three messengers; differences are documented openly.",
+      "f.multi.t": "Multi-platform", "f.multi.b": "One codebase, four messengers; differences are documented openly.",
       "f.aio.t": "aiogram-shaped", "f.aio.b": "If you know aiogram, you're productive in ten minutes.",
       "f.type.t": "Typed", "f.type.b": "Ships py.typed; works with mypy and pyright.",
       "f.retry.t": "Errors & retry", "f.retry.b": "Error and retry handling, with platform-specific errors.",
@@ -948,7 +951,7 @@ except PlatformError as e:
   }
 
   var heroCode = $('#heroCode'), heroPre = heroCode.parentNode, chat = $('#chat'), chatTitle = $('#chatTitle'), chatLogo = $('#chatLogo');
-  ['telegram', 'bale', 'rubika'].forEach(function (n) { new Image().src = '_static/' + n + '.svg'; });
+  ['telegram', 'bale', 'rubika', 'splus'].forEach(function (n) { new Image().src = '_static/' + n + '.svg'; });
   var heroPanel = $('#heroPanel');
   var platform = 'telegram', run = 0, phase = 'pre', chatT = [], seqT = [], swapT = 0;
   var PH = '\u0001';

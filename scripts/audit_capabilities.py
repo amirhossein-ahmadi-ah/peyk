@@ -22,8 +22,9 @@ from peyk.platform_core.capabilities import (  # noqa: E402
 from peyk.platforms.bale.client import BaleClient  # noqa: E402
 from peyk.platforms.telegram.client import TelegramClient  # noqa: E402
 from peyk.platforms.rubika.client import RubikaClient  # noqa: E402
+from peyk.platforms.splus.client import SplusClient  # noqa: E402
 
-CLIENTS = {"telegram": TelegramClient, "bale": BaleClient, "rubika": RubikaClient}
+CLIENTS = {"telegram": TelegramClient, "bale": BaleClient, "rubika": RubikaClient, "splus": SplusClient}
 SYMBOLS = {
     SupportLevel.FULL: "✅", SupportLevel.PARTIAL: "🟡", SupportLevel.EMULATED: "🔁",
     SupportLevel.NONE: "❌", SupportLevel.UNKNOWN: "❓",
@@ -36,6 +37,7 @@ def _resolve_method(ref: str) -> bool:
     class_name, method_name = ref.rsplit(".", 1)
     candidates = [
         "peyk.platforms.telegram.client", "peyk.platforms.bale.client", "peyk.platforms.rubika.client",
+        "peyk.platforms.splus.client",
         "peyk.platforms._telegram_like.base_client",
     ]
     for module_name in candidates:
@@ -80,6 +82,7 @@ def _method_names(cls: type[object]) -> set[str]:
 def _button_fields(platform: str) -> set[str]:
     modules = {
         "telegram": ("peyk.platforms.telegram.types", ("InlineKeyboardButton", "KeyboardButton")),
+        "splus": ("peyk.platforms.telegram.types", ("InlineKeyboardButton", "KeyboardButton")),
         "bale": ("peyk.platforms.bale.types", ("InlineKeyboardButton", "KeyboardButton")),
         "rubika": ("peyk.platforms.rubika.types", ("Button", "ButtonSelection", "ButtonCalendar", "ButtonNumberPicker", "ButtonStringPicker", "ButtonLocation", "ButtonTextbox")),
     }

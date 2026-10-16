@@ -6,7 +6,7 @@ from . import Feature, get_capabilities
 def legacy_capabilities(platform: str) -> PlatformCapabilities:
     """Build the legacy nine-field capability object from the audited registry."""
     caps = get_capabilities(platform)
-    modes = ["Markdown", "MarkdownV2", "HTML"] if platform == "telegram" else []
+    modes = ["Markdown", "MarkdownV2", "HTML"] if platform in ("telegram", "splus") else []
     return PlatformCapabilities(
         platform=platform,
         supports_topics=caps.supports(Feature.FORUM_TOPICS),

@@ -3,7 +3,7 @@
 peyk documentation
 ==================
 
-``peyk`` is an async multi-platform bot library for Telegram, Bale, and Rubika. It follows aiogram 3-style application patterns while normalizing the parts that can be shared safely across platforms.
+``peyk`` is an async multi-platform bot library for Telegram, Bale, Rubika, and Soroush Plus (Splus). It follows aiogram 3-style application patterns while normalizing the parts that can be shared safely across platforms.
 
 .. container:: peyk-actions
 
@@ -53,6 +53,7 @@ peyk documentation
    reference/bale
    reference/telegram
    reference/rubika
+   reference/splus
    reference/dispatcher
    reference/transport
    reference/platform_core

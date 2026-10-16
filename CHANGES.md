@@ -6,6 +6,18 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
+- **Soroush Plus (Splus) platform.** `SplusBot` / `Bot(token, platform="splus")` and
+  `peyk.platforms.splus.SplusClient` talk to `https://api.splus.ir/bot<TOKEN>/<method>`, a
+  Telegram-shaped bot API (long polling and webhooks, inline/reply keyboards, callback queries). Models and operation strategies are shared with Telegram;
+  only the methods that the official Splus documentation lists are bound on `SplusClient`
+  (`SPLUS_METHODS`). Capabilities are declared in `platform_core/capabilities/splus.py`: confirmed
+  features are `FULL`, features the Splus models positively lack (polls, venues, payments, inline
+  mode, member-status updates, webhook secret header) are `NONE`, everything unverified (chat
+  administration, button colours, ...) stays `UNKNOWN` and is refused by `Bot` until probed.
+  `reply_parameters` / `link_preview_options` are rewritten to the classic
+  `reply_to_message_id` / `disable_web_page_preview` fields at request level. Webhooks are
+  authenticated by the secret URL path (Splus has no `secret_token`). See `docs/decisions.md`
+  ("Splus platform") and `scripts/probe_splus.py` to verify the open points against a live bot.
 - Bale polls (an update kind that is in the live API but missing from Bale's docs; modelled on
   pyrobale): new `bale.Poll` / `bale.PollOption` types, `Message.poll` is now parsed (so
   `ContentType.POLL` works for Bale messages), and `Update.poll` is parsed and delivered to the
