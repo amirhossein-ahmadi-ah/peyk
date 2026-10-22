@@ -40,6 +40,27 @@ class TransportResponse:
 def _orjson_dumps(obj: object) -> str:
     return orjson.dumps(obj).decode('utf-8')
 
+def _retry_after_from_body(body: bytes) -> Optional[float]:
+    """Read ``parameters.retry_after`` (Telegram/Bale style) from a 429 body.
+
+    Returns ``None`` when the body is empty, not JSON, or carries no usable
+    positive number.
+    """
+    if not body:
+        return None
+    try:
+        parsed = orjson.loads(body)
+    except orjson.JSONDecodeError:
+        return None
+    if not isinstance(parsed, dict):
+        return None
+    params = parsed.get('parameters')
+    value = params.get('retry_after') if isinstance(params, dict) else parsed.get('retry_after')
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or value <= 0:
+        return None
+    return float(value)
+
+
 def _parse_retry_after(value: Optional[str]) -> Optional[float]:
     """Parse a `Retry-After` header value as a plain number of seconds.
 
@@ -100,6 +121,8 @@ Returns:
                 body = await resp.read()
                 if resp.status == 429:
                     retry_after = _parse_retry_after(resp.headers.get('Retry-After'))
+                    if retry_after is None:
+                        retry_after = _retry_after_from_body(body)
                     raise RateLimitedError(f'Rate limited by {url}', retry_after_seconds=retry_after)
                 if not 200 <= resp.status < 300:
                     raise HTTPStatusError(f'HTTP {resp.status} for {url}', status_code=resp.status, body=body)

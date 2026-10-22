@@ -66,7 +66,9 @@ class Bot(Generic[ClientT]):
             bot.run()
     """
 
-    def __init__(self, token: str, *, platform: PlatformLiteral, defaults: Optional[BotDefaults]=None, on_unsupported: UnsupportedPolicy=UnsupportedPolicy.DEFAULT, session: Optional[Session]=None, retry_policy: Optional[RetryPolicy]=None, logger: Optional[logging.Logger]=None, base_url: Optional[str]=None) -> None:
+    def __init__(self, token: str, *, platform: PlatformLiteral, defaults: Optional[BotDefaults]=None, on_unsupported: UnsupportedPolicy=UnsupportedPolicy.DEFAULT, session: Optional[Session]=None, retry_policy: Optional[RetryPolicy]=None, logger: Optional[logging.Logger]=None, base_url: Optional[str]=None, rate_limit: object=None) -> None:
+        if rate_limit is not None and platform not in ('telegram', 'bale', 'splus'):
+            raise ValueError(f'rate_limit is not supported for platform {platform!r}')
         self.platform: PlatformLiteral = platform
         self.capabilities: CapabilitySet = get_capabilities(platform)
         self.defaults = defaults or BotDefaults()
@@ -79,6 +81,7 @@ class Bot(Generic[ClientT]):
         self._retry_policy = retry_policy
         self._client_logger = logger
         self._base_url = base_url
+        self._rate_limit = rate_limit
         self._client: ClientT | None = None
         from peyk.dispatcher.router import Router
         self.router: Router = Router(name=f'{platform}_bot')
@@ -88,7 +91,8 @@ class Bot(Generic[ClientT]):
     def client(self) -> ClientT:
         """Return the lazily-created raw platform client."""
         if self._client is None:
-            self._client = cast(ClientT, self._client_cls(self._token, self._session, retry_policy=self._retry_policy, logger=self._client_logger, base_url=self._base_url))
+            extra = {'rate_limit': self._rate_limit} if self._rate_limit is not None else {}
+            self._client = cast(ClientT, self._client_cls(self._token, self._session, retry_policy=self._retry_policy, logger=self._client_logger, base_url=self._base_url, **extra))
         return self._client
 
     @property

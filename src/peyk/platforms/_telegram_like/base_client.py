@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, Generic, Mapping, Optional, Protocol, Ty
 import orjson
 from peyk.transport import FilePayload, RetryPolicy, Session, run_with_retry
 from peyk.transport.errors import RateLimitedError, TransportError
+from peyk.ratelimit import RateLimitConfig, RateLimiter, resolve_rate_limiter
 UserT = TypeVar('UserT')
 WebhookInfoT = TypeVar('WebhookInfoT')
 FileT = TypeVar('FileT')
@@ -57,12 +58,38 @@ class TelegramLikeClient(Generic[UserT, WebhookInfoT, FileT, ChatT, ChatMemberT]
     ``sendAnimation``). Telegram accepts JSON, so the default stays ``False``.
     """
 
-    def __init__(self, token: str, session: Optional[Session]=None, *, retry_policy: Optional[RetryPolicy]=None, logger: object=None, base_url: Optional[str]=None) -> None:
+    #: Used when ``rate_limit=None`` is passed: ``True`` turns the limiter on
+    #: with ``rate_limit_preset``. Off here; Bale and Telegram turn it on.
+    rate_limit_default: bool = False
+    #: Factory for this platform's default :class:`RateLimitConfig`.
+    rate_limit_preset: Optional[Callable[[], RateLimitConfig]] = None
+
+    def __init__(self, token: str, session: Optional[Session]=None, *, retry_policy: Optional[RetryPolicy]=None, logger: object=None, base_url: Optional[str]=None, rate_limit: object=None) -> None:
         self._token = token
         self._owns_session = session is None
         self._session = session or Session(logger=logger)
         self._retry_policy = retry_policy or RetryPolicy()
         self._base_url = f'{base_url or self.base_url}/bot{token}'
+        if rate_limit is None:
+            rate_limit = self.rate_limit_default
+        self._rate_limiter: Optional[RateLimiter] = resolve_rate_limiter(rate_limit, self.rate_limit_preset)
+
+    @property
+    def rate_limiter(self) -> Optional[RateLimiter]:
+        """The outbound rate limiter, or ``None`` when rate limiting is off.
+
+        Toggle at runtime with ``client.rate_limiter.enabled = False``.
+        """
+        return self._rate_limiter
+
+    @staticmethod
+    def _chat_id_of(json_body: Optional[Mapping[str, object]], data: Optional[Mapping[str, str]]) -> object:
+        """Best-effort ``chat_id`` of a call (JSON or multipart), else ``None``."""
+        if json_body is not None:
+            return json_body.get('chat_id')
+        if data is not None:
+            return data.get('chat_id')
+        return None
 
     @property
     def token(self) -> str:
@@ -248,13 +275,32 @@ Returns:
         """POST a method call, unwrap its common ``ok`` envelope, and return result."""
         url = f'{self._base_url}/{method_name}'
 
+        limiter = self._rate_limiter
+        chat_id = self._chat_id_of(json_body, data) if limiter is not None else None
+
         async def operation():
             """Executes the operation operation.
             
             Returns:
                 The operation result (``Any``).
             """
-            return await self._session.request('POST', url, json_body=json_body if not files else None, data=data, files=files)
+            if limiter is None:
+                return await self._session.request('POST', url, json_body=json_body if not files else None, data=data, files=files)
+            # Wait for a free slot on every attempt (retries re-queue too).
+            await limiter.acquire(method_name, chat_id)
+            try:
+                response = await self._session.request('POST', url, json_body=json_body if not files else None, data=data, files=files)
+            except RateLimitedError as exc:
+                limiter.penalize(chat_id, exc.retry_after_seconds)
+                raise
+            if limiter.retry_on_429:
+                envelope = response.json
+                if isinstance(envelope, dict) and not envelope.get('ok', False):
+                    hint = self._extract_retry_hint(envelope)
+                    if hint is not None:
+                        limiter.penalize(chat_id, hint)
+                        raise RateLimitedError(envelope.get('description') or f'{method_name} rate limited', retry_after_seconds=hint)
+            return response
         response = await run_with_retry(operation, self._retry_policy)
         body = response.json
         if not isinstance(body, dict):

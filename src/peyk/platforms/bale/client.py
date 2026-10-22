@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict
 from .errors import BaleAPIError
 from .._telegram_like import TelegramLikeClient
+from peyk.ratelimit import RateLimitConfig
 from .models import Chat, ChatMember, File, Message, PreCheckoutQuery, StickerSet, Transaction, Update, User, WebhookInfo
 from .types import *
 from .methods import *
@@ -45,6 +46,9 @@ class BaleClient(TelegramLikeClient[User, WebhookInfo, File, Chat, ChatMember]):
     """
     base_url = BASE_URL
     string_media_form_encoded = True
+    # Bale limits bots to 20 messages/minute per group or channel (HTTP 429).
+    rate_limit_default = True
+    rate_limit_preset = staticmethod(RateLimitConfig.bale)
     chat_model = Chat
     chat_member_parser = ChatMember.from_dict
     chat_member_count_method = 'getChatMembersCount'
@@ -52,6 +56,17 @@ class BaleClient(TelegramLikeClient[User, WebhookInfo, File, Chat, ChatMember]):
     user_model = User
     webhook_info_model = WebhookInfo
     file_model = File
+    def _extract_retry_hint(self, response: Any) -> Any:
+        """Read Bale's 429 envelope: ``parameters.retry_after`` seconds."""
+        if not isinstance(response, dict):
+            return None
+        params = response.get('parameters')
+        value = params.get('retry_after') if isinstance(params, dict) else response.get('retry_after')
+        if isinstance(value, (int, float)) and not isinstance(value, bool) and value >= 0:
+            return float(value)
+        if response.get('error_code') == 429:
+            return 3.0
+        return None
     logout = logout
     close_bot = close_bot
     send_message = send_message

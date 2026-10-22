@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Union
 from peyk.transport import FilePayload, Session
 from .errors import TelegramAPIError, ResponseParameters
 from .._telegram_like import TelegramLikeClient
+from peyk.ratelimit import RateLimitConfig
 from .models import *
 
 BASE_URL = 'https://api.telegram.org'
@@ -43,12 +44,17 @@ class TelegramClient(TelegramLikeClient[User, WebhookInfo, File, ChatFullInfo, C
         logger: Passed through to a ``Session`` this client builds itself;
             ignored if an existing ``session`` is given (that session
             already has its own logger).
+        rate_limit: ``None`` (default) uses the Telegram preset; ``False``
+            disables the limiter; a ``RateLimitConfig`` or ``RateLimiter``
+            customizes it.
         base_url: Override for the API base URL. Not part of the real
             Telegram API surface -- exists solely so tests can point this
             client at a local fake server instead of ``api.telegram.org``.
     """
 
     base_url = BASE_URL
+    rate_limit_default = True
+    rate_limit_preset = staticmethod(RateLimitConfig.telegram)
     chat_model = ChatFullInfo
     chat_member_parser = parse_chat_member
     chat_member_count_method = 'getChatMemberCount'
