@@ -13,7 +13,7 @@ from typing import Any, Mapping, Optional, Type
 import aiohttp
 import orjson
 from .errors import HTTPStatusError, NetworkError, RateLimitedError, TimeoutError_
-from .logging_hook import TransportLogger, get_default_logger
+from .logging_hook import TransportLogger, get_default_logger, redact_secrets
 from .multipart import FilePayload, build_multipart_body
 DEFAULT_LIMIT = 100
 DEFAULT_LIMIT_PER_HOST = 30
@@ -39,27 +39,6 @@ class TransportResponse:
 
 def _orjson_dumps(obj: object) -> str:
     return orjson.dumps(obj).decode('utf-8')
-
-def _retry_after_from_body(body: bytes) -> Optional[float]:
-    """Read ``parameters.retry_after`` (Telegram/Bale style) from a 429 body.
-
-    Returns ``None`` when the body is empty, not JSON, or carries no usable
-    positive number.
-    """
-    if not body:
-        return None
-    try:
-        parsed = orjson.loads(body)
-    except orjson.JSONDecodeError:
-        return None
-    if not isinstance(parsed, dict):
-        return None
-    params = parsed.get('parameters')
-    value = params.get('retry_after') if isinstance(params, dict) else parsed.get('retry_after')
-    if isinstance(value, bool) or not isinstance(value, (int, float)) or value <= 0:
-        return None
-    return float(value)
-
 
 def _parse_retry_after(value: Optional[str]) -> Optional[float]:
     """Parse a `Retry-After` header value as a plain number of seconds.
@@ -121,11 +100,9 @@ Returns:
                 body = await resp.read()
                 if resp.status == 429:
                     retry_after = _parse_retry_after(resp.headers.get('Retry-After'))
-                    if retry_after is None:
-                        retry_after = _retry_after_from_body(body)
-                    raise RateLimitedError(f'Rate limited by {url}', retry_after_seconds=retry_after)
+                    raise RateLimitedError(f'Rate limited by {redact_secrets(url)}', retry_after_seconds=retry_after)
                 if not 200 <= resp.status < 300:
-                    raise HTTPStatusError(f'HTTP {resp.status} for {url}', status_code=resp.status, body=body)
+                    raise HTTPStatusError(f'HTTP {resp.status} for {redact_secrets(url)}', status_code=resp.status, body=body)
                 parsed_json = None
                 content_type = resp.headers.get('Content-Type', '')
                 if 'json' in content_type and body:
@@ -137,11 +114,11 @@ Returns:
         except (RateLimitedError, HTTPStatusError):
             raise
         except (asyncio.TimeoutError, aiohttp.ServerTimeoutError) as exc:
-            raise TimeoutError_(f'Request to {url} timed out') from exc
+            raise TimeoutError_(f'Request to {redact_secrets(url)} timed out') from exc
         except aiohttp.ClientConnectionError as exc:
-            raise NetworkError(f'Connection failed for {url}: {exc}') from exc
+            raise NetworkError(f'Connection failed for {redact_secrets(url)}: {redact_secrets(str(exc))}') from exc
         except aiohttp.ClientError as exc:
-            raise NetworkError(f'Network error for {url}: {exc}') from exc
+            raise NetworkError(f'Network error for {redact_secrets(url)}: {redact_secrets(str(exc))}') from exc
 
     async def close(self) -> None:
         """Performs the close operation for the transport client."""

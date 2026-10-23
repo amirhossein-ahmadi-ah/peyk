@@ -8,7 +8,15 @@ implementation without `peyk` depending on anything beyond the stdlib.
 """
 from __future__ import annotations
 import logging
+import re
 from typing import Optional, Protocol
+
+_BOT_TOKEN_RE = re.compile(r'/bot\d+:[A-Za-z0-9_\-]+')
+
+
+def redact_secrets(text: str) -> str:
+    """Hide the bot token that Telegram-style APIs carry in the URL path (``/bot<id>:<secret>/method``)."""
+    return _BOT_TOKEN_RE.sub('/bot<redacted>', text)
 
 class TransportLogger(Protocol):
     """Logging hook used by the transport layer.
@@ -68,7 +76,7 @@ Args:
     method: Value used by this operation.
     url: Target URL."""
         'Performs the log_request operation.\n\nArgs:\n    method: str.\n    url: str.\n\nReturns:\n    None.\n\nRaises:\n    \n'
-        self._logger.debug('request: %s %s', method, url)
+        self._logger.debug('request: %s %s', method, redact_secrets(url))
 
     def log_event(self, event: object) -> None:
         """Performs the log event operation for the transport client.
@@ -87,7 +95,7 @@ Args:
     attempt: Value used by this operation.
     exception: Value used by this operation."""
         'Performs the log_retry operation.\n\nArgs:\n    attempt: int.\n    exception: Exception.\n\nReturns:\n    None.\n\nRaises:\n    \n'
-        self._logger.warning('retry: attempt %d failed with %r', attempt, exception)
+        self._logger.warning('retry: attempt %d failed with %s', attempt, redact_secrets(repr(exception)))
 
     def log_failure(self, exception: Exception) -> None:
         """Performs the log failure operation for the transport client.
@@ -95,7 +103,14 @@ Args:
 Args:
     exception: Value used by this operation."""
         'Performs the log_failure operation.\n\nArgs:\n    exception: Exception.\n\nReturns:\n    None.\n\nRaises:\n    \n'
-        self._logger.error('failed: %r', exception)
+        text = redact_secrets(repr(exception))
+        status = getattr(exception, 'status_code', None)
+        if isinstance(status, int) and 400 <= status < 500:
+            # A 4xx is the server's answer to this one request (not a member, no access, bad id ...), not a
+            # transport fault: callers decide what it means, so it is not an ERROR here.
+            self._logger.warning('failed: %s', text)
+        else:
+            self._logger.error('failed: %s', text)
 _default_logger: Optional[TransportLogger] = None
 
 def get_default_logger() -> TransportLogger:
