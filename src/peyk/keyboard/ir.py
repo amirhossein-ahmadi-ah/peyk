@@ -18,9 +18,16 @@ class InlineButton:
     switch_inline_query_current_chat: str | None = None
     switch_inline_query_chosen_chat: object | None = None
     pay: bool | None = None
-    style: ButtonStyle | None = None
+    style: ButtonStyle | str | None = None
     icon_custom_emoji_id: str | None = None
     fallback: 'InlineButton | None' = None
+
+    def __post_init__(self) -> None:
+        if isinstance(self.style, str) and not isinstance(self.style, ButtonStyle):
+            try:
+                object.__setattr__(self, 'style', ButtonStyle(self.style.lower()))
+            except ValueError:
+                pass
 
     def packed_callback_data(self) -> str | None:
         """Performs the packed callback data operation for the keyboard client.
@@ -41,9 +48,16 @@ class ReplyButton:
     request_chat: object | None = None
     web_app_url: str | None = None
     web_app: object | None = None
-    style: ButtonStyle | None = None
+    style: ButtonStyle | str | None = None
     icon_custom_emoji_id: str | None = None
     fallback: 'ReplyButton | None' = None
+
+    def __post_init__(self) -> None:
+        if isinstance(self.style, str) and not isinstance(self.style, ButtonStyle):
+            try:
+                object.__setattr__(self, 'style', ButtonStyle(self.style.lower()))
+            except ValueError:
+                pass
 
 @dataclass(frozen=True)
 class InlineKeyboard:

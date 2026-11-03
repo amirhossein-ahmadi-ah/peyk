@@ -39,8 +39,9 @@ CAPABILITIES[Feature.REMOVE_REPLY] = s(SupportLevel.FULL, "bale.KeyboardButton.t
 CAPABILITIES[Feature.FORCE_REPLY] = s(SupportLevel.UNKNOWN, note="No audited Bale ForceReply model.", confidence="low")
 for f, field in {Feature.BUTTON_URL:"url", Feature.BUTTON_CALLBACK:"callback_data", Feature.BUTTON_WEB_APP:"web_app", Feature.BUTTON_COPY_TEXT:"copy_text"}.items():
     CAPABILITIES[f] = s(SupportLevel.FULL, f"bale.InlineKeyboardButton.{field}")
+CAPABILITIES[Feature.BUTTON_COLOR_STYLE] = s(SupportLevel.FULL, "bale.InlineKeyboardButton.style")
 for f, field in {
-    Feature.BUTTON_COLOR_STYLE:"style", Feature.BUTTON_ICON_EMOJI:"icon_custom_emoji_id", Feature.BUTTON_PAY:"pay", Feature.BUTTON_SWITCH_INLINE:"switch_inline_query", Feature.BUTTON_LOGIN_URL:"login_url",
+    Feature.BUTTON_ICON_EMOJI:"icon_custom_emoji_id", Feature.BUTTON_PAY:"pay", Feature.BUTTON_SWITCH_INLINE:"switch_inline_query", Feature.BUTTON_LOGIN_URL:"login_url",
 }.items(): CAPABILITIES[f] = s(SupportLevel.NONE, "docs/decisions.md", note=f"No `{field}` field exists on the audited Bale InlineKeyboardButton.", confidence="inferred")
 for f in (Feature.BUTTON_REQUEST_CONTACT, Feature.BUTTON_REQUEST_LOCATION):
     CAPABILITIES[f] = s(SupportLevel.FULL, "bale.KeyboardButton.text")
@@ -48,6 +49,6 @@ for f in (Feature.BUTTON_REQUEST_POLL, Feature.BUTTON_REQUEST_USERS, Feature.BUT
     CAPABILITIES[f] = s(SupportLevel.NONE, "docs/decisions.md", note="No matching field exists on the audited Bale keyboard button model.", confidence="inferred")
 for f in (Feature.TELEGRAM_GAMES, Feature.TELEGRAM_PASSPORT, Feature.TELEGRAM_BUSINESS, Feature.TELEGRAM_STORIES, Feature.TELEGRAM_GIFTS, Feature.TELEGRAM_STARS):
     CAPABILITIES[f] = s(SupportLevel.NONE, "docs/decisions.md", note="This feature is classified as Telegram-only by the Phase 1 specification.", confidence="inferred")
-PLATFORM_SPECIFIC_METHODS = ('add_sticker_to_set', 'answer_pre_checkout_query', 'ask_review', 'close', 'close_bot', 'create_invoice_link', 'create_new_sticker_set', 'delete_chat_photo', 'delete_webhook', 'export_chat_invite_link', 'get_chat', 'get_chat_member', 'get_me', 'get_webhook_info', 'inquire_transaction', 'logout', 'revoke_chat_invite_link', 'unpin_all_chat_messages', 'upload_sticker_file', 'field:InlineKeyboardButton.text', 'field:InlineKeyboardButton.callback_data', 'field:InlineKeyboardButton.copy_text', 'field:InlineKeyboardButton.url', 'field:InlineKeyboardButton.web_app', 'field:KeyboardButton.request_contact', 'field:KeyboardButton.request_location', 'field:KeyboardButton.text', 'field:KeyboardButton.web_app')
+PLATFORM_SPECIFIC_METHODS = ('add_sticker_to_set', 'answer_pre_checkout_query', 'ask_review', 'close', 'close_bot', 'create_invoice_link', 'create_new_sticker_set', 'delete_chat_photo', 'delete_webhook', 'export_chat_invite_link', 'get_chat', 'get_chat_member', 'get_me', 'get_webhook_info', 'inquire_transaction', 'logout', 'revoke_chat_invite_link', 'unpin_all_chat_messages', 'upload_sticker_file', 'field:InlineKeyboardButton.text', 'field:InlineKeyboardButton.callback_data', 'field:InlineKeyboardButton.copy_text', 'field:InlineKeyboardButton.url', 'field:InlineKeyboardButton.web_app', 'field:InlineKeyboardButton.style', 'field:KeyboardButton.request_contact', 'field:KeyboardButton.request_location', 'field:KeyboardButton.text', 'field:KeyboardButton.web_app', 'field:KeyboardButton.style')
 
 CAPABILITIES[Feature.WEBHOOK_SECRET_HEADER] = s(SupportLevel.NONE, "docs/decisions.md", note="Bale documents no webhook request secret/header mechanism in the audited contract.", confidence="confirmed")

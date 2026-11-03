@@ -633,24 +633,34 @@ def test_keyboard_button_with_web_app() -> None:
 
 
 def test_inline_keyboard_button_from_dict() -> None:
-    raw = {"text": "Click", "callback_data": "cb1"}
+    raw = {"text": "Click", "callback_data": "cb1", "style": "primary"}
     btn = InlineKeyboardButton.from_dict(raw)
-    assert btn == InlineKeyboardButton(text="Click", callback_data="cb1")
+    assert btn == InlineKeyboardButton(text="Click", callback_data="cb1", style="primary")
 
 
 def test_inline_keyboard_button_with_copy_text() -> None:
-    raw = {"text": "Copy", "copy_text": {"text": "text to copy"}}
+    raw = {"text": "Copy", "copy_text": {"text": "text to copy"}, "style": "danger"}
     btn = InlineKeyboardButton.from_dict(raw)
     assert btn == InlineKeyboardButton(
-        text="Copy", copy_text=CopyTextButton(text="text to copy")
+        text="Copy", copy_text=CopyTextButton(text="text to copy"), style="danger"
     )
 
 
 def test_reply_keyboard_markup_from_dict() -> None:
-    raw = {"keyboard": [[{"text": "A"}, {"text": "B"}]]}
+    raw = {
+        "keyboard": [[{"text": "A", "style": "success"}, {"text": "B", "style": "danger"}]],
+        "resize_keyboard": True,
+        "one_time_keyboard": False,
+        "input_field_placeholder": "Select...",
+    }
     markup = ReplyKeyboardMarkup.from_dict(raw)
     assert markup.keyboard[0][0].text == "A"
+    assert markup.keyboard[0][0].style == "success"
     assert markup.keyboard[0][1].text == "B"
+    assert markup.keyboard[0][1].style == "danger"
+    assert markup.resize_keyboard is True
+    assert markup.one_time_keyboard is False
+    assert markup.input_field_placeholder == "Select..."
 
 
 def test_inline_keyboard_markup_from_dict() -> None:

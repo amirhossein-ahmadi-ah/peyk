@@ -24,6 +24,7 @@ class _ButtonSpec:
     url: Optional[str] = None
     kind: str = 'Simple'
     payload: Optional[dict[str, object]] = None
+    style: Optional[str] = None
 _CAPABILITIES = {'telegram': TELEGRAM_CAPABILITIES, 'bale': BALE_CAPABILITIES, 'rubika': RUBIKA_CAPABILITIES, 'splus': SPLUS_CAPABILITIES}
 _RUBIKA_TYPES = {'Selection', 'Calendar', 'NumberPicker', 'StringPicker', 'Location', 'CameraImage', 'CameraVideo', 'GalleryImage', 'GalleryVideo', 'File', 'Audio', 'RecordAudio', 'Textbox', 'Link', 'AskMyPhoneNumber', 'AskMyLocation', 'Barcode'}
 
@@ -45,16 +46,28 @@ def _normalize_target(target: str | PlatformCapabilities | CapabilitySet) -> tup
 class KeyboardBuilder:
     """Build inline/keypad keyboards for Telegram, Bale, Rubika and Splus."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        resize_keyboard: Optional[bool] = None,
+        one_time_keyboard: Optional[bool] = None,
+        input_field_placeholder: Optional[str] = None,
+        selective: Optional[bool] = None,
+    ) -> None:
         self._rows: list[list[_ButtonSpec]] = [[]]
+        self.resize_keyboard = resize_keyboard
+        self.one_time_keyboard = one_time_keyboard
+        self.input_field_placeholder = input_field_placeholder
+        self.selective = selective
 
-    def button(self, text: str, *, callback_data: str | None=None, url: str | None=None) -> 'KeyboardBuilder':
+    def button(self, text: str, *, callback_data: str | None=None, url: str | None=None, style: object=None) -> 'KeyboardBuilder':
         """Performs the button operation for the utility client.
 
 Args:
     text: Text content supplied to the operation.
     callback_data: Value used by this operation.
     url: Target URL.
+    style: Optional button style.
 
 Returns:
     Result produced by the utility operation."""
@@ -62,7 +75,8 @@ Returns:
         if callback_data is not None and url is not None:
             raise KeyboardBuildError('a button cannot have both callback_data and url')
         self._require_text(text)
-        self._rows[-1].append(_ButtonSpec(text=text, callback_data=callback_data, url=url, kind='Link' if url else 'Simple'))
+        style_val = getattr(style, 'value', style) if style is not None else None
+        self._rows[-1].append(_ButtonSpec(text=text, callback_data=callback_data, url=url, kind='Link' if url else 'Simple', style=str(style_val) if style_val is not None else None))
         return self
 
     def url(self, text: str, url: str) -> 'KeyboardBuilder':
@@ -324,13 +338,14 @@ Returns:
         "Executes the barcode operation.\n        \n        Args:\n            text: Value of the declared parameter type.\n            button_id: Value of the declared parameter type.\n        \n        \n        Returns:\n            The operation result (``'KeyboardBuilder'``).\n        "
         return self._rubika('Barcode', text, button_id=button_id)
 
-    def reply_button(self, text: str, *, request_contact: bool=False, request_location: bool=False) -> 'KeyboardBuilder':
+    def reply_button(self, text: str, *, request_contact: bool=False, request_location: bool=False, style: object=None) -> 'KeyboardBuilder':
         """Performs the reply button operation for the utility client.
 
 Args:
     text: Text content supplied to the operation.
     request_contact: Value used by this operation.
     request_location: Value used by this operation.
+    style: Optional button style.
 
 Returns:
     Result produced by the utility operation."""
@@ -338,7 +353,8 @@ Returns:
         if request_contact and request_location:
             raise KeyboardBuildError('a reply button cannot request contact and location at the same time')
         self._require_text(text)
-        self._rows[-1].append(_ButtonSpec(text=text, kind='Reply', payload={'request_contact': request_contact, 'request_location': request_location}))
+        style_val = getattr(style, 'value', style) if style is not None else None
+        self._rows[-1].append(_ButtonSpec(text=text, kind='Reply', payload={'request_contact': request_contact, 'request_location': request_location}, style=str(style_val) if style_val is not None else None))
         return self
 
     def build(self, target: str | PlatformCapabilities) -> object:
@@ -388,15 +404,20 @@ Returns:
             from peyk.platforms.telegram.types import InlineKeyboardButton, InlineKeyboardMarkup
         else:
             from peyk.platforms.bale.types import InlineKeyboardButton, InlineKeyboardMarkup
-        return InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=s.text, callback_data=s.callback_data, url=s.url) for s in row] for row in rows])
+        return InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=s.text, callback_data=s.callback_data, url=s.url, style=s.style) for s in row] for row in rows])
 
-    @staticmethod
-    def _build_reply(rows: list[list[_ButtonSpec]], platform: str) -> object:
+    def _build_reply(self, rows: list[list[_ButtonSpec]], platform: str) -> object:
         if platform in {'telegram', 'splus'}:
             from peyk.platforms.telegram.types import KeyboardButton, ReplyKeyboardMarkup
         else:
             from peyk.platforms.bale.types import KeyboardButton, ReplyKeyboardMarkup
-        return ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=s.text, request_contact=(s.payload or {}).get('request_contact'), request_location=(s.payload or {}).get('request_location')) for s in row] for row in rows])
+        return ReplyKeyboardMarkup(
+            keyboard=[[KeyboardButton(text=s.text, request_contact=(s.payload or {}).get('request_contact'), request_location=(s.payload or {}).get('request_location'), style=s.style) for s in row] for row in rows],
+            resize_keyboard=self.resize_keyboard,
+            one_time_keyboard=self.one_time_keyboard,
+            input_field_placeholder=self.input_field_placeholder,
+            selective=self.selective,
+        )
 
     @staticmethod
     def _build_rubika(rows: list[list[_ButtonSpec]]) -> object:

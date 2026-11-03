@@ -22,6 +22,30 @@ def test_bale_and_telegram_reply_buttons():
         assert built.keyboard[1][0].request_contact is True
 
 
+def test_colored_buttons_and_resize_keyboard_in_keyboard_builder():
+    builder = (
+        KeyboardBuilder(resize_keyboard=True, input_field_placeholder="Placeholder")
+        .reply_button("Confirm", style="success")
+        .row()
+        .reply_button("Cancel", style="danger")
+    )
+    bale_reply = builder.build("bale")
+    assert bale_reply.resize_keyboard is True
+    assert bale_reply.input_field_placeholder == "Placeholder"
+    assert bale_reply.keyboard[0][0].style == "success"
+    assert bale_reply.keyboard[1][0].style == "danger"
+
+    inline_builder = (
+        KeyboardBuilder()
+        .button("Primary", callback_data="p", style="primary")
+        .row()
+        .button("Success", url="https://ble.ir", style="success")
+    )
+    bale_inline = inline_builder.build("bale")
+    assert bale_inline.inline_keyboard[0][0].style == "primary"
+    assert bale_inline.inline_keyboard[1][0].style == "success"
+
+
 def test_all_rubika_button_types_are_constructible():
     methods = [
         lambda b: b.selection("S", button_id="s", selection_id="sel", items=[{"text": "A"}]),

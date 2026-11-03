@@ -138,6 +138,22 @@ Returns:
 class ReplyKeyboardBuilder(_Builder[ReplyButton]):
     """Build a reply keyboard without selecting a platform."""
 
+    def __init__(
+        self,
+        *,
+        resize_keyboard: bool | None = None,
+        one_time_keyboard: bool | None = None,
+        input_field_placeholder: str | None = None,
+        is_persistent: bool | None = None,
+        selective: bool | None = None,
+    ) -> None:
+        super().__init__()
+        self.resize_keyboard = resize_keyboard
+        self.one_time_keyboard = one_time_keyboard
+        self.input_field_placeholder = input_field_placeholder
+        self.is_persistent = is_persistent
+        self.selective = selective
+
     def button(self, **fields: object) -> 'ReplyKeyboardBuilder':
         """Performs the button operation for the keyboard client.
 
@@ -151,7 +167,15 @@ Returns:
 Returns:
     Result produced by the keyboard operation."""
         allowed = {'resize_keyboard', 'one_time_keyboard', 'input_field_placeholder', 'is_persistent', 'selective'}
-        return ReplyKeyboard(tuple((tuple(r) for r in self.export())), **{k: v for k, v in options.items() if k in allowed})
+        merged: dict[str, object] = {}
+        for k in allowed:
+            val = getattr(self, k, None)
+            if val is not None:
+                merged[k] = val
+        for k, v in options.items():
+            if k in allowed:
+                merged[k] = v
+        return ReplyKeyboard(tuple((tuple(r) for r in self.export())), **merged)
 
     @classmethod
     def from_markup(cls, markup: ReplyKeyboard) -> 'ReplyKeyboardBuilder':
@@ -162,6 +186,12 @@ Args:
 
 Returns:
     Result produced by the keyboard operation."""
-        b = cls()
+        b = cls(
+            resize_keyboard=markup.resize_keyboard,
+            one_time_keyboard=markup.one_time_keyboard,
+            input_field_placeholder=markup.input_field_placeholder,
+            is_persistent=markup.is_persistent,
+            selective=markup.selective,
+        )
         b._markup = [list(r) for r in markup.keyboard]
         return b

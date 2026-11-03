@@ -59,6 +59,9 @@ Returns:
     style = b.style if native_style else None
     text = b.text
     if b.style and (not native_style) and (style_fallback is StyleFallback.EMOJI):
-        text = {'primary': '🔵', 'success': '🟢', 'danger': '🔴'}[b.style.value] + text
+        val = b.style.value if isinstance(b.style, ButtonStyle) else str(b.style)
+        emoji_map = {'primary': '🔵', 'success': '🟢', 'danger': '🔴'}
+        if val in emoji_map:
+            text = emoji_map[val] + text
     icon = b.icon_custom_emoji_id if b.icon_custom_emoji_id and _support(cap, Feature.BUTTON_ICON_EMOJI, policy, cosmetic=True, fallback=None) else None
     return replace(b, text=text, callback_data=value, style=style, icon_custom_emoji_id=icon)
