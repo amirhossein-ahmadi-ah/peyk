@@ -17,6 +17,9 @@ class FakeClient:
     async def get_updates(self, *, offset=None, limit=None, timeout=None):
         self.calls.append(('get_updates', offset))
         if offset is not None:
+            if offset < 0:
+                end_slice = self.queue[offset:]
+                return end_slice[:limit] if limit else end_slice
             self.queue = [u for u in self.queue if u.update_id >= offset]
         return self.queue[:limit]
 
@@ -30,6 +33,15 @@ def run(platform, skip, ids):
 def test_bale_skip_drains_queue():
     c = run('bale', True, range(1, 251))
     assert c.queue == []
+    get_updates_calls = [args for name, args in c.calls if name == 'get_updates']
+    assert len(get_updates_calls) <= 3
+
+
+def test_bale_skip_drains_large_backlog_in_few_calls():
+    c = run('bale', True, range(1, 10001))
+    assert c.queue == []
+    get_updates_calls = [args for name, args in c.calls if name == 'get_updates']
+    assert len(get_updates_calls) <= 3
 
 def test_bale_no_skip_keeps_queue():
     c = run('bale', False, range(1, 11))

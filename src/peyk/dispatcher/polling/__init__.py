@@ -14,13 +14,49 @@ logger = logging.getLogger(__name__)
 async def drain_pending_updates(bot: Bot[object], *, page_size: int = 100, max_pages: int = 1000) -> int:
     """Confirm and discard every update queued while the bot was offline.
 
-    ``getUpdates(offset=N)`` confirms all updates with ``update_id < N``, so we page
-    through the queue and finish with one call at ``last_id + 1``. Returns how many
-    updates were dropped.
+    ``getUpdates(offset=N)`` confirms all updates with ``update_id < N``.
+    To avoid paging through thousands of updates one-by-one over the network,
+    we query the latest queued update using ``offset=-1`` and acknowledge
+    up to ``latest_id + 1`` in O(1) calls. Falls back to paging if negative
+    offset is not supported.
     """
-    offset: int | None = None
-    dropped = 0
-    for _ in range(max_pages):
+    try:
+        # 1. Probe earliest unconfirmed update to know where queue begins
+        first_batch = await bot.client.get_updates(limit=1, timeout=0)
+        if not first_batch:
+            return 0
+        first_id = first_batch[0].update_id
+
+        # 2. Probe latest queued update with offset=-1
+        last_batch = await bot.client.get_updates(offset=-1, limit=1, timeout=0)
+        if last_batch:
+            last_id = last_batch[-1].update_id
+            if last_id > first_id:
+                # Fast path: offset=-1 successfully reached the queue end
+                await bot.client.get_updates(offset=last_id + 1, limit=1, timeout=0)
+                return max(1, last_id - first_id + 1)
+            elif last_id == first_id:
+                # Either queue has only 1 update, or mock/server ignores negative offsets
+                next_batch = await bot.client.get_updates(offset=first_id + 1, limit=1, timeout=0)
+                if not next_batch:
+                    # Verified: only 1 pending update existed and it is now confirmed
+                    return 1
+                offset = next_batch[-1].update_id + 1
+                dropped = 2
+            else:
+                offset = first_id
+                dropped = 0
+        else:
+            offset = first_id
+            dropped = 0
+    except Exception as exc:
+        logger.debug("Fast drain via offset=-1 failed (%s); falling back to paging", exc)
+        offset = None
+        dropped = 0
+
+    # Fallback path: page through queue with a defensive cap
+    cap = min(max_pages, 50)
+    for _ in range(cap):
         updates = await bot.client.get_updates(offset=offset, limit=page_size, timeout=0)
         if not updates:
             return dropped          # this empty call already confirmed everything before `offset`
@@ -28,7 +64,7 @@ async def drain_pending_updates(bot: Bot[object], *, page_size: int = 100, max_p
         offset = updates[-1].update_id + 1
     # page cap reached: confirm what we have seen and report it
     await bot.client.get_updates(offset=offset, limit=1, timeout=0)
-    logger.warning('drain_pending_updates stopped after %d pages (%d dropped)', max_pages, dropped)
+    logger.warning('drain_pending_updates stopped after %d pages (%d dropped)', cap, dropped)
     return dropped
 
 class Poller(Protocol[RawT]):
